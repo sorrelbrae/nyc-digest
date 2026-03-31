@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-03-31",
+  "broadCategories": {
+    "strongPositive": [
+      "experimental music",
+      "noise music",
+      "avant-garde",
+      "weird lectures",
+      "intellectual talks",
+      "philosophy salons",
+      "science talks",
+      "natural history",
+      "readings and book events",
+      "small theater",
+      "experimental performance art",
+      "off-off-Broadway",
+      "gallery openings",
+      "art exhibitions",
+      "repertory cinema",
+      "arthouse film screenings",
+      "smart weird comedy",
+      "PowerPoint comedy",
+      "storytelling shows",
+      "variety shows",
+      "DIY workshops",
+      "indie",
+      "underground",
+      "unusual"
+    ],
+    "positive": [
+      "marine biology",
+      "ecology",
+      "zoology",
+      "museum talks",
+      "documentary screenings",
+      "zine fairs",
+      "maker events",
+      "literary readings",
+      "poetry",
+      "dance (experimental/modern)",
+      "sound art",
+      "installations"
+    ],
+    "negative": [
+      "Broadway musicals",
+      "tourist traps",
+      "large arena concerts",
+      "mainstream pop",
+      "corporate events",
+      "networking mixers",
+      "bottle service nightlife"
+    ],
+    "neutral": []
+  },
+  "venueAffinities": {
+    "positive": [
+      "Caveat",
+      "Spectacle",
+      "The Bell House",
+      "Wonderville",
+      "Interference Archive",
+      "Genspace",
+      "NYC Resistor",
+      "Metrograph",
+      "Anthology Film Archives",
+      "IFC Center",
+      "La MaMa",
+      "The Kitchen",
+      "Pioneer Works",
+      "Issue Project Room",
+      "CUNY Graduate Center",
+      "American Museum of Natural History",
+      "Trans-Pecos",
+      "Market Hotel",
+      "Roulette",
+      "National Sawdust"
+    ],
+    "negative": []
+  },
+  "pricePreference": {
+    "maxPrice": 50,
+    "preferFree": true,
+    "sweetSpot": "free to $25"
+  },
+  "curatingNotes": [
+    "Err toward including events when uncertain — discovery is the goal",
+    "Don't overgeneralize from specific dislikes (rejecting a pop concert ≠ rejecting all music)",
+    "Tastes may evolve day to day — keep the net wide",
+    "More options is better than fewer at this stage",
+    "Always include wildcards and surprises",
+    "A talk about fish at the Museum of Natural History = exactly the kind of thing to surface",
+    "Science at cultural institutions is a strong signal",
+    "Hidden gems from newsletters should always be surfaced for training"
+  ],
+  "feedbackHistory": [],
+  "learnedPatterns": [
+    {
+      "pattern": "Science/nature talks at museums",
+      "strength": "strong positive",
+      "source": "direct feedback 2026-03-31",
+      "note": "User specifically flagged a fish talk at AMNH as something they would have attended"
+    }
+  ]
+}
