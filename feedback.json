@@ -1,0 +1,291 @@
+[
+  {
+    "date": "2026-03-31",
+    "eventId": "fish-amnh-20260402",
+    "eventTitle": "The Secret Lives of Deep-Sea Fish",
+    "eventVenue": "American Museum of Natural History",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "science",
+      "talk",
+      "museum"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2200
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "nonsense-noise-20260403",
+    "eventTitle": "STATIC GARDEN: Harsh Noise + Modular Synth Night",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-03",
+    "reaction": "down",
+    "tags": [
+      "music",
+      "noise",
+      "experimental"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "analytic-salon-20260401",
+    "eventTitle": "The Analytic Salon: On the Ethics of Memory Erasure",
+    "eventVenue": "CUNY Graduate Center",
+    "eventDate": "2026-04-01",
+    "reaction": "up",
+    "tags": [
+      "philosophy",
+      "talk",
+      "free"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "spectacle-surreal-20260404",
+    "eventTitle": "Surrealist Animation Marathon",
+    "eventVenue": "Spectacle",
+    "eventDate": "2026-04-04",
+    "reaction": "up",
+    "tags": [
+      "film",
+      "animation",
+      "art"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "caveat-ppt-20260402",
+    "eventTitle": "PowerPoint Comedy: Unhinged Presentations",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "comedy",
+      "powerpoint"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "pioneer-works-20260405",
+    "eventTitle": "Second Sundays: Open Studios + Live Sound Installation",
+    "eventVenue": "Pioneer Works",
+    "eventDate": "2026-04-05",
+    "reaction": "down",
+    "tags": [
+      "art",
+      "music",
+      "free",
+      "sound art"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "genspace-bio-20260404",
+    "eventTitle": "Bioart Workshop: Growing Bacterial Portraits",
+    "eventVenue": "Genspace",
+    "eventDate": "2026-04-04",
+    "reaction": "down",
+    "tags": [
+      "science",
+      "workshop",
+      "art"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 3500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "issue-project-20260403",
+    "eventTitle": "Hildegard von Bingen Reimagined: Drone Choir",
+    "eventVenue": "Issue Project Room",
+    "eventDate": "2026-04-03",
+    "reaction": "up",
+    "tags": [
+      "music",
+      "experimental",
+      "vocal"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2000
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "interference-zine-20260405",
+    "eventTitle": "Anarchist Zine Reading Room + Collage Bar",
+    "eventVenue": "Interference Archive",
+    "eventDate": "2026-04-05",
+    "reaction": "down",
+    "tags": [
+      "literary",
+      "art",
+      "free",
+      "workshop"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "salsa-social-20260403",
+    "eventTitle": "Friday Night Salsa Social",
+    "eventVenue": "Taj Lounge",
+    "eventDate": "2026-04-03",
+    "reaction": "down",
+    "tags": [
+      "dance",
+      "social",
+      "nightlife"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 2000
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "moth-storyslam-20260401",
+    "eventTitle": "The Moth StorySLAM: Secrets",
+    "eventVenue": "Housing Works Bookstore",
+    "eventDate": "2026-04-01",
+    "reaction": "maybe",
+    "tags": [
+      "storytelling",
+      "literary",
+      "comedy"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "wonderville-game-20260404",
+    "eventTitle": "Indie Game Night + Chiptune DJ",
+    "eventVenue": "Wonderville",
+    "eventDate": "2026-04-04",
+    "reaction": "down",
+    "tags": [
+      "games",
+      "music",
+      "free",
+      "tech"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "wine-tasting-20260402",
+    "eventTitle": "Natural Wine & Cheese Night",
+    "eventVenue": "June Wine Bar",
+    "eventDate": "2026-04-02",
+    "reaction": "maybe",
+    "tags": [
+      "food",
+      "wine",
+      "social"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 4500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "metrograph-cinema-20260401",
+    "eventTitle": "Chris Marker Retrospective: Sans Soleil",
+    "eventVenue": "Metrograph",
+    "eventDate": "2026-04-01",
+    "reaction": "up",
+    "tags": [
+      "film",
+      "repertory",
+      "art"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "lamama-theater-20260403",
+    "eventTitle": "UNDONE: A Devised Theater Experiment",
+    "eventVenue": "La MaMa ETC",
+    "eventDate": "2026-04-03",
+    "reaction": "up",
+    "tags": [
+      "theater",
+      "experimental",
+      "performance"
+    ],
+    "source": "newsletter",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "broadway-comedy-20260402",
+    "eventTitle": "Stand-Up Showcase at The Stand",
+    "eventVenue": "The Stand",
+    "eventDate": "2026-04-02",
+    "reaction": "maybe",
+    "tags": [
+      "comedy",
+      "mainstream"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "roulette-comp-20260405",
+    "eventTitle": "New Compositions for Prepared Piano & Electronics",
+    "eventVenue": "Roulette",
+    "eventDate": "2026-04-05",
+    "reaction": "down",
+    "tags": [
+      "music",
+      "experimental",
+      "classical"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-03-31",
+    "eventId": "nyc-resistor-20260404",
+    "eventTitle": "Craft Night: Learn to Solder LED Jewelry",
+    "eventVenue": "NYC Resistor",
+    "eventDate": "2026-04-04",
+    "reaction": "up",
+    "tags": [
+      "workshop",
+      "tech",
+      "maker"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 3000
+  }
+]
