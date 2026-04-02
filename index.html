@@ -3,135 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYC Cultural Concierge — Week of Mar 29 – Apr 5, 2026</title>
+<title>NYC Cultural Concierge — Apr 2–8, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
-
   :root {
-    --bg: #0a0a0f;
-    --surface: #13131a;
-    --surface-hover: #1a1a24;
-    --border: #2a2a3a;
+    --bg: #0d0d0f;
+    --surface: #141418;
+    --surface2: #1c1c22;
+    --border: #2a2a35;
+    --accent: #c8f060;
+    --accent2: #60d4f0;
+    --accent3: #f060c8;
     --text: #e8e8f0;
     --text-dim: #8888a0;
-    --accent: #7c6aff;
-    --accent-glow: rgba(124, 106, 255, 0.15);
-    --free: #00d68f;
-    --free-glow: rgba(0, 214, 143, 0.12);
-    --cheap: #ffb84d;
-    --cheap-glow: rgba(255, 184, 77, 0.12);
-    --wildcard: #ff6b9d;
-    --wildcard-glow: rgba(255, 107, 157, 0.12);
-    --newsletter: #4ecdc4;
-    --newsletter-glow: rgba(78, 205, 196, 0.12);
+    --text-dimmer: #555566;
+    --tag-bg: #1e1e2a;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Space Grotesk', sans-serif;
     background: var(--bg);
     color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
     line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .container {
-    max-width: 780px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 40px 24px;
+    padding: 40px 20px 80px;
   }
-
-  header {
-    text-align: center;
-    margin-bottom: 48px;
-    padding-bottom: 32px;
+  .header {
     border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
   }
-
-  .dateline {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, #e8e8f0 0%, #7c6aff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .subtitle {
-    font-size: 15px;
-    color: var(--text-dim);
-    font-weight: 300;
-  }
-
-  .stats-bar {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
-
-  .stat {
+  .header-label {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
-    letter-spacing: 1px;
+    color: var(--accent);
     text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--surface);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
   }
-
-  .stat .num { font-weight: 700; }
-  .stat.free-stat { border-color: rgba(0, 214, 143, 0.3); color: var(--free); }
-  .stat.cheap-stat { border-color: rgba(255, 184, 77, 0.3); color: var(--cheap); }
-
-  .legend {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 16px;
-    flex-wrap: wrap;
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
   }
-
-  .legend-item {
+  .header-sub {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .train-banner {
+    background: linear-gradient(135deg, #1a1a28, #1e1e2e);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: var(--text-dim);
-    font-family: 'Space Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    gap: 12px;
+    font-size: 14px;
   }
-
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+  .train-banner .emoji { font-size: 20px; }
+  .train-banner a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
   }
-
-  .dot-free { background: var(--free); }
-  .dot-newsletter { background: var(--newsletter); }
-  .dot-wildcard { background: var(--wildcard); }
-
-  /* Day sections */
+  .train-banner a:hover { text-decoration: underline; }
   .day-section {
     margin-bottom: 40px;
   }
-
   .day-header {
     display: flex;
     align-items: baseline;
@@ -140,47 +82,29 @@
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border);
   }
-
   .day-name {
     font-family: 'Space Mono', monospace;
     font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
-
   .day-date {
     font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 300;
+    color: var(--text-dimmer);
   }
-
-  /* Event cards */
-  .event {
+  .event-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 18px 20px;
-    margin-bottom: 10px;
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
+    margin-bottom: 12px;
+    transition: border-color 0.15s;
   }
-
-  .event:hover {
-    background: var(--surface-hover);
-    border-color: var(--accent);
-    transform: translateY(-1px);
+  .event-card:hover { border-color: #3a3a4a; }
+  .event-card.wildcard {
+    border-left: 3px solid var(--accent3);
   }
-
-  .event.free-event { border-left: 3px solid var(--free); }
-  .event.free-event:hover { border-color: var(--free); }
-  .event.newsletter-event { border-left: 3px solid var(--newsletter); }
-  .event.newsletter-event:hover { border-color: var(--newsletter); }
-  .event.wildcard-event { border-left: 3px solid var(--wildcard); }
-  .event.wildcard-event:hover { border-color: var(--wildcard); }
-
   .event-top {
     display: flex;
     justify-content: space-between;
@@ -188,498 +112,708 @@
     gap: 12px;
     margin-bottom: 6px;
   }
-
   .event-title {
     font-size: 16px;
     font-weight: 600;
     line-height: 1.3;
   }
-
   .event-title a {
     color: var(--text);
     text-decoration: none;
   }
-
-  .event-title a:hover {
-    color: var(--accent);
-  }
-
-  .tags {
-    display: flex;
-    gap: 6px;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .tag-free { background: var(--free-glow); color: var(--free); border: 1px solid rgba(0, 214, 143, 0.25); }
-  .tag-cheap { background: var(--cheap-glow); color: var(--cheap); border: 1px solid rgba(255, 184, 77, 0.25); }
-  .tag-newsletter { background: var(--newsletter-glow); color: var(--newsletter); border: 1px solid rgba(78, 205, 196, 0.25); }
-  .tag-wildcard { background: var(--wildcard-glow); color: var(--wildcard); border: 1px solid rgba(255, 107, 157, 0.25); }
-  .tag-category { background: var(--accent-glow); color: var(--accent); border: 1px solid rgba(124, 106, 255, 0.25); }
-
-  .event-meta {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-  }
-
-  .event-meta .venue { font-weight: 500; color: var(--text); }
-  .event-meta .time { font-family: 'Space Mono', monospace; font-size: 11px; }
-
-  .event-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  .price {
+  .event-title a:hover { color: var(--accent2); }
+  .event-price {
     font-family: 'Space Mono', monospace;
     font-size: 12px;
-    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: rgba(200, 240, 96, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
   }
-
-  .price-free { color: var(--free); }
-  .price-cheap { color: var(--cheap); }
-
-  .cal-btn {
-    display: inline-flex;
+  .event-meta {
+    display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .event-venue {
+    font-size: 13px;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+  .event-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dimmer);
+  }
+  .event-dot { color: var(--text-dimmer); font-size: 10px; }
+  .event-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--text-dimmer);
     font-family: 'Space Mono', monospace;
     font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: lowercase;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 4px 10px;
-    border: 1px solid rgba(124, 106, 255, 0.3);
-    border-radius: 12px;
-    margin-top: 8px;
-    transition: all 0.2s;
-    background: transparent;
   }
-
-  .cal-btn:hover {
-    background: var(--accent-glow);
-    border-color: var(--accent);
-    color: #a99bff;
+  .tag.science { color: #60f0a0; background: rgba(96,240,160,0.1); }
+  .tag.film { color: #f0a060; background: rgba(240,160,96,0.1); }
+  .tag.music { color: #a060f0; background: rgba(160,96,240,0.1); }
+  .tag.comedy { color: #f0d060; background: rgba(240,208,96,0.1); }
+  .tag.theater { color: #f06090; background: rgba(240,96,144,0.1); }
+  .tag.talk { color: #60d4f0; background: rgba(96,212,240,0.1); }
+  .tag.free { color: var(--accent); background: rgba(200,240,96,0.1); }
+  .wildcard-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent3);
+    background: rgba(240,96,200,0.1);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
   }
-
-  /* Sources footer */
-  .sources {
+  .footer {
     margin-top: 48px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
-  }
-
-  .sources h3 {
+    text-align: center;
     font-family: 'Space Mono', monospace;
     font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 12px;
+    color: var(--text-dimmer);
   }
-
-  .source-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .source-links a {
-    font-size: 12px;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 4px 12px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    transition: all 0.2s;
-  }
-
-  .source-links a:hover {
-    border-color: var(--accent);
-    background: var(--accent-glow);
-  }
-
-  .footer-note {
-    margin-top: 24px;
-    font-size: 12px;
-    color: var(--text-dim);
-    font-style: italic;
-    text-align: center;
-    opacity: 0.7;
-  }
-
-  @media (max-width: 600px) {
-    h1 { font-size: 24px; }
-    .container { padding: 24px 16px; }
-    .event { padding: 14px 16px; }
-    .event-top { flex-direction: column; gap: 8px; }
-    .tags { justify-content: flex-start; }
-  }
+  .footer a { color: var(--accent2); text-decoration: none; }
 </style>
 </head>
 <body>
-<div class="container">
 
-<header>
-  <div class="dateline">Your Cultural Concierge</div>
-  <h1>This Week in NYC</h1>
-  <div class="subtitle">Mar 29 – Apr 5, 2026 · Experimental · Intellectual · Unusual · Under $50</div>
-  <div class="stats-bar">
-    <div class="stat free-stat"><span class="num">9</span> free events</div>
-    <div class="stat cheap-stat"><span class="num">8</span> under $25</div>
-    <div class="stat"><span class="num">24</span> total picks</div>
-  </div>
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot dot-free"></div> Free</div>
-    <div class="legend-item"><div class="legend-dot dot-newsletter"></div> Newsletter Pick</div>
-    <div class="legend-item"><div class="legend-dot dot-wildcard"></div> Wildcard</div>
-  </div>
-</header>
-
-<!-- ====== SUNDAY MAR 29 ====== -->
-<div class="day-section">
-  <div class="day-header">
-    <span class="day-name">Sunday</span>
-    <span class="day-date">March 29</span>
-  </div>
-
-  <div class="event free-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.wonderville.nyc/events" target="_blank">Loud Guitar Night: daysies / Fortress / Wujeria</a></div>
-      <div class="tags"><span class="tag tag-category">music</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Wonderville</span> · 1186 Broadway, Bushwick · <span class="time">7:30 PM</span></div>
-    <div class="event-desc">Melancholy noise from Brooklyn (daysies), noise rock/post-hardcore (Fortress), and dreamy experimental from Dayton (Wujeria). At the best arcade/venue crossover in the city.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Loud+Guitar+Night%3A+daysies+%2F+Fortress+%2F+Wujeria&dates=20260329T233000Z/20260330T020000Z&location=Wonderville%2C+1186+Broadway%2C+Brooklyn+NY&details=Experimental+noise+%26+post-hardcore+at+Wonderville.+https%3A%2F%2Fwww.wonderville.nyc%2Fevents" target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event newsletter-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://donyc.com/events/2026/03/29" target="_blank">Gateway to the World: The Great Port of New York</a></div>
-      <div class="tags"><span class="tag tag-newsletter">newsletter</span><span class="tag tag-category">talk</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">National Lighthouse Museum</span> · Staten Island</div>
-    <div class="event-desc">A deep dive into the history of one of the world's great ports — the kind of talk you stumble into and never forget.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Gateway+to+the+World%3A+The+Great+Port+of+New+York&dates=20260329T180000Z/20260329T200000Z&location=National+Lighthouse+Museum%2C+Staten+Island&details=Talk+on+the+history+of+NYC%27s+port.+https%3A%2F%2Fdonyc.com%2Fevents%2F2026%2F03%2F29" target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.92ny.org" target="_blank">Apple TV's "Your Friends & Neighbors" — Cast & Creators in Conversation</a></div>
-      <div class="tags"><span class="tag tag-category">talk</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">92nd Street Y</span> · Upper East Side · <span class="time">7:30 PM</span></div>
-    <div class="event-desc">In-conversation event with the cast and creative team behind the new Apple TV series. The 92Y always does these well.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Your+Friends+%26+Neighbors+%E2%80%94+Cast+%26+Creators+at+92Y&dates=20260329T233000Z/20260330T010000Z&location=92nd+Street+Y%2C+Upper+East+Side%2C+NYC&details=Apple+TV+cast+%26+creators+in+conversation.+https%3A%2F%2Fwww.92ny.org" target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event free-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.ifccenter.com/" target="_blank">Dead Lover — Stink-O-Vision Screening</a></div>
-      <div class="tags"><span class="tag tag-free">free scents</span><span class="tag tag-category">film</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">IFC Center</span> · 323 6th Ave, Greenwich Village · <span class="time">7:30 PM</span></div>
-    <div class="event-desc">Yes, Stink-O-Vision. Scratch-and-sniff cards accompany this screening. The kind of weird cinema experience NYC was made for.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Dead+Lover+%E2%80%94+Stink-O-Vision+Screening&dates=20260329T233000Z/20260330T013000Z&location=IFC+Center%2C+323+6th+Ave%2C+Greenwich+Village&details=Scratch-and-sniff+cinema.+https%3A%2F%2Fwww.ifccenter.com" target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event free-event wildcard-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.theskint.com/fri-mon-3-27-30-skint-weekend/" target="_blank">Luna Park & Deno's Wonder Wheel — Season Opening Free Rides</a></div>
-      <div class="tags"><span class="tag tag-free">free</span><span class="tag tag-wildcard">wildcard</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Coney Island</span> · Brooklyn</div>
-    <div class="event-desc">First 99 guests ride the Cyclone free (with an egg cream!), first 106 get free Wonder Wheel rides. Season opening energy at Coney Island is unmatched.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Luna+Park+%26+Wonder+Wheel+%E2%80%94+Free+Opening+Day+Rides&dates=20260329T150000Z/20260329T210000Z&location=Coney+Island%2C+Brooklyn&details=Free+Cyclone+rides+for+first+99+guests%2C+free+Wonder+Wheel+for+first+106." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.songkick.com/metro-areas/7644-us-new-york-nyc" target="_blank">Hamilton Leithauser at Cafe Carlyle</a></div>
-      <div class="tags"><span class="tag tag-category">music</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Cafe Carlyle</span> · Upper East Side</div>
-    <div class="event-desc">The Walkmen frontman in an intimate cabaret setting. Unusual venue pairing that could be transcendent.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hamilton+Leithauser+at+Cafe+Carlyle&dates=20260330T000000Z/20260330T023000Z&location=Cafe+Carlyle%2C+Upper+East+Side%2C+NYC&details=The+Walkmen+frontman+in+an+intimate+cabaret+setting." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.songkick.com/metro-areas/7644-us-new-york-nyc" target="_blank">zzzahara at Trans-Pecos</a></div>
-      <div class="tags"><span class="tag tag-category">music</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Trans-Pecos</span> · Ridgewood, Queens</div>
-    <div class="event-desc">Experimental electronic at one of the best DIY venues in the outer boroughs.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=zzzahara+at+Trans-Pecos&dates=20260330T000000Z/20260330T030000Z&location=Trans-Pecos%2C+Ridgewood%2C+Queens&details=Experimental+electronic+at+a+great+DIY+venue." target="_blank">+ Add to calendar</a>
-  </div>
+<div class="header">
+  <div class="header-label">NYC Cultural Concierge</div>
+  <h1>This Week in New York<br>Apr 2–8, 2026</h1>
+  <p class="header-sub">25 curated picks · experimental · underground · science · arthouse</p>
 </div>
 
-<!-- ====== MONDAY MAR 30 ====== -->
-<div class="day-section">
-  <div class="day-header">
-    <span class="day-name">Monday</span>
-    <span class="day-date">March 30</span>
-  </div>
-
-  <div class="event free-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.theskint.com/fri-mon-3-27-30-skint-weekend/" target="_blank">Monday Movie Nite: "Infamy" — Free Screening</a></div>
-      <div class="tags"><span class="tag tag-free">free</span><span class="tag tag-category">film</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Extra Butter</span> · Long Island City, Queens</div>
-    <div class="event-desc">Free admission, free popcorn, weekly film screenings at a sneaker shop. This week: "Infamy," a graffiti documentary. Peak NYC crossover.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Monday+Movie+Nite%3A+Infamy+%28Free%29&dates=20260330T230000Z/20260331T013000Z&location=Extra+Butter%2C+Long+Island+City%2C+Queens&details=Free+screening+of+graffiti+doc+%22Infamy%22+with+free+popcorn." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">Gisèle Pelicot in Conversation with Megan Twohey</a></div>
-      <div class="tags"><span class="tag tag-category">talk</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">92nd Street Y</span> · Upper East Side · <span class="time">7:00 PM</span></div>
-    <div class="event-desc">A conversation with the French woman at the center of one of the most important criminal cases in recent memory, with readings by Mariska Hargitay and Marisa Tomei. "A Hymn to Life."</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Gis%C3%A8le+Pelicot+in+Conversation+at+92Y&dates=20260330T230000Z/20260331T010000Z&location=92nd+Street+Y%2C+Upper+East+Side%2C+NYC&details=With+Megan+Twohey%2C+readings+by+Mariska+Hargitay+%26+Marisa+Tomei." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event newsletter-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">You Have Courage, Madame</a></div>
-      <div class="tags"><span class="tag tag-newsletter">newsletter</span><span class="tag tag-category">talk</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">YIVO Institute for Jewish Research</span> · Midtown</div>
-    <div class="event-desc">An event at YIVO, one of the city's great under-visited cultural institutions for Jewish history and scholarship.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=You+Have+Courage%2C+Madame+%E2%80%94+YIVO+Institute&dates=20260330T230000Z/20260331T010000Z&location=YIVO+Institute+for+Jewish+Research%2C+Midtown%2C+NYC&details=Event+at+YIVO+Institute+for+Jewish+Research." target="_blank">+ Add to calendar</a>
-  </div>
+<div class="train-banner">
+  <span class="emoji">🎯</span>
+  <span>Train your concierge: rate the full event list (40+ picks) to sharpen future digests →
+    <a href="https://sorrelbrae.github.io/nyc-digest/train.html">train.html</a>
+  </span>
 </div>
 
-<!-- ====== TUESDAY MAR 31 ====== -->
-<div class="day-section">
-  <div class="day-header">
-    <span class="day-name">Tuesday</span>
-    <span class="day-date">March 31</span>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">In-Person Symposium: America at 250 Through the Arts</a></div>
-      <div class="tags"><span class="tag tag-category">talk</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">92nd Street Y</span> · Upper East Side · <span class="time">11:00 AM – 4:15 PM</span></div>
-    <div class="event-desc">A full-day symposium exploring America's 250th anniversary through the lens of arts and culture. The kind of deep intellectual marathon the 92Y does best.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=America+at+250+Through+the+Arts+%E2%80%94+Symposium&dates=20260331T150000Z/20260331T201500Z&location=92nd+Street+Y%2C+Upper+East+Side%2C+NYC&details=Full-day+symposium+on+America%27s+250th+through+arts+%26+culture." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.theskint.com/fri-mon-3-27-30-skint-weekend/" target="_blank">PEN America Literary Awards Ceremony</a></div>
-      <div class="tags"><span class="tag tag-cheap">$10 w/ code</span><span class="tag tag-category">literary</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">TBA</span> · <span class="price price-cheap">$10 with code PENPAL</span></div>
-    <div class="event-desc">The "Oscars for books." Major literary awards ceremony, usually featuring speeches from the biggest names in American letters. At ten bucks, this is a steal.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PEN+America+Literary+Awards+Ceremony&dates=20260331T230000Z/20260401T020000Z&location=New+York+City&details=%2410+with+code+PENPAL.+The+%22Oscars+for+books.%22" target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event newsletter-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">Nicholas Lemann — "Returning: A Search for Home Across Three Centuries"</a></div>
-      <div class="tags"><span class="tag tag-newsletter">newsletter</span><span class="tag tag-category">literary</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">The New York Society Library</span> · Upper East Side</div>
-    <div class="event-desc">The former New Yorker editor and Columbia journalism dean reads from his new book on place, migration, and belonging. Intimate setting at one of the city's oldest cultural institutions (founded 1754).</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nicholas+Lemann+%E2%80%94+%22Returning%22+at+NY+Society+Library&dates=20260331T230000Z/20260401T010000Z&location=The+New+York+Society+Library%2C+Upper+East+Side&details=Reading+%26+conversation+on+place%2C+migration%2C+and+belonging." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">Yann Martel — "Son of Nobody"</a></div>
-      <div class="tags"><span class="tag tag-category">literary</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">The Center for Fiction</span> · Fort Greene, Brooklyn</div>
-    <div class="event-desc">The Life of Pi author presents new work. The Center for Fiction itself is worth visiting — a beautiful bookish space.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Yann+Martel+%E2%80%94+%22Son+of+Nobody%22&dates=20260331T230000Z/20260401T010000Z&location=The+Center+for+Fiction%2C+Fort+Greene%2C+Brooklyn&details=Life+of+Pi+author+presents+new+work." target="_blank">+ Add to calendar</a>
-  </div>
-</div>
-
-<!-- ====== WEDNESDAY APR 1 ====== -->
-<div class="day-section">
-  <div class="day-header">
-    <span class="day-name">Wednesday</span>
-    <span class="day-date">April 1</span>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://thoughtgallery.org/" target="_blank">An Evening with Susan Cheever</a></div>
-      <div class="tags"><span class="tag tag-category">literary</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">The New School</span> · Greenwich Village</div>
-    <div class="event-desc">Memoirist and biographer Susan Cheever (daughter of John) in conversation. The New School's event series consistently delivers thoughtful literary programming.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=An+Evening+with+Susan+Cheever&dates=20260401T230000Z/20260402T010000Z&location=The+New+School%2C+Greenwich+Village%2C+NYC&details=Memoirist+%26+biographer+in+conversation." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event wildcard-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.blankmanlist.com/p/things-to-do-in-nyc-april-2026" target="_blank">Quantonation: Frontiers of Physics Tech</a></div>
-      <div class="tags"><span class="tag tag-wildcard">wildcard</span><span class="tag tag-category">science</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">TBA</span> · Manhattan</div>
-    <div class="event-desc">A talk on quantum computing and the frontiers of physics technology. Exactly the kind of weird-lecture-you-didn't-know-you-needed energy.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Quantonation%3A+Frontiers+of+Physics+Tech&dates=20260401T230000Z/20260402T013000Z&location=Manhattan%2C+NYC&details=Talk+on+quantum+computing+%26+frontiers+of+physics+technology." target="_blank">+ Add to calendar</a>
-  </div>
-
-  <div class="event free-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.blankmanlist.com/p/free-highlights-things-to-do-in-nyc-april-2026" target="_blank">Handwrite the Constitution — Public Art Project by Morgan O'Hara</a></div>
-      <div class="tags"><span class="tag tag-free">free</span><span class="tag tag-wildcard">wildcard</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">TBA</span> · <span class="time">6:00 – 9:00 PM</span></div>
-    <div class="event-desc">Participatory art piece where you sit down and hand-transcribe documents that protect human rights. Meditative, political, and beautifully analog.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Handwrite+the+Constitution+%E2%80%94+Morgan+O%27Hara&dates=20260401T220000Z/20260402T010000Z&location=NYC&details=Free+participatory+art+project.+Hand-transcribe+human+rights+documents." target="_blank">+ Add to calendar</a>
-  </div>
-</div>
-
-<!-- ====== THURSDAY APR 2 ====== -->
+<!-- THURSDAY APRIL 2 -->
 <div class="day-section">
   <div class="day-header">
     <span class="day-name">Thursday</span>
     <span class="day-date">April 2</span>
   </div>
 
-  <div class="event">
+  <div class="event-card">
     <div class="event-top">
-      <div class="event-title"><a href="https://donyc.com/events/2026/3/15/artifact-an-experimental-music-series-tickets" target="_blank">Live Music at The Delancey</a></div>
-      <div class="tags"><span class="tag tag-category">music</span></div>
+      <div class="event-title">
+        <a href="https://www.amnh.org/calendar/warm-blooded-fishes" target="_blank">SciCafe: Warm-Blooded Fishes — Why So Few? The Ocean's Heated Rivalry</a>
+      </div>
+      <span class="event-price">FREE</span>
     </div>
-    <div class="event-meta"><span class="venue">The Delancey</span> · 168 Delancey St, Lower East Side · <span class="time">8:00 PM</span></div>
-    <div class="event-desc">The Delancey's rooftop and basement stages consistently host interesting under-the-radar acts. Check their listings for this week's lineup.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Live+Music+at+The+Delancey&dates=20260403T000000Z/20260403T030000Z&location=The+Delancey%2C+168+Delancey+St%2C+Lower+East+Side&details=Live+music+on+the+LES." target="_blank">+ Add to calendar</a>
+    <div class="event-meta">
+      <span class="event-venue">American Museum of Natural History</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">Marine biologist Fernando Melendez Vazquez presents new research on why only 42 of 38,000+ fish species evolved warm-bloodedness — revealing the first evidence of an evolutionary arms race between tunas, billfishes, great white sharks and marine mammals. Built the largest evolutionary tree of fishes to date. 21+, free with RSVP.</p>
+    <div class="event-tags">
+      <span class="tag science">science</span>
+      <span class="tag science">marine biology</span>
+      <span class="tag talk">museum talk</span>
+      <span class="tag free">free</span>
+    </div>
   </div>
 
-  <div class="event wildcard-event">
+  <div class="event-card">
     <div class="event-top">
-      <div class="event-title"><a href="https://www.blankmanlist.com/p/things-to-do-in-nyc-april-2026" target="_blank">Arsenio Hall: The Stories Only He Can Tell</a></div>
-      <div class="tags"><span class="tag tag-wildcard">wildcard</span><span class="tag tag-category">comedy/talk</span></div>
+      <div class="event-title">
+        <a href="https://issueprojectroom.org/event/taraka-joanna-mattrey" target="_blank">Taraka / Joanna Mattrey</a>
+      </div>
+      <span class="event-price">~$20</span>
     </div>
-    <div class="event-meta"><span class="venue">The Town Hall</span> · Midtown · <span class="time">8:00 PM</span></div>
-    <div class="event-desc">The legendary entertainer reflects on his life and career. Town Hall is a gorgeous 1921 venue that makes everything feel more significant.</div>
-    <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Arsenio+Hall%3A+The+Stories+Only+He+Can+Tell&dates=20260403T000000Z/20260403T023000Z&location=The+Town+Hall%2C+Midtown%2C+NYC&details=Arsenio+Hall+reflects+on+his+career+at+the+gorgeous+1921+Town+Hall." target="_blank">+ Add to calendar</a>
+    <div class="event-meta">
+      <span class="event-venue">Issue Project Room</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">8:00 PM</span>
+    </div>
+    <p class="event-desc">Taraka (of Prince Rama) shares "campfire songs" as a potential antidote to post-digital isolation. Joanna Mattrey opens with an improvised solo set of prepared viola — her signature approach turns the instrument into something genuinely other.</p>
+    <div class="event-tags">
+      <span class="tag music">experimental music</span>
+      <span class="tag music">improvisation</span>
+      <span class="tag music">avant-garde</span>
+    </div>
   </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://roulette.org/event/perfect-lives-benefit/" target="_blank">Perfect Lives: A Screening to Benefit Roulette</a>
+      </div>
+      <span class="event-price">$25+</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Roulette</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">Robert Ashley's landmark 1983 video opera — a continuous hypnotic narration over Blue Gene Tyranny's piano inventions, following two musicians who scheme to steal from a Midwestern bank. Members of the original production will give introductions. An art-music touchstone rarely seen on a big screen.</p>
+    <div class="event-tags">
+      <span class="tag music">experimental opera</span>
+      <span class="tag film">film</span>
+      <span class="tag music">avant-garde</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.caveat.nyc/events/" target="_blank">Pitch and Pair LGBTQ+ Edition: Pitch Your Friend to a Room of Singles</a>
+      </div>
+      <span class="event-price">~$18</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Caveat</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">PowerPoint meets dating show in the most Caveat way possible: you prepare a slideshow pitching your friend to a room of queer singles. Absurd premise, executed with real craft. The PowerPoint comedy format at its most socially chaotic.</p>
+    <div class="event-tags">
+      <span class="tag comedy">PowerPoint comedy</span>
+      <span class="tag comedy">LGBTQ+</span>
+      <span class="tag comedy">variety</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026" target="_blank">Guru, the Mad Monk + Flesh+Blood — Revelations of the Middle Ages</a>
+      </div>
+      <span class="event-price">~$15</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Anthology Film Archives</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">6:45 PM / 8:30 PM</span>
+    </div>
+    <p class="event-desc">Two for the price of one in AFA's medieval series: Andy Milligan's dirt-cheap, genuinely deranged Guru the Mad Monk (35mm-to-DCP, 1970) followed by Verhoeven's blood-soaked Flesh+Blood on 35mm. Perfectly paired grotesquerie.</p>
+    <div class="event-tags">
+      <span class="tag film">repertory</span>
+      <span class="tag film">cult cinema</span>
+      <span class="tag film">35mm</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- ====== FRIDAY APR 3 ====== -->
+<!-- FRIDAY APRIL 3 -->
 <div class="day-section">
   <div class="day-header">
     <span class="day-name">Friday</span>
     <span class="day-date">April 3</span>
   </div>
 
-  <div class="event newsletter-event">
+  <div class="event-card">
     <div class="event-top">
-      <div class="event-title"><a href="https://www.theskint.com/" target="_blank">Check The Skint & Nonsense NYC Friday Drops</a></div>
-      <div class="tags"><span class="tag tag-newsletter">newsletter</span></div>
+      <div class="event-title">
+        <a href="https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026" target="_blank">New Body, Same Trash: Program 1 — The Cinema of Gender Transgression</a>
+      </div>
+      <span class="event-price">~$15</span>
     </div>
-    <div class="event-meta"><span class="venue">Your inbox</span></div>
-    <div class="event-desc">Both The Skint and Nonsense NYC send their best weekly picks on Fridays. Subscribe if you haven't — these are the two best curated NYC event newsletters. Nonsense specializes in the truly weird and wonderful.</div>
+    <div class="event-meta">
+      <span class="event-venue">Anthology Film Archives</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:30 PM</span>
+    </div>
+    <p class="event-desc">AFA's new series on trans and gender-transgressive cinema opens with its first program — expect radical, rare, and reclaimed work. Paired later in the month with Sam Feder's essential documentary Disclosure.</p>
+    <div class="event-tags">
+      <span class="tag film">documentary</span>
+      <span class="tag film">repertory</span>
+      <span class="tag film">trans cinema</span>
+    </div>
   </div>
+
+  <div class="event-card wildcard">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.ifccenter.com/" target="_blank">Dead Lover: Stink-O-Vision</a>
+        <span class="wildcard-badge">wildcard</span>
+      </div>
+      <span class="event-price">~$16</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">IFC Center</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:45 PM</span>
+    </div>
+    <p class="event-desc">A revival screening with a gimmick: Stink-O-Vision scratch-and-sniff cards handed out at the door to accompany the film's odorous moments. Part novelty event, part cinema happening. Also Fri Apr 4 & Sat Apr 5.</p>
+    <div class="event-tags">
+      <span class="tag film">event cinema</span>
+      <span class="tag film">experimental</span>
+      <span class="tag comedy">weird</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.caveat.nyc/events/" target="_blank">GUSH: Comedy About Things We Love</a>
+      </div>
+      <span class="event-price">~$18</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Caveat</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">9:30 PM</span>
+    </div>
+    <p class="event-desc">Thirty performers, thirty things they love — the antidote to cynical comedy. An earnest marathon of obsession and enthusiasm. Past subjects have ranged from 19th-century hosiery to competitive dog grooming.</p>
+    <div class="event-tags">
+      <span class="tag comedy">comedy</span>
+      <span class="tag comedy">variety</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.thetranspecos.com/" target="_blank">XQT: IDEASFORCONVERSATIONS / Harry Teardrop / BBPUE / EXFILMSTAR / SAJA / b7lanket / ESPUR</a>
+      </div>
+      <span class="event-price">~$12</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Trans-Pecos</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">A stacked DIY underground lineup at Trans-Pecos — sprawling, eclectic, with the chaotic energy of a bill that should not work but absolutely will. Multiple sets of experimental and post-internet sounds.</p>
+    <div class="event-tags">
+      <span class="tag music">experimental</span>
+      <span class="tag music">DIY</span>
+      <span class="tag music">underground</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- ====== ONGOING / ALL WEEK ====== -->
+<!-- SATURDAY APRIL 4 -->
+<div class="day-section">
+  <div class="day-header">
+    <span class="day-name">Saturday</span>
+    <span class="day-date">April 4</span>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.spectacletheater.com/stray-cat-rock/" target="_blank">Stray Cat Rock: Machine Animal (Meiko Kaji series)</a>
+      </div>
+      <span class="event-price">$5 donation</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Spectacle Theater</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:30 PM</span>
+    </div>
+    <p class="event-desc">Spectacle's April series on the Stray Cat Rock films — five 1970 films built around Meiko Kaji's magnetic girl-gang leader, infusing yakuza cinema with feminist countercultural energy. Machine Animal covers student anti-war movements. Essential 35mm-era Japanese cult cinema.</p>
+    <div class="event-tags">
+      <span class="tag film">cult cinema</span>
+      <span class="tag film">Japanese</span>
+      <span class="tag film">feminist</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026" target="_blank">Heightened Scrutiny (Sam Feder, 2025) — Cinema of Gender Transgression</a>
+      </div>
+      <span class="event-price">~$15</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Anthology Film Archives</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">5:30 PM</span>
+    </div>
+    <p class="event-desc">Sam Feder's (Disclosure) new documentary tracking trans rights cases through the U.S. court system, using the legal record as an intimate portrait of survival. Part of AFA's Cinema of Gender Transgression series; a direct companion to his earlier landmark work.</p>
+    <div class="event-tags">
+      <span class="tag film">documentary</span>
+      <span class="tag film">trans cinema</span>
+      <span class="tag talk">political</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.caveat.nyc/events/" target="_blank">The Best Worst Ten Minute Play Festival</a>
+      </div>
+      <span class="event-price">~$18</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Caveat</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">4:00 PM</span>
+    </div>
+    <p class="event-desc">Thirty artists compete by intentionally deploying the worst theatrical clichés — the dead parent monologue, the third-act rain, the unnecessary accent. Amoeba Productions turns self-aware theater criticism into live sport.</p>
+    <div class="event-tags">
+      <span class="tag theater">theater</span>
+      <span class="tag comedy">comedy</span>
+      <span class="tag comedy">variety</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- SUNDAY APRIL 5 -->
+<div class="day-section">
+  <div class="day-header">
+    <span class="day-name">Sunday</span>
+    <span class="day-date">April 5</span>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.spectacletheater.com/" target="_blank">Spectacle: Stray Cat Rock — ongoing series</a>
+      </div>
+      <span class="event-price">$5 donation</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Spectacle Theater</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">Various</span>
+    </div>
+    <p class="event-desc">Spectacle programs seven days a week — Sundays often include their beloved Blood Brunch matinee (free bloody mary with $5 admission) and additional screenings from April's series. Check their site for today's exact lineup.</p>
+    <div class="event-tags">
+      <span class="tag film">cult cinema</span>
+      <span class="tag film">repertory</span>
+      <span class="tag film">underground</span>
+    </div>
+  </div>
+
+  <div class="event-card wildcard">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.ifccenter.com/" target="_blank">Dead Lover: Stink-O-Vision (final weekend)</a>
+        <span class="wildcard-badge">wildcard</span>
+      </div>
+      <span class="event-price">~$16</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">IFC Center</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:45 PM</span>
+    </div>
+    <p class="event-desc">Last chance for the scratch-and-sniff screening event before it closes. See Fri Apr 3 for description.</p>
+    <div class="event-tags">
+      <span class="tag film">event cinema</span>
+      <span class="tag comedy">weird</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- MONDAY APRIL 6 -->
+<div class="day-section">
+  <div class="day-header">
+    <span class="day-name">Monday</span>
+    <span class="day-date">April 6</span>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://sva.edu/features/april-2026-exhibitions-and-events-at-sva" target="_blank">Art and Politics Lecture: Mary Frank — "Art and Our Earth"</a>
+      </div>
+      <span class="event-price">FREE</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">SVA (133 W 21st St)</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">6:30 PM</span>
+    </div>
+    <p class="event-desc">Renowned artist Mary Frank in conversation about art, ecology, and our relationship to the earth — part of the Art and Politics Lecture Series at SVA. Frank's work spans drawing, painting, sculpture, and printmaking with a sustained focus on the natural world and mortality. Free, followed by Q&A.</p>
+    <div class="event-tags">
+      <span class="tag talk">art lecture</span>
+      <span class="tag science">ecology</span>
+      <span class="tag free">free</span>
+    </div>
+  </div>
+
+  <div class="event-card wildcard">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.caveat.nyc/events/" target="_blank">Drunk Bollywood Trivia</a>
+        <span class="wildcard-badge">wildcard</span>
+      </div>
+      <span class="event-price">~$15</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Caveat</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">Exactly what it says — a trivia night about Bollywood film, run at a clip that keeps the drinks flowing. More fun if you know nothing. A classic Caveat genre mash-up done with evident love for the source material.</p>
+    <div class="event-tags">
+      <span class="tag comedy">trivia</span>
+      <span class="tag comedy">Bollywood</span>
+      <span class="tag comedy">variety</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- TUESDAY APRIL 7 -->
+<div class="day-section">
+  <div class="day-header">
+    <span class="day-name">Tuesday</span>
+    <span class="day-date">April 7</span>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://pioneerworks.org/programs/ben-lerner-transcription" target="_blank">Ben Lerner: Transcription — Book Launch</a>
+      </div>
+      <span class="event-price">~$20</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Pioneer Works</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">The launch of Ben Lerner's new novel — a "lightning flash" of a book about a writer who drops his phone before the final interview with his dying mentor, forced to rely on memory alone. In conversation with Alexandra Schwartz (New Yorker). Signed copies available at door. Lerner at PW is an event.</p>
+    <div class="event-tags">
+      <span class="tag talk">book launch</span>
+      <span class="tag talk">literature</span>
+      <span class="tag talk">reading</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://roulette.org/event/caroline-davis-matt-mitchell/" target="_blank">Caroline Davis // Matt Mitchell — solo improvisation double bill</a>
+      </div>
+      <span class="event-price">$25 / $20 student</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Roulette</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">8:00 PM</span>
+    </div>
+    <p class="event-desc">Two solo sets, completely improvised: saxophonist Caroline Davis navigates the nexus between saxophone and live electronics, followed by pianist Matt Mitchell playing a fully spontaneous performance — no score, no preparation, pure real-time composition. Livestream free at 8pm for remote viewing.</p>
+    <div class="event-tags">
+      <span class="tag music">improvisation</span>
+      <span class="tag music">jazz</span>
+      <span class="tag music">experimental</span>
+    </div>
+  </div>
+
+  <div class="event-card wildcard">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.ifccenter.com/" target="_blank">Hundreds of Beavers — International Beaver Day Encore</a>
+        <span class="wildcard-badge">wildcard</span>
+      </div>
+      <span class="event-price">~$16</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">IFC Center</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM</span>
+    </div>
+    <p class="event-desc">The black-and-white slapstick sensation about a fur trader battling beavers in a surrealist 19th-century wilderness, getting a special encore screening for International Beaver Day (April 7). Genuinely hilarious, genuinely weird, and the crowd energy makes it something to experience in a theater.</p>
+    <div class="event-tags">
+      <span class="tag film">slapstick</span>
+      <span class="tag comedy">weird comedy</span>
+      <span class="tag film">indie</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026" target="_blank">Disclosure (Sam Feder, 2020) — Cinema of Gender Transgression</a>
+      </div>
+      <span class="event-price">~$15</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Anthology Film Archives</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">6:30 PM</span>
+    </div>
+    <p class="event-desc">Laverne Cox narrates this landmark documentary tracing the history of trans representation in Hollywood — how film and television have shaped (and distorted) trans identity in America. Essential viewing that holds up and deepens every rewatch. Part of AFA's series.</p>
+    <div class="event-tags">
+      <span class="tag film">documentary</span>
+      <span class="tag film">trans cinema</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- WEDNESDAY APRIL 8 -->
+<div class="day-section">
+  <div class="day-header">
+    <span class="day-name">Wednesday</span>
+    <span class="day-date">April 8</span>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://roulette.org/event/vicky-chow-mivos-quartet-morton-feldman/" target="_blank">Vicky Chow & Mivos Quartet — Morton Feldman's Piano and String Quartet</a>
+      </div>
+      <span class="event-price">$25 / $20 student</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Roulette</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">8:00 PM</span>
+    </div>
+    <p class="event-desc">In celebration of Feldman's 100th anniversary: his iconic 90-minute late work performed complete. An expansive, hushed sound world that demands deep listening — some find it transcendent, others find it interminable. Commissioned and premiered in 1985 by Aki Takahashi and the Kronos Quartet. Livestream also free at 8pm.</p>
+    <div class="event-tags">
+      <span class="tag music">contemporary classical</span>
+      <span class="tag music">experimental</span>
+      <span class="tag music">minimalism</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://pioneerworks.org/programs/jake-xerxes-fussell-sam-amidon" target="_blank">Jake Xerxes Fussell, Sam Amidon, Jana Horn</a>
+      </div>
+      <span class="event-price">~$25</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Pioneer Works</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:30 PM</span>
+    </div>
+    <p class="event-desc">A night of experimental folk at the edge of the tradition: Jake Xerxes Fussell's deep-roots Southern balladry, Sam Amidon's uncanny reframing of American folk songs, and Jana Horn's quietly devastating Austin indie. Three artists doing genuinely individual work with shared material.</p>
+    <div class="event-tags">
+      <span class="tag music">folk</span>
+      <span class="tag music">indie</span>
+      <span class="tag music">experimental</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.simonsfoundation.org/sf-events/" target="_blank">Simons Foundation Presidential Lecture</a>
+      </div>
+      <span class="event-price">FREE</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">Simons Foundation (160 5th Ave)</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">6:00 PM</span>
+    </div>
+    <p class="event-desc">Free public talk from a leading scientist or mathematician — the Simons Foundation's Presidential Lecture series features rigorous, accessible talks designed to foster discussion across disciplines. Check simonsfoundation.org for April 8's specific speaker and topic, confirmed closer to date.</p>
+    <div class="event-tags">
+      <span class="tag science">science</span>
+      <span class="tag talk">lecture</span>
+      <span class="tag free">free</span>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-top">
+      <div class="event-title">
+        <a href="https://www.ifccenter.com/" target="_blank">Who Moves America — NYC Premiere with Q&A</a>
+      </div>
+      <span class="event-price">~$16</span>
+    </div>
+    <div class="event-meta">
+      <span class="event-venue">IFC Center</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">7:00 PM & 9:30 PM</span>
+    </div>
+    <p class="event-desc">NYC premiere of this new documentary with Q&As after both screenings, featuring the director and film subjects. The film follows the people who move America — its logistics, its trucks, its invisible labor infrastructure. Documentary with filmmaker Q&A is always worth the ticket price.</p>
+    <div class="event-tags">
+      <span class="tag film">documentary</span>
+      <span class="tag film">NYC premiere</span>
+      <span class="tag talk">Q&A</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ONGOING -->
 <div class="day-section">
   <div class="day-header">
     <span class="day-name">All Week</span>
-    <span class="day-date">Ongoing</span>
+    <span class="day-date">Through Apr 12</span>
   </div>
 
-  <div class="event free-event">
+  <div class="event-card">
     <div class="event-top">
-      <div class="event-title"><a href="https://www.amny.com/entertainment/upcoming-art-exhibitions-fairs-spring-arts-guide-2026/" target="_blank">Midtown Cultural Alliance Open House</a></div>
-      <div class="tags"><span class="tag tag-free">free + paid</span><span class="tag tag-category">art</span></div>
+      <div class="event-title">
+        <a href="https://lamama.org/uncle-vanya-scenes-from-country-life/" target="_blank">Uncle Vanya, Scenes from Country Life — Krymov Lab NYC at La MaMa</a>
+      </div>
+      <span class="event-price">$30–$60</span>
     </div>
-    <div class="event-meta"><span class="venue">Multiple Midtown venues</span> · Through April 5</div>
-    <div class="event-desc">Five cultural organizations open their doors with gallery shows, film screenings, and cross-organizational programming. A rare chance to hop between institutions.</div>
+    <div class="event-meta">
+      <span class="event-venue">La MaMa ETC (Ellen Stewart Theatre)</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">Various</span>
+    </div>
+    <p class="event-desc">Dmitry Krymov — "one of the world's finest theater-makers" (NYT) — transforms Chekhov's stagnancy and longing into a grotesque elegy, a wasteland vaudeville. Krymov Lab NYC's bold, design-forward approach to theater rarely passes through New York; this run closes April 12. Student/senior rush $30 at door.</p>
+    <div class="event-tags">
+      <span class="tag theater">experimental theater</span>
+      <span class="tag theater">avant-garde</span>
+      <span class="tag theater">design</span>
+    </div>
   </div>
 
-  <div class="event free-event">
+  <div class="event-card">
     <div class="event-top">
-      <div class="event-title"><a href="https://www.amny.com/entertainment/upcoming-art-exhibitions-fairs-spring-arts-guide-2026/" target="_blank">Queering the Canon — LGBTQ+ Film Festival</a></div>
-      <div class="tags"><span class="tag tag-free">varies</span><span class="tag tag-category">film</span></div>
+      <div class="event-title">
+        <a href="https://metrograph.com/nyc/" target="_blank">Metrograph: No Other Choice + Nostalghia + Fantasia — All Week</a>
+      </div>
+      <span class="event-price">~$18</span>
     </div>
-    <div class="event-meta"><span class="venue">Brooklyn Academy of Music (BAM)</span> · Fort Greene · Through March 30</div>
-    <div class="event-desc">The sixth annual festival reimagining classic cinema through an LGBTQ+ lens. BAM always programs this thoughtfully.</div>
+    <div class="event-meta">
+      <span class="event-venue">Metrograph</span>
+      <span class="event-dot">·</span>
+      <span class="event-time">Various</span>
+    </div>
+    <p class="event-desc">Metrograph's April programming includes Park Chan-wook's No Other Choice (35mm), Tarkovsky's Nostalghia (4K DCP), and Fantasia (35mm) — worth checking the full schedule for introductions and special presentations that are often added close to date.</p>
+    <div class="event-tags">
+      <span class="tag film">arthouse</span>
+      <span class="tag film">repertory</span>
+      <span class="tag film">35mm</span>
+    </div>
   </div>
 
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.ifccenter.com/" target="_blank">IFC Center: After Hours & Best in Show — Scorsese & Christopher Guest Tribute</a></div>
-      <div class="tags"><span class="tag tag-category">film</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">IFC Center</span> · Greenwich Village · Through April 2</div>
-    <div class="event-desc">Repertory screenings of Scorsese's After Hours and Christopher Guest's Best in Show and Waiting for Guffman. After Hours is maybe the best NYC movie ever made.</div>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://metrograph.com/events/" target="_blank">Metrograph: "Touch Me With Your Eyes" — Klute & More</a></div>
-      <div class="tags"><span class="tag tag-category">film</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">Metrograph</span> · 7 Ludlow St, Lower East Side</div>
-    <div class="event-desc">A curated series including Pakula's Klute (1971) with introductions. Metrograph is the best movie theater in NYC, full stop.</div>
-  </div>
-
-  <div class="event free-event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://www.amny.com/entertainment/upcoming-art-exhibitions-fairs-spring-arts-guide-2026/" target="_blank">Inspired by MetroCard — Exhibition at NY Transit Museum</a></div>
-      <div class="tags"><span class="tag tag-free">free w/ museum</span><span class="tag tag-category">art</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">NY Transit Museum, Grand Central Gallery</span> · Midtown</div>
-    <div class="event-desc">How the humble MetroCard became an artistic medium. The Grand Central annex is free (the main Brooklyn museum is a separate admission).</div>
-  </div>
-
-  <div class="event">
-    <div class="event-top">
-      <div class="event-title"><a href="https://lamama.org/now-playing/" target="_blank">La MaMa — Now Playing</a></div>
-      <div class="tags"><span class="tag tag-category">theater</span></div>
-    </div>
-    <div class="event-meta"><span class="venue">La MaMa Experimental Theatre Club</span> · East Village</div>
-    <div class="event-desc">NYC's legendary experimental theater. Currently running "The Iguana Becomes Marco" and rotating programming. Check their site for this week's schedule — always worth it.</div>
-  </div>
 </div>
 
-<!-- ====== SOURCES ====== -->
-<div class="sources">
-  <h3>Sourced From</h3>
-  <div class="source-links">
-    <a href="https://theskint.com/" target="_blank">The Skint</a>
-    <a href="https://thoughtgallery.org/" target="_blank">ThoughtGallery</a>
-    <a href="https://www.nonsensenyc.com/about/" target="_blank">Nonsense NYC</a>
-    <a href="https://www.ohmyrockness.com/" target="_blank">Oh My Rockness</a>
-    <a href="https://nyc-noise.com/" target="_blank">NYC Noise</a>
-    <a href="https://donyc.com/" target="_blank">DoNYC</a>
-    <a href="https://www.clubfreetime.com/" target="_blank">Club Free Time</a>
-    <a href="https://www.blankmanlist.com/p/things-to-do-in-nyc-april-2026" target="_blank">Blankman List</a>
-    <a href="https://metrograph.com/" target="_blank">Metrograph</a>
-    <a href="https://www.ifccenter.com/" target="_blank">IFC Center</a>
-    <a href="https://www.wonderville.nyc/events" target="_blank">Wonderville</a>
-  </div>
-  <p class="footer-note">Generated by your Cultural Concierge · Sunday, March 29, 2026 · Automated daily at 7:00 AM · Tap "+ Add to calendar" on any event to save it</p>
+<div class="footer">
+  Generated by your NYC Cultural Concierge · April 2, 2026<br>
+  <a href="https://sorrelbrae.github.io/nyc-digest/train.html">🎯 Rate all 40+ events → train.html</a>
 </div>
 
-</div>
 </body>
 </html>
