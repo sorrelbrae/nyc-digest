@@ -576,5 +576,700 @@
     "source": "web",
     "isWildcard": false,
     "priceCents": 3000
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "amnh-scicafe-apr2",
+    "eventTitle": "SciCafe: Warm-Blooded Fishes — The Ocean's Heated Rivalry",
+    "eventVenue": "American Museum of Natural History",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "science",
+      "marine biology",
+      "museum talk",
+      "free"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "issue-taraka-apr2",
+    "eventTitle": "Taraka / Joanna Mattrey",
+    "eventVenue": "Issue Project Room",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "experimental music",
+      "improvisation",
+      "avant-garde",
+      "vocal"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2000
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "roulette-perfect-lives-apr2",
+    "eventTitle": "Perfect Lives: A Screening to Benefit Roulette",
+    "eventVenue": "Roulette",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "experimental opera",
+      "film",
+      "avant-garde",
+      "art music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-pitch-pair-apr2",
+    "eventTitle": "Pitch and Pair LGBTQ+ Edition: PowerPoint Dating Show",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-02",
+    "reaction": "down",
+    "tags": [
+      "PowerPoint comedy",
+      "LGBTQ+",
+      "variety",
+      "comedy"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-horoscope-apr2",
+    "eventTitle": "Yesterday's Horoscope",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "comedy",
+      "variety",
+      "astrology"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-guru-monk-apr2",
+    "eventTitle": "Guru, the Mad Monk + Flesh+Blood (35mm) — Revelations of the Middle Ages",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "repertory",
+      "cult cinema",
+      "35mm",
+      "underground"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-kidmoon-apr2",
+    "eventTitle": "Kid Moon / Carrjond / Woz",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-02",
+    "reaction": "maybe",
+    "tags": [
+      "indie music",
+      "DIY",
+      "underground",
+      "all-ages"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "ifc-after-hours-apr2",
+    "eventTitle": "After Hours (Scorsese, 1985) + Best in Show & Waiting for Guffman",
+    "eventVenue": "IFC Center",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "repertory",
+      "comedy",
+      "film",
+      "cult"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-new-body-pgm1-apr3",
+    "eventTitle": "New Body, Same Trash: Program 1 — Cinema of Gender Transgression",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-03",
+    "reaction": "down",
+    "tags": [
+      "documentary",
+      "repertory",
+      "trans cinema",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-excalibur-apr3",
+    "eventTitle": "Excalibur (John Boorman, 1981) — 35mm",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-03",
+    "reaction": "up",
+    "tags": [
+      "repertory",
+      "film",
+      "35mm",
+      "cult"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "ifc-dead-lover-apr3",
+    "eventTitle": "Dead Lover: Stink-O-Vision",
+    "eventVenue": "IFC Center",
+    "eventDate": "2026-04-03",
+    "reaction": "down",
+    "tags": [
+      "event cinema",
+      "experimental",
+      "weird",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-gush-apr3",
+    "eventTitle": "GUSH: Comedy About Things We Love",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-03",
+    "reaction": "maybe",
+    "tags": [
+      "comedy",
+      "variety",
+      "standup"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-immigrant-jam-apr3",
+    "eventTitle": "Immigrant Jam Comedy",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-03",
+    "reaction": "maybe",
+    "tags": [
+      "comedy",
+      "standup",
+      "multicultural"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-xqt-apr3",
+    "eventTitle": "XQT: IDEASFORCONVERSATIONS / Harry Teardrop / BBPUE / EXFILMSTAR / SAJA / b7lanket / ESPUR",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-03",
+    "reaction": "up",
+    "tags": [
+      "experimental",
+      "DIY",
+      "underground",
+      "post-internet music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "spectacle-straycat-machine-apr4",
+    "eventTitle": "Stray Cat Rock: Machine Animal (Meiko Kaji) — 7:30pm",
+    "eventVenue": "Spectacle Theater",
+    "eventDate": "2026-04-04",
+    "reaction": "maybe",
+    "tags": [
+      "cult cinema",
+      "Japanese",
+      "feminist",
+      "film",
+      "70s"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "spectacle-straycat-midnight-apr4",
+    "eventTitle": "Stray Cat Rock: Midnight Screening",
+    "eventVenue": "Spectacle Theater",
+    "eventDate": "2026-04-04",
+    "reaction": "maybe",
+    "tags": [
+      "cult cinema",
+      "Japanese",
+      "midnight",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-heightened-scrutiny-apr4",
+    "eventTitle": "Heightened Scrutiny (Sam Feder, 2025) — Cinema of Gender Transgression",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-04",
+    "reaction": "down",
+    "tags": [
+      "documentary",
+      "trans cinema",
+      "political",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-robin-hood-apr4",
+    "eventTitle": "The Adventures of Robin Hood (Curtiz & Keighley, 1938) — 35mm",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-04",
+    "reaction": "up",
+    "tags": [
+      "repertory",
+      "35mm",
+      "classic Hollywood",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-best-worst-play-apr4",
+    "eventTitle": "The Best Worst Ten Minute Play Festival",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-04",
+    "reaction": "up",
+    "tags": [
+      "theater",
+      "comedy",
+      "variety",
+      "meta-theater"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-zatru-apr4",
+    "eventTitle": "ZATRU & Friends NYC",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-04",
+    "reaction": "down",
+    "tags": [
+      "experimental",
+      "DIY",
+      "underground",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-headsknow-apr4",
+    "eventTitle": "HEADS KNOW: DJ Paypal / Sucia! / Celebrity Bitcrush / Arielle Lana",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-04",
+    "reaction": "down",
+    "tags": [
+      "electronic",
+      "DJ",
+      "footwork",
+      "club",
+      "late night"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "spectacle-blood-brunch-apr5",
+    "eventTitle": "Spectacle Blood Brunch — Sunday Matinee",
+    "eventVenue": "Spectacle Theater",
+    "eventDate": "2026-04-05",
+    "reaction": "up",
+    "tags": [
+      "cult cinema",
+      "film",
+      "underground",
+      "community"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "ifc-dead-lover-apr5",
+    "eventTitle": "Dead Lover: Stink-O-Vision (Final Day)",
+    "eventVenue": "IFC Center",
+    "eventDate": "2026-04-05",
+    "reaction": "down",
+    "tags": [
+      "event cinema",
+      "weird",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-computer-kill-apr5",
+    "eventTitle": "Miles to Go: Computer Kill / Prom / Makeout City",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-05",
+    "reaction": "down",
+    "tags": [
+      "indie",
+      "punk",
+      "DIY",
+      "underground",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "sva-mary-frank-apr6",
+    "eventTitle": "Art and Politics Lecture: Mary Frank — \"Art and Our Earth\"",
+    "eventVenue": "SVA",
+    "eventDate": "2026-04-06",
+    "reaction": "maybe",
+    "tags": [
+      "art lecture",
+      "ecology",
+      "free",
+      "talk"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-drunk-bollywood-apr6",
+    "eventTitle": "Drunk Bollywood Trivia",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-06",
+    "reaction": "down",
+    "tags": [
+      "trivia",
+      "Bollywood",
+      "comedy",
+      "variety"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "la-mama-uncle-vanya-ongoing",
+    "eventTitle": "Uncle Vanya, Scenes from Country Life — Krymov Lab NYC",
+    "eventVenue": "La MaMa ETC",
+    "eventDate": "2026-04-06",
+    "reaction": "up",
+    "tags": [
+      "experimental theater",
+      "avant-garde",
+      "theater",
+      "Chekhov"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 4500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "pioneer-ben-lerner-apr7",
+    "eventTitle": "Ben Lerner: Transcription — Book Launch",
+    "eventVenue": "Pioneer Works",
+    "eventDate": "2026-04-07",
+    "reaction": "down",
+    "tags": [
+      "book launch",
+      "literature",
+      "reading",
+      "fiction"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2000
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "roulette-caroline-davis-apr7",
+    "eventTitle": "Caroline Davis // Matt Mitchell — Solo Improvisation Double Bill",
+    "eventVenue": "Roulette",
+    "eventDate": "2026-04-07",
+    "reaction": "down",
+    "tags": [
+      "improvisation",
+      "jazz",
+      "experimental",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "ifc-hundreds-beavers-apr7",
+    "eventTitle": "Hundreds of Beavers — International Beaver Day Encore",
+    "eventVenue": "IFC Center",
+    "eventDate": "2026-04-07",
+    "reaction": "up",
+    "tags": [
+      "slapstick",
+      "weird comedy",
+      "indie film",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-disclosure-apr7",
+    "eventTitle": "Disclosure (Sam Feder, 2020) — Cinema of Gender Transgression",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-07",
+    "reaction": "down",
+    "tags": [
+      "documentary",
+      "trans cinema",
+      "film",
+      "history"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "afa-heightened-scrutiny-apr7",
+    "eventTitle": "Heightened Scrutiny (Sam Feder, 2025) — Cinema of Gender Transgression (second showing)",
+    "eventVenue": "Anthology Film Archives",
+    "eventDate": "2026-04-07",
+    "reaction": "down",
+    "tags": [
+      "documentary",
+      "trans cinema",
+      "film",
+      "political"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-fun-by-design-apr7",
+    "eventTitle": "Fun By Design: The Interior Design Game Show",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-07",
+    "reaction": "down",
+    "tags": [
+      "comedy",
+      "game show",
+      "variety",
+      "design"
+    ],
+    "source": "web",
+    "isWildcard": true,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "roulette-feldman-apr8",
+    "eventTitle": "Vicky Chow & Mivos Quartet — Morton Feldman's Piano and String Quartet (Feldman 100)",
+    "eventVenue": "Roulette",
+    "eventDate": "2026-04-08",
+    "reaction": "maybe",
+    "tags": [
+      "contemporary classical",
+      "experimental",
+      "minimalism",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "pioneer-folk-apr8",
+    "eventTitle": "Jake Xerxes Fussell, Sam Amidon, Jana Horn",
+    "eventVenue": "Pioneer Works",
+    "eventDate": "2026-04-08",
+    "reaction": "up",
+    "tags": [
+      "folk",
+      "indie",
+      "experimental",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 2500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "simons-lecture-apr8",
+    "eventTitle": "Simons Foundation Presidential Lecture",
+    "eventVenue": "Simons Foundation",
+    "eventDate": "2026-04-08",
+    "reaction": "up",
+    "tags": [
+      "science",
+      "lecture",
+      "free",
+      "math/physics"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 0
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "ifc-who-moves-america-apr8",
+    "eventTitle": "Who Moves America — NYC Premiere with Q&A",
+    "eventVenue": "IFC Center",
+    "eventDate": "2026-04-08",
+    "reaction": "up",
+    "tags": [
+      "documentary",
+      "NYC premiere",
+      "Q&A",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1600
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "transpecos-holding-pattern-apr8",
+    "eventTitle": "HOLDING PATTERN: Naomi Asa / Sofii / DJ Mylar",
+    "eventVenue": "Trans-Pecos",
+    "eventDate": "2026-04-08",
+    "reaction": "down",
+    "tags": [
+      "electronic",
+      "ambient",
+      "DJ",
+      "underground",
+      "music"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1200
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "caveat-peer-revue-apr8",
+    "eventTitle": "Peer Revue",
+    "eventVenue": "Caveat",
+    "eventDate": "2026-04-08",
+    "reaction": "maybe",
+    "tags": [
+      "comedy",
+      "variety",
+      "standup"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1500
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "metrograph-week-apr2-8",
+    "eventTitle": "Metrograph: No Other Choice (Park Chan-wook, 35mm) + Nostalghia (Tarkovsky, 4K DCP) + Fantasia (35mm)",
+    "eventVenue": "Metrograph",
+    "eventDate": "2026-04-02",
+    "reaction": "up",
+    "tags": [
+      "arthouse",
+      "repertory",
+      "35mm",
+      "film"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 1800
+  },
+  {
+    "date": "2026-04-02",
+    "eventId": "la-mama-uncle-vanya-all-week",
+    "eventTitle": "Uncle Vanya (Krymov Lab) — All Week",
+    "eventVenue": "La MaMa ETC",
+    "eventDate": "2026-04-03",
+    "reaction": "maybe",
+    "tags": [
+      "experimental theater",
+      "avant-garde",
+      "theater"
+    ],
+    "source": "web",
+    "isWildcard": false,
+    "priceCents": 4500
   }
 ]
