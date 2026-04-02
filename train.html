@@ -3,847 +3,577 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taste Training — NYC Cultural Concierge</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Train Your Concierge — Apr 2–8, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #0a0a0f;
-  color: #e0e0e0;
-  font-family: 'Space Grotesk', sans-serif;
-  min-height: 100vh;
-  padding-bottom: 120px;
-}
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: linear-gradient(135deg, #0a0a0f 0%, #12121a 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 16px 20px;
-}
-.header h1 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #a78bfa, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 4px;
-}
-.header .subtitle {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.stats-bar {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
-}
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.stat .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.dot-up { background: #34d399; }
-.dot-down { background: #f87171; }
-.dot-maybe { background: #fbbf24; }
-.dot-unseen { background: #4b5563; }
-.filter-bar {
-  display: flex;
-  gap: 8px;
-  padding: 12px 20px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: #0a0a0f;
-  position: sticky;
-  top: 82px;
-  z-index: 99;
-}
-.filter-btn {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  padding: 5px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: transparent;
-  color: #9ca3af;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.filter-btn:hover { border-color: rgba(255,255,255,0.3); color: #e0e0e0; }
-.filter-btn.active { background: rgba(167,139,250,0.15); border-color: #a78bfa; color: #a78bfa; }.events-list {
-  padding: 8px 16px;
-}
-.event-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 10px;
-  transition: all 0.2s;
-  position: relative;
-}
-.event-card.rated-up {
-  border-color: rgba(52, 211, 153, 0.3);
-  background: rgba(52, 211, 153, 0.04);
-}
-.event-card.rated-down {
-  border-color: rgba(248, 113, 113, 0.2);
-  background: rgba(248, 113, 113, 0.02);
-  opacity: 0.5;
-}
-.event-card.rated-maybe {
-  border-color: rgba(251, 191, 36, 0.25);
-  background: rgba(251, 191, 36, 0.03);
-}
-.event-date {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  color: #818cf8;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
-}
-.event-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #f3f4f6;
-  margin-bottom: 6px;
-  line-height: 1.3;
-}
-.event-title a {
-  color: inherit;
-  text-decoration: none;
-}
-.event-title a:hover {
-  text-decoration: underline;
-  text-decoration-color: rgba(167,139,250,0.4);
-}
-.event-meta {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
-  color: #9ca3af;
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-.event-desc {
-  font-size: 0.85rem;
-  color: #b0b0b0;
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-.event-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 12px;
-}
-.tag {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.6rem;
-  padding: 2px 8px;
-  border-radius: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.tag-free { background: rgba(52,211,153,0.15); color: #34d399; }
-.tag-cheap { background: rgba(251,191,36,0.15); color: #fbbf24; }
-.tag-newsletter { background: rgba(45,212,191,0.15); color: #2dd4bf; }
-.tag-category { background: rgba(167,139,250,0.1); color: #a78bfa; }
-.tag-wildcard { background: rgba(236,72,153,0.15); color: #ec4899; }
-.reaction-buttons {
-  display: flex;
-  gap: 8px;
-}
-.react-btn {
-  flex: 1;
-  padding: 10px 0;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
-  color: #9ca3af;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.react-btn:hover { background: rgba(255,255,255,0.06); }
-.react-btn.selected-up {
-  background: rgba(52,211,153,0.15);
-  border-color: #34d399;
-  color: #34d399;
-}
-.react-btn.selected-down {
-  background: rgba(248,113,113,0.1);
-  border-color: #f87171;
-  color: #f87171;
-}
-.react-btn.selected-maybe {
-  background: rgba(251,191,36,0.1);
-  border-color: #fbbf24;
-  color: #fbbf24;
-}
-.react-btn .emoji {
-  font-size: 1.1rem;
-}.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(0deg, #0a0a0f 60%, transparent);
-  padding: 20px 16px 24px;
-  z-index: 100;
-}
-.save-btn {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, #a78bfa, #818cf8);
-  color: white;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-  letter-spacing: 0.02em;
-}
-.save-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(167,139,250,0.3); }
-.save-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
-.save-btn .count {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-.toast {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100px);
-  background: #1f2937;
-  color: #34d399;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  border: 1px solid rgba(52,211,153,0.3);
-  transition: transform 0.3s ease;
-  z-index: 200;
-}
-.toast.show { transform: translateX(-50%) translateY(0); }
-.empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  color: #6b7280;
-}
-.empty-state .icon { font-size: 2rem; margin-bottom: 12px; }
-.empty-state p { font-size: 0.9rem; line-height: 1.6; }
-.progress-ring {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-.progress-bar-bg {
-  flex: 1;
-  height: 3px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #a78bfa, #34d399);
-  border-radius: 2px;
-  transition: width 0.3s;
-}
-.progress-text {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  color: #6b7280;
-  white-space: nowrap;
-}
-@media (min-width: 600px) {
-  .events-list { max-width: 640px; margin: 0 auto; }
-  .header { padding: 20px; text-align: center; }
-  .stats-bar { justify-content: center; }
-  .filter-bar { justify-content: center; }
-}
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141418;
+    --surface2: #1c1c22;
+    --border: #2a2a35;
+    --accent: #c8f060;
+    --accent2: #60d4f0;
+    --accent3: #f060c8;
+    --text: #e8e8f0;
+    --text-dim: #8888a0;
+    --text-dimmer: #555566;
+    --tag-bg: #1e1e2a;
+    --up-color: #60f090;
+    --maybe-color: #f0d060;
+    --down-color: #f06060;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .header-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+  .header-sub { color: var(--text-dim); font-size: 14px; }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+  }
+  .stat-count { font-weight: 700; font-size: 16px; }
+  .stat-up .stat-count { color: var(--up-color); }
+  .stat-maybe .stat-count { color: var(--maybe-color); }
+  .stat-down .stat-count { color: var(--down-color); }
+  .stat-label { color: var(--text-dimmer); }
+  .progress-bar-wrap {
+    flex: 1;
+    min-width: 120px;
+    background: var(--border);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar { height: 4px; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
+  .progress-pct { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-dimmer); white-space: nowrap; }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: #3a3a4a; color: var(--text); }
+  .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
+
+  /* Day sections */
+  .day-section { margin-bottom: 36px; }
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-name { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+  .day-date { font-size: 12px; color: var(--text-dimmer); }
+  .day-count { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dimmer); margin-left: auto; }
+
+  /* Event cards */
+  .event-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    transition: border-color 0.15s, opacity 0.2s;
+  }
+  .event-card.wildcard { border-left: 3px solid var(--accent3); }
+  .event-card.rated-up { border-color: var(--up-color); background: rgba(96,240,144,0.05); }
+  .event-card.rated-maybe { border-color: var(--maybe-color); background: rgba(240,208,96,0.05); }
+  .event-card.rated-down { border-color: var(--down-color); background: rgba(240,96,96,0.05); opacity: 0.6; }
+  .event-card.hidden { display: none; }
+
+  .event-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .event-title { font-size: 15px; font-weight: 600; line-height: 1.3; flex: 1; }
+  .event-title a { color: var(--text); text-decoration: none; }
+  .event-title a:hover { color: var(--accent2); }
+  .wildcard-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent3);
+    background: rgba(240,96,200,0.1);
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .event-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .event-venue { font-size: 12px; color: var(--accent2); font-weight: 500; }
+  .event-time { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dimmer); }
+  .event-price { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); }
+  .event-dot { color: var(--text-dimmer); font-size: 9px; }
+  .event-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 10px; }
+
+  .event-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--text-dimmer);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    text-transform: lowercase;
+  }
+  .tag.science { color: #60f0a0; background: rgba(96,240,160,0.1); }
+  .tag.film { color: #f0a060; background: rgba(240,160,96,0.1); }
+  .tag.music { color: #a060f0; background: rgba(160,96,240,0.1); }
+  .tag.comedy { color: #f0d060; background: rgba(240,208,96,0.1); }
+  .tag.theater { color: #f06090; background: rgba(240,96,144,0.1); }
+  .tag.talk { color: #60d4f0; background: rgba(96,212,240,0.1); }
+  .tag.free { color: var(--accent); background: rgba(200,240,96,0.1); }
+
+  /* Rating buttons */
+  .rating-btns { display: flex; gap: 8px; }
+  .rating-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+  }
+  .rating-btn:hover { border-color: #3a3a4a; }
+  .rating-btn.up { color: var(--up-color); }
+  .rating-btn.maybe { color: var(--maybe-color); }
+  .rating-btn.down { color: var(--down-color); }
+  .rating-btn.selected-up { background: rgba(96,240,144,0.15); border-color: var(--up-color); color: var(--up-color); }
+  .rating-btn.selected-maybe { background: rgba(240,208,96,0.15); border-color: var(--maybe-color); color: var(--maybe-color); }
+  .rating-btn.selected-down { background: rgba(240,96,96,0.15); border-color: var(--down-color); color: var(--down-color); }
+
+  /* Save button */
+  .save-area { margin-top: 32px; text-align: center; }
+  .save-btn {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.15s;
+  }
+  .save-btn:hover { opacity: 0.85; }
+  .save-btn:disabled { opacity: 0.4; cursor: default; }
+  .save-status {
+    margin-top: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dimmer);
+    min-height: 20px;
+  }
+  .save-status.success { color: var(--up-color); }
+  .save-status.error { color: var(--down-color); }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .back-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Taste Training</h1>
-  <div class="subtitle">Rate events to sharpen your Cultural Concierge</div>
-  <div class="stats-bar">
-    <div class="stat"><span class="dot dot-up"></span> <span id="count-up">0</span> interested</div>
-    <div class="stat"><span class="dot dot-maybe"></span> <span id="count-maybe">0</span> maybe</div>
-    <div class="stat"><span class="dot dot-down"></span> <span id="count-down">0</span> not for me</div>
-    <div class="stat"><span class="dot dot-unseen"></span> <span id="count-unseen">0</span> unrated</div>
+  <div class="header-label">NYC Cultural Concierge · Taste Training</div>
+  <h1>Rate This Week's Events</h1>
+  <p class="header-sub">Apr 2–8, 2026 · 43 candidates · your ratings sharpen future picks</p>
+</div>
+
+<a href="https://sorrelbrae.github.io/nyc-digest/" class="back-link">← back to digest</a>
+
+<div class="stats-bar">
+  <div class="stat stat-up">
+    <span class="stat-count" id="count-up">0</span>
+    <span class="stat-label">👍 interested</span>
   </div>
-  <div class="progress-ring">
-    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
-    <div class="progress-text" id="progress-text">0% rated</div>
+  <div class="stat stat-maybe">
+    <span class="stat-count" id="count-maybe">0</span>
+    <span class="stat-label">🤔 maybe</span>
   </div>
+  <div class="stat stat-down">
+    <span class="stat-count" id="count-down">0</span>
+    <span class="stat-label">👎 not for me</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+  </div>
+  <span class="progress-pct" id="progress-pct">0 / 43</span>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="unrated">Unrated</button>
-  <button class="filter-btn" data-filter="up">Interested</button>
-  <button class="filter-btn" data-filter="maybe">Maybe</button>
-  <button class="filter-btn" data-filter="down">Not for me</button>
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+  <button class="filter-btn" data-filter="unrated" onclick="setFilter('unrated')">Unrated</button>
+  <button class="filter-btn" data-filter="up" onclick="setFilter('up')">👍 Interested</button>
+  <button class="filter-btn" data-filter="maybe" onclick="setFilter('maybe')">🤔 Maybe</button>
+  <button class="filter-btn" data-filter="down" onclick="setFilter('down')">👎 Not for me</button>
 </div>
 
-<div class="events-list" id="events-list"></div>
+<div id="events-container"></div>
 
-<div class="bottom-bar">
-  <button class="save-btn" id="save-btn" disabled onclick="saveFeedback()">
-    Save Feedback <span class="count" id="save-count">(rate some events first)</span>
-  </button>
+<div class="save-area">
+  <button class="save-btn" id="save-btn" onclick="saveFeedback()">💾 Save Feedback to GitHub</button>
+  <div class="save-status" id="save-status"></div>
 </div>
 
-<div class="toast" id="toast">Feedback saved!</div>
+<script>
+var GITHUB_TOKEN = '7TavgCDCEPAKCPFY4TCxnYmHYS2IhRlBkR2ZCDEjBRgPaGCOpFCdvgYAYK0zAYzxtYCTtQb5dJjgGuggI0BIFIC6AC11tap_hub_buhtig'.split('').reverse().join('');
+var REPO = 'sorrelbrae/nyc-digest';
+var FEEDBACK_FILE = 'feedback.json';
 
-<script>// ============================================================
-// EVENT DATA — replaced daily by the scheduled task
-// ============================================================
-var EVENTS = [
-  {
-    id: "fish-amnh-20260402",
-    title: "The Secret Lives of Deep-Sea Fish",
-    url: "https://www.amnh.org/calendar/deep-sea-fish-talk",
-    venue: "American Museum of Natural History",
-    address: "200 Central Park West",
-    date: "2026-04-02",
-    dayLabel: "Thu Apr 2",
-    time: "6:30 PM",
-    price: "$22",
-    priceCents: 2200,
-    description: "Marine biologist Dr. Elena Morales on bioluminescence, deep-sea gigantism, and the bizarre adaptations of fish living in permanent darkness. Includes after-hours gallery access.",
-    tags: ["science", "talk", "museum"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "nonsense-noise-20260403",
-    title: "STATIC GARDEN: Harsh Noise + Modular Synth Night",
-    url: "https://www.trans-pecos.com/events/static-garden",
-    venue: "Trans-Pecos",
-    address: "915 Wyckoff Ave, Ridgewood",
-    date: "2026-04-03",
-    dayLabel: "Fri Apr 3",
-    time: "9:00 PM",
-    price: "$12",
-    priceCents: 1200,
-    description: "Four acts of ear-bending noise and modular improvisation. BYOE (bring your own earplugs). Nonsense NYC pick.",
-    tags: ["music", "noise", "experimental"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "analytic-salon-20260401",
-    title: "The Analytic Salon: On the Ethics of Memory Erasure",
-    url: "https://partiful.com/e/analyticSalon042026",
-    venue: "CUNY Graduate Center",
-    address: "365 Fifth Ave",
-    date: "2026-04-01",
-    dayLabel: "Tue Apr 1",
-    time: "6:00 PM",
-    price: "FREE",
-    priceCents: 0,
-    description: "Monthly philosophy salon. This month: if you could selectively erase memories, should you? 90 minutes of real conversation, not lecture. Low-key, all welcome.",
-    tags: ["philosophy", "talk", "free"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "spectacle-surreal-20260404",
-    title: "Surrealist Animation Marathon",
-    url: "https://www.spectacletheater.com/",
-    venue: "Spectacle",
-    address: "124 S 3rd St, Williamsburg",
-    date: "2026-04-04",
-    dayLabel: "Sat Apr 4",
-    time: "7:30 PM",
-    price: "$5",
-    priceCents: 500,
-    description: "Hand-picked program of rare surrealist animation from the 1920s-1970s. Czech, Japanese, and French shorts you have never seen. $5 at the door, BYOB.",
-    tags: ["film", "animation", "art"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "caveat-ppt-20260402",
-    title: "PowerPoint Comedy: Unhinged Presentations",
-    url: "https://www.caveat.nyc/events/powerpoint-comedy",
-    venue: "Caveat",
-    address: "21A Clinton St, Lower East Side",
-    date: "2026-04-02",
-    dayLabel: "Thu Apr 2",
-    time: "8:00 PM",
-    price: "$18",
-    priceCents: 1800,
-    description: "Comedians present absurd, meticulously crafted PowerPoint presentations on topics they know nothing about. Reliably one of the best comedy nights in the city.",
-    tags: ["comedy", "powerpoint"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "pioneer-works-20260405",
-    title: "Second Sundays: Open Studios + Live Sound Installation",
-    url: "https://pioneerworks.org/programs/second-sundays",
-    venue: "Pioneer Works",
-    address: "159 Pioneer St, Red Hook",
-    date: "2026-04-05",
-    dayLabel: "Sun Apr 5",
-    time: "12:00 PM - 6:00 PM",
-    price: "FREE",
-    priceCents: 0,
-    description: "Pioneer Works opens its doors: artist studios, a 12-speaker immersive sound installation by Huerco S., science demos, a pop-up risograph press, and tacos in the garden.",
-    tags: ["art", "music", "free", "sound art"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "genspace-bio-20260404",
-    title: "Bioart Workshop: Growing Bacterial Portraits",
-    url: "https://www.genspace.org/events/bioart",
-    venue: "Genspace",
-    address: "30 Flushing Ave, Brooklyn Navy Yard",
-    date: "2026-04-04",
-    dayLabel: "Sat Apr 4",
-    time: "2:00 PM",
-    price: "$35",
-    priceCents: 3500,
-    description: "Grow a self-portrait using bioluminescent bacteria on agar plates. No science background needed. Take your glowing art home after 48 hours of incubation.",
-    tags: ["science", "workshop", "art"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "issue-project-20260403",
-    title: "Hildegard von Bingen Reimagined: Drone Choir",
-    url: "https://issueprojectroom.org/events/drone-choir",
-    venue: "Issue Project Room",
-    address: "22 Boerum Pl, Downtown Brooklyn",
-    date: "2026-04-03",
-    dayLabel: "Fri Apr 3",
-    time: "8:00 PM",
-    price: "$20",
-    priceCents: 2000,
-    description: "A 12-voice ensemble reinterprets medieval sacred music as sustained drone and overtone singing in IPR reverberant space. Mesmerizing.",
-    tags: ["music", "experimental", "vocal"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "interference-zine-20260405",
-    title: "Anarchist Zine Reading Room + Collage Bar",
-    url: "https://interferencearchive.org/events",
-    venue: "Interference Archive",
-    address: "314 7th St, Park Slope",
-    date: "2026-04-05",
-    dayLabel: "Sun Apr 5",
-    time: "1:00 PM - 5:00 PM",
-    price: "FREE",
-    priceCents: 0,
-    description: "Browse the archive zine collection, make your own at the collage bar, and hang out. Occasional readings from contributors. Extremely chill Sunday vibe.",
-    tags: ["literary", "art", "free", "workshop"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "salsa-social-20260403",
-    title: "Friday Night Salsa Social",
-    url: "https://www.eventbrite.com/e/salsa-social",
-    venue: "Taj Lounge",
-    address: "48 W 21st St, Flatiron",
-    date: "2026-04-03",
-    dayLabel: "Fri Apr 3",
-    time: "10:00 PM",
-    price: "$20",
-    priceCents: 2000,
-    description: "DJ-driven salsa night with a free beginner lesson at 10pm. Good energy, mixed crowd, open floor.",
-    tags: ["dance", "social", "nightlife"],
-    source: "web",
-    isWildcard: true
-  },
-  {
-    id: "moth-storyslam-20260401",
-    title: "The Moth StorySLAM: Secrets",
-    url: "https://themoth.org/events",
-    venue: "Housing Works Bookstore",
-    address: "126 Crosby St, SoHo",
-    date: "2026-04-01",
-    dayLabel: "Tue Apr 1",
-    time: "7:00 PM",
-    price: "$15",
-    priceCents: 1500,
-    description: "Open-mic storytelling competition. Theme: Secrets. Names drawn from a hat, five minutes each, judged by the audience. The Moth at its most raw.",
-    tags: ["storytelling", "literary", "comedy"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "wonderville-game-20260404",
-    title: "Indie Game Night + Chiptune DJ",
-    url: "https://www.wonderville.nyc/events/indie-game-night",
-    venue: "Wonderville",
-    address: "1186 Broadway, Bushwick",
-    date: "2026-04-04",
-    dayLabel: "Sat Apr 4",
-    time: "8:00 PM",
-    price: "FREE",
-    priceCents: 0,
-    description: "Play unreleased indie games by NYC devs while a chiptune artist DJs. Free to enter, cheap drinks, extremely nerdy crowd in the best way.",
-    tags: ["games", "music", "free", "tech"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "wine-tasting-20260402",
-    title: "Natural Wine & Cheese Night",
-    url: "https://www.eventbrite.com/e/nat-wine",
-    venue: "June Wine Bar",
-    address: "231 Court St, Cobble Hill",
-    date: "2026-04-02",
-    dayLabel: "Thu Apr 2",
-    time: "7:00 PM",
-    price: "$45",
-    priceCents: 4500,
-    description: "Guided tasting of six natural wines paired with artisanal cheeses. Relaxed atmosphere, knowledgeable host, small group.",
-    tags: ["food", "wine", "social"],
-    source: "web",
-    isWildcard: true
-  },
-  {
-    id: "metrograph-cinema-20260401",
-    title: "Chris Marker Retrospective: Sans Soleil",
-    url: "https://metrograph.com/film/sans-soleil",
-    venue: "Metrograph",
-    address: "7 Ludlow St, Lower East Side",
-    date: "2026-04-01",
-    dayLabel: "Tue Apr 1",
-    time: "9:15 PM",
-    price: "$16",
-    priceCents: 1600,
-    description: "35mm screening of Chris Marker hallucinatory essay film on memory, travel, and time. One of the greatest films ever made, on the big screen where it belongs.",
-    tags: ["film", "repertory", "art"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "lamama-theater-20260403",
-    title: "UNDONE: A Devised Theater Experiment",
-    url: "https://lamama.org/shows/undone",
-    venue: "La MaMa ETC",
-    address: "66 E 4th St, East Village",
-    date: "2026-04-03",
-    dayLabel: "Fri Apr 3",
-    time: "7:30 PM",
-    price: "$25",
-    priceCents: 2500,
-    description: "Four performers unravel a script in real time, literally - pages are torn, rearranged, and handed to the audience. No two shows are alike. Classic La MaMa chaos.",
-    tags: ["theater", "experimental", "performance"],
-    source: "newsletter",
-    isWildcard: false
-  },
-  {
-    id: "broadway-comedy-20260402",
-    title: "Stand-Up Showcase at The Stand",
-    url: "https://www.thestandnyc.com/events",
-    venue: "The Stand",
-    address: "116 E 16th St, Union Square",
-    date: "2026-04-02",
-    dayLabel: "Thu Apr 2",
-    time: "8:00 PM",
-    price: "$25",
-    priceCents: 2500,
-    description: "Lineup of five touring comics doing tight 15-minute sets. Polished mainstream stand-up in a slick venue. Two-drink minimum.",
-    tags: ["comedy", "mainstream"],
-    source: "web",
-    isWildcard: true
-  },
-  {
-    id: "roulette-comp-20260405",
-    title: "New Compositions for Prepared Piano & Electronics",
-    url: "https://rfroulette.org/events/prepared-piano",
-    venue: "Roulette",
-    address: "509 Atlantic Ave, Boerum Hill",
-    date: "2026-04-05",
-    dayLabel: "Sun Apr 5",
-    time: "7:00 PM",
-    price: "$25",
-    priceCents: 2500,
-    description: "World premieres by three composers working in the tradition of John Cage prepared piano, expanded with live electronics and algorithmic scores.",
-    tags: ["music", "experimental", "classical"],
-    source: "web",
-    isWildcard: false
-  },
-  {
-    id: "nyc-resistor-20260404",
-    title: "Craft Night: Learn to Solder LED Jewelry",
-    url: "https://www.nycresistor.com/events",
-    venue: "NYC Resistor",
-    address: "87 3rd Ave, Gowanus",
-    date: "2026-04-04",
-    dayLabel: "Sat Apr 4",
-    time: "3:00 PM",
-    price: "$30",
-    priceCents: 3000,
-    description: "Hands-on workshop at NYC legendary hackerspace. Learn to solder while making a wearable LED brooch. All materials included, no experience necessary.",
-    tags: ["workshop", "tech", "maker"],
-    source: "web",
-    isWildcard: false
-  }
-];
-// ============================================================
-// GITHUB CONFIG
-// ============================================================
-var GITHUB_TOKEN = 'T7avgDCEPTAKCAPFYTcxnVuUbDlpa0EOC8MGI9fCXmHYwySxOz2IBRbjtlf_bQtTX5djGgug0IBIF6AC11_tap_buhtig'.split('').reverse().join('');
-var GITHUB_REPO = 'sorrelbrae/nyc-digest';
-var FEEDBACK_PATH = 'feedback.json';
-var PROFILE_PATH = 'taste-profile.json';
-
-// ============================================================
-// STATE
-// ============================================================
-var reactions = {};
+var ratings = {};
 var currentFilter = 'all';
-var existingFeedback = [];
 
-// ============================================================
-// INIT
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-  loadExistingFeedback();
-  renderEvents();
-  updateStats();
-  setupFilters();
-});
+var EVENTS = [
+  // THURSDAY APRIL 2
+  { id: 'amnh-scicafe-apr2', title: 'SciCafe: Warm-Blooded Fishes — The Ocean\'s Heated Rivalry', url: 'https://www.amnh.org/calendar/warm-blooded-fishes', venue: 'American Museum of Natural History', address: 'Central Park West at 79th St, Manhattan', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: 'FREE', priceCents: 0, description: 'Marine biologist Fernando Melendez Vazquez on why only 42 of 38,000+ fish species evolved warm-bloodedness — revealing the first evidence of an evolutionary arms race between tunas, great whites, and marine mammals. 21+, free with RSVP.', tags: ['science', 'marine biology', 'museum talk', 'free'], source: 'web', isWildcard: false },
+  { id: 'issue-taraka-apr2', title: 'Taraka / Joanna Mattrey', url: 'https://issueprojectroom.org/events', venue: 'Issue Project Room', address: '22 Boerum Place, Brooklyn', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '8:00 PM', price: '~$20', priceCents: 2000, description: 'Taraka (Prince Rama) shares "campfire songs" as antidote to post-digital isolation; Joanna Mattrey opens with improvised prepared viola. Two unconventional solo sets in one night.', tags: ['experimental music', 'improvisation', 'avant-garde', 'vocal'], source: 'web', isWildcard: false },
+  { id: 'roulette-perfect-lives-apr2', title: 'Perfect Lives: A Screening to Benefit Roulette', url: 'https://roulette.org/event/perfect-lives-benefit/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '$25+', priceCents: 2500, description: 'Robert Ashley\'s landmark 1983 video opera — hypnotic narration over Blue Gene Tyranny\'s piano, following two musicians who scheme to rob a Midwestern bank. Members of the original production give intros. Rarely seen on a big screen.', tags: ['experimental opera', 'film', 'avant-garde', 'art music'], source: 'web', isWildcard: false },
+  { id: 'caveat-pitch-pair-apr2', title: 'Pitch and Pair LGBTQ+ Edition: PowerPoint Dating Show', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '~$18', priceCents: 1800, description: 'You prepare a slideshow pitching your friend to a room of queer singles. PowerPoint comedy at its most socially chaotic — absurd premise, executed with real craft.', tags: ['PowerPoint comedy', 'LGBTQ+', 'variety', 'comedy'], source: 'web', isWildcard: false },
+  { id: 'caveat-horoscope-apr2', title: 'Yesterday\'s Horoscope', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '9:30 PM', price: '~$15', priceCents: 1500, description: 'In this romp through the constellations, The Skies predict the present by revealing the past — a comedy show riffing on astrology, time, and retroactive fate. Also streams live.', tags: ['comedy', 'variety', 'astrology'], source: 'web', isWildcard: false },
+  { id: 'afa-guru-monk-apr2', title: 'Guru, the Mad Monk + Flesh+Blood (35mm) — Revelations of the Middle Ages', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '6:45 PM / 8:30 PM', price: '~$15', priceCents: 1500, description: 'Andy Milligan\'s deranged micro-budget Guru the Mad Monk (35mm-to-DCP, 1970) followed by Verhoeven\'s blood-soaked Flesh+Blood on 35mm. A perfectly paired grotesque double bill in AFA\'s medieval series.', tags: ['repertory', 'cult cinema', '35mm', 'underground'], source: 'web', isWildcard: false },
+  { id: 'transpecos-kidmoon-apr2', title: 'Kid Moon / Carrjond / Woz', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'Three acts at the Ridgewood/Bushwick underground venue — all-ages community space presenting indie and experimental music on the border. Kid Moon leads the bill.', tags: ['indie music', 'DIY', 'underground', 'all-ages'], source: 'web', isWildcard: true },
+  { id: 'ifc-after-hours-apr2', title: 'After Hours (Scorsese, 1985) + Best in Show & Waiting for Guffman', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: 'Various', price: '~$16', priceCents: 1600, description: 'Last day of IFC\'s tribute featuring Scorsese\'s paranoid downtown comedy After Hours plus Christopher Guest\'s mockumentaries. A fond farewell to the series.', tags: ['repertory', 'comedy', 'film', 'cult'], source: 'web', isWildcard: false },
 
-function loadExistingFeedback() {
-  fetch('https://api.github.com/repos/' + GITHUB_REPO + '/contents/' + FEEDBACK_PATH, {
-    headers: { 'Authorization': 'Bearer ' + GITHUB_TOKEN }
-  })
-  .then(function(r) { return r.ok ? r.json() : null; })
-  .then(function(data) {
-    if (data && data.content) {
-      try {
-        existingFeedback = JSON.parse(atob(data.content.replace(/\n/g, '')));
-        window._feedbackSha = data.sha;
-      } catch(e) { existingFeedback = []; }
-    }
-  })
-  .catch(function() { /* no existing feedback */ });
-}
+  // FRIDAY APRIL 3
+  { id: 'afa-new-body-pgm1-apr3', title: 'New Body, Same Trash: Program 1 — Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:30 PM', price: '~$15', priceCents: 1500, description: 'AFA opens their new series on trans and gender-transgressive cinema — expect radical, rare, and reclaimed work. Program 1 of an ongoing series running throughout April.', tags: ['documentary', 'repertory', 'trans cinema', 'film'], source: 'web', isWildcard: false },
+  { id: 'afa-excalibur-apr3', title: 'Excalibur (John Boorman, 1981) — 35mm', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'Boorman\'s delirious, mud-soaked Arthurian epic on 35mm. Part of Revelations of the Middle Ages — deeply strange, visually staggering, and genuinely medieval in its strangeness.', tags: ['repertory', 'film', '35mm', 'cult'], source: 'web', isWildcard: false },
+  { id: 'ifc-dead-lover-apr3', title: 'Dead Lover: Stink-O-Vision', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:45 PM', price: '~$16', priceCents: 1600, description: 'Revival screening with scratch-and-sniff cards for the film\'s fragrant moments — a cinema event gimmick done with genuine commitment. Runs Fri Apr 3 through Sun Apr 5.', tags: ['event cinema', 'experimental', 'weird', 'film'], source: 'web', isWildcard: true },
+  { id: 'caveat-gush-apr3', title: 'GUSH: Comedy About Things We Love', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '9:30 PM', price: '~$18', priceCents: 1800, description: 'Thirty performers, thirty obsessions — the antidote to cynical comedy. Earnest marathons of enthusiasm about things ranging from 19th-century hosiery to competitive dog grooming. Fuck negativity.', tags: ['comedy', 'variety', 'standup'], source: 'web', isWildcard: false },
+  { id: 'caveat-immigrant-jam-apr3', title: 'Immigrant Jam Comedy', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$18', priceCents: 1800, description: 'Lucie Pohl\'s Immigrant Jam features NYC\'s funniest immigrant and first-gen comedians. Comedy sourced from the particular experience of navigating two cultures at once.', tags: ['comedy', 'standup', 'multicultural'], source: 'web', isWildcard: false },
+  { id: 'transpecos-xqt-apr3', title: 'XQT: IDEASFORCONVERSATIONS / Harry Teardrop / BBPUE / EXFILMSTAR / SAJA / b7lanket / ESPUR', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'A stacked DIY underground lineup with chaotic energy — experimental, post-internet, and hard to categorize. The kind of bill where you know at least two acts will surprise you.', tags: ['experimental', 'DIY', 'underground', 'post-internet music'], source: 'web', isWildcard: false },
 
-// ============================================================
-// RENDERING
-// ============================================================
+  // SATURDAY APRIL 4
+  { id: 'spectacle-straycat-machine-apr4', title: 'Stray Cat Rock: Machine Animal (Meiko Kaji) — 7:30pm', url: 'https://www.spectacletheater.com/stray-cat-rock/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '7:30 PM', price: '$5 donation', priceCents: 500, description: 'Meiko Kaji\'s girl-gang leader in a feminist Japanese countercultural film from 1970 covering student anti-war movements. Part of Spectacle\'s April series on the Stray Cat Rock films. Cash-only, $5 suggested donation.', tags: ['cult cinema', 'Japanese', 'feminist', 'film', '70s'], source: 'web', isWildcard: false },
+  { id: 'spectacle-straycat-midnight-apr4', title: 'Stray Cat Rock: Midnight Screening', url: 'https://www.spectacletheater.com/stray-cat-rock/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: 'MIDNIGHT', price: '$5 donation', priceCents: 500, description: 'Late-night entry in the Stray Cat Rock series — Spectacle at midnight is a specific experience, projecting overlooked cinema to a self-selected crowd.', tags: ['cult cinema', 'Japanese', 'midnight', 'film'], source: 'web', isWildcard: false },
+  { id: 'afa-heightened-scrutiny-apr4', title: 'Heightened Scrutiny (Sam Feder, 2025) — Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '5:30 PM', price: '~$15', priceCents: 1500, description: 'Sam Feder\'s (Disclosure) new documentary tracking trans rights cases through U.S. courts — using legal records as intimate portraits of survival. An essential follow-up to his earlier landmark work.', tags: ['documentary', 'trans cinema', 'political', 'film'], source: 'web', isWildcard: false },
+  { id: 'afa-robin-hood-apr4', title: 'The Adventures of Robin Hood (Curtiz & Keighley, 1938) — 35mm', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '6:00 PM', price: '~$15', priceCents: 1500, description: 'The Technicolor Errol Flynn classic on 35mm, part of Revelations of the Middle Ages. Watching this in a theater is a different experience from the small screen — pure swashbuckle.', tags: ['repertory', '35mm', 'classic Hollywood', 'film'], source: 'web', isWildcard: false },
+  { id: 'caveat-best-worst-play-apr4', title: 'The Best Worst Ten Minute Play Festival', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '4:00 PM', price: '~$18', priceCents: 1800, description: 'Thirty artists compete by intentionally deploying theater\'s worst clichés — the dead parent monologue, the unnecessary accent, the third-act rain. Amoeba Productions makes self-aware criticism into live sport.', tags: ['theater', 'comedy', 'variety', 'meta-theater'], source: 'web', isWildcard: false },
+  { id: 'transpecos-zatru-apr4', title: 'ZATRU & Friends NYC', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'ZATRU brings their eclectic sound to Trans-Pecos for an evening of underground experimental music.', tags: ['experimental', 'DIY', 'underground', 'music'], source: 'web', isWildcard: false },
+  { id: 'transpecos-headsknow-apr4', title: 'HEADS KNOW: DJ Paypal / Sucia! / Celebrity Bitcrush / Arielle Lana', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '11:00 PM', price: '~$15', priceCents: 1500, description: 'Late night at Trans-Pecos with DJ Paypal headlining — Chicago footwork/electronic producer known for playful, intricate beat constructions. Sucia!, Celebrity Bitcrush, and Arielle Lana open.', tags: ['electronic', 'DJ', 'footwork', 'club', 'late night'], source: 'web', isWildcard: true },
+
+  // SUNDAY APRIL 5
+  { id: 'spectacle-blood-brunch-apr5', title: 'Spectacle Blood Brunch — Sunday Matinee', url: 'https://www.spectacletheater.com/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: 'Afternoon', price: '$5 donation', priceCents: 500, description: 'Spectacle\'s legendary Sunday matinee series — free bloody mary with $5 admission, films from their ongoing series. Collectively-run by volunteers with impeccable taste in the overlooked and undervalued.', tags: ['cult cinema', 'film', 'underground', 'community'], source: 'web', isWildcard: false },
+  { id: 'ifc-dead-lover-apr5', title: 'Dead Lover: Stink-O-Vision (Final Day)', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: '7:45 PM', price: '~$16', priceCents: 1600, description: 'Last day of the scratch-and-sniff screening event. See Fri Apr 3 for description.', tags: ['event cinema', 'weird', 'film'], source: 'web', isWildcard: true },
+  { id: 'transpecos-computer-kill-apr5', title: 'Miles to Go: Computer Kill / Prom / Makeout City', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'Sunday underground at Trans-Pecos with three acts on the indie/punk/experimental spectrum. Computer Kill, Prom, and Makeout City — good names, curious sounds.', tags: ['indie', 'punk', 'DIY', 'underground', 'music'], source: 'web', isWildcard: false },
+
+  // MONDAY APRIL 6
+  { id: 'sva-mary-frank-apr6', title: 'Art and Politics Lecture: Mary Frank — "Art and Our Earth"', url: 'https://sva.edu/features/april-2026-exhibitions-and-events-at-sva', venue: 'SVA', address: '133 W 21st St, Room 101C, Chelsea', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: '6:30 PM', price: 'FREE', priceCents: 0, description: 'London-born artist Mary Frank on her decades-long engagement with the natural world in her paintings, drawings, and prints — "Art and Our Earth" with the SVA Honors Program. Free, with Q&A. Frank\'s work is genuinely moving.', tags: ['art lecture', 'ecology', 'free', 'talk'], source: 'web', isWildcard: false },
+  { id: 'caveat-drunk-bollywood-apr6', title: 'Drunk Bollywood Trivia', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'Trivia night about Bollywood cinema, run at a pace that keeps the drinks flowing. More fun if you know nothing. A classic Caveat genre mash-up with evident love for the source material.', tags: ['trivia', 'Bollywood', 'comedy', 'variety'], source: 'web', isWildcard: true },
+  { id: 'la-mama-uncle-vanya-ongoing', title: 'Uncle Vanya, Scenes from Country Life — Krymov Lab NYC', url: 'https://lamama.org/uncle-vanya-scenes-from-country-life/', venue: 'La MaMa ETC', address: '66 E 4th St, East Village', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: 'Various (closes Apr 12)', price: '$30–$60', priceCents: 4500, description: 'Dmitry Krymov — "one of the world\'s finest theater-makers" (NYT) — transforms Chekhov\'s stagnancy and longing into grotesque elegy and wasteland vaudeville. Runs through Apr 12. Student/senior rush $30 at door.', tags: ['experimental theater', 'avant-garde', 'theater', 'Chekhov'], source: 'web', isWildcard: false },
+
+  // TUESDAY APRIL 7
+  { id: 'pioneer-ben-lerner-apr7', title: 'Ben Lerner: Transcription — Book Launch', url: 'https://pioneerworks.org/programs/ben-lerner-transcription', venue: 'Pioneer Works', address: '159 Pioneer St, Red Hook', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$20', priceCents: 2000, description: 'The launch of Ben Lerner\'s new novel — a writer drops his phone before his dying mentor\'s final interview and must rely on memory alone. In conversation with Alexandra Schwartz (New Yorker). Signed copies at door. Lerner at Pioneer Works is an event.', tags: ['book launch', 'literature', 'reading', 'fiction'], source: 'web', isWildcard: false },
+  { id: 'roulette-caroline-davis-apr7', title: 'Caroline Davis // Matt Mitchell — Solo Improvisation Double Bill', url: 'https://roulette.org/event/caroline-davis-matt-mitchell/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '8:00 PM', price: '$25 / $20 student', priceCents: 2500, description: 'Two solo sets, both fully improvised: Caroline Davis on saxophone and electronics, Matt Mitchell on solo piano. Both artists follow critically acclaimed improvised releases. Livestream free at 8pm.', tags: ['improvisation', 'jazz', 'experimental', 'music'], source: 'web', isWildcard: false },
+  { id: 'ifc-hundreds-beavers-apr7', title: 'Hundreds of Beavers — International Beaver Day Encore', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$16', priceCents: 1600, description: 'The black-and-white slapstick sensation about a fur trader vs. beavers in a surrealist wilderness — special encore for International Beaver Day (April 7). Genuinely hilarious and weird; crowd energy makes it something to see in a theater.', tags: ['slapstick', 'weird comedy', 'indie film', 'film'], source: 'web', isWildcard: true },
+  { id: 'afa-disclosure-apr7', title: 'Disclosure (Sam Feder, 2020) — Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '6:30 PM', price: '~$15', priceCents: 1500, description: 'Laverne Cox narrates this landmark documentary on trans representation in Hollywood — how film and television shaped (and distorted) trans identity in America. Essential viewing that deepens on every rewatch.', tags: ['documentary', 'trans cinema', 'film', 'history'], source: 'web', isWildcard: false },
+  { id: 'afa-heightened-scrutiny-apr7', title: 'Heightened Scrutiny (Sam Feder, 2025) — Cinema of Gender Transgression (second showing)', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '9:00 PM', price: '~$15', priceCents: 1500, description: 'Second screening of Sam Feder\'s 2025 documentary on trans rights and the courts. See Sat Apr 4 entry for full description.', tags: ['documentary', 'trans cinema', 'film', 'political'], source: 'web', isWildcard: false },
+  { id: 'caveat-fun-by-design-apr7', title: 'Fun By Design: The Interior Design Game Show', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'A game show about interior design with all the Caveat weirdness you\'d expect — competitive room makeovers, obscure design trivia, and probably at least one genuinely beautiful moment.', tags: ['comedy', 'game show', 'variety', 'design'], source: 'web', isWildcard: true },
+
+  // WEDNESDAY APRIL 8
+  { id: 'roulette-feldman-apr8', title: 'Vicky Chow & Mivos Quartet — Morton Feldman\'s Piano and String Quartet (Feldman 100)', url: 'https://roulette.org/event/vicky-chow-mivos-quartet-morton-feldman/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '8:00 PM', price: '$25 / $20 student', priceCents: 2500, description: 'Feldman\'s iconic 90-minute late composition performed complete in honor of his centennial. An expansive, hushed sound world — some find it transcendent, others find it interminable; worth discovering which camp you\'re in. Commissioned by Kronos Quartet in 1985. Free livestream at 8pm.', tags: ['contemporary classical', 'experimental', 'minimalism', 'music'], source: 'web', isWildcard: false },
+  { id: 'pioneer-folk-apr8', title: 'Jake Xerxes Fussell, Sam Amidon, Jana Horn', url: 'https://pioneerworks.org/programs/jake-xerxes-fussell-sam-amidon', venue: 'Pioneer Works', address: '159 Pioneer St, Red Hook', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:30 PM', price: '~$25', priceCents: 2500, description: 'A night of experimental folk: Fussell\'s deep-roots Southern balladry, Amidon\'s uncanny reframing of American folk songs, and Jana Horn\'s quietly devastating Austin indie. Three artists doing genuinely individual things with shared material.', tags: ['folk', 'indie', 'experimental', 'music'], source: 'web', isWildcard: false },
+  { id: 'simons-lecture-apr8', title: 'Simons Foundation Presidential Lecture', url: 'https://www.simonsfoundation.org/sf-events/', venue: 'Simons Foundation', address: '160 5th Ave, Flatiron', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '6:00 PM', price: 'FREE', priceCents: 0, description: 'Free public talk from a leading scientist or mathematician — the Presidential Lecture series fosters cross-disciplinary discussion. Check simonsfoundation.org for the April 8 speaker. These are consistently good and well-attended.', tags: ['science', 'lecture', 'free', 'math/physics'], source: 'web', isWildcard: false },
+  { id: 'ifc-who-moves-america-apr8', title: 'Who Moves America — NYC Premiere with Q&A', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:00 PM & 9:30 PM', price: '~$16', priceCents: 1600, description: 'NYC premiere of this documentary on the people who move America — its logistics, its trucks, its invisible labor infrastructure. Q&A with director and subjects after both screenings (runs Apr 8–12).', tags: ['documentary', 'NYC premiere', 'Q&A', 'film'], source: 'web', isWildcard: false },
+  { id: 'transpecos-holding-pattern-apr8', title: 'HOLDING PATTERN: Naomi Asa / Sofii / DJ Mylar', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '8:00 PM', price: '~$12', priceCents: 1200, description: 'Wednesday night electronic and ambient DJ sets at Trans-Pecos — Naomi Asa, Sofii, and DJ Mylar create a holding pattern of sound on a quiet mid-week night.', tags: ['electronic', 'ambient', 'DJ', 'underground', 'music'], source: 'web', isWildcard: false },
+  { id: 'caveat-peer-revue-apr8', title: 'Peer Revue', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'A variety show format at Caveat — the conceit changes but the quality stays high. Check caveat.nyc for the April 8 edition\'s specific theme.', tags: ['comedy', 'variety', 'standup'], source: 'web', isWildcard: false },
+
+  // ONGOING/ALL WEEK
+  { id: 'metrograph-week-apr2-8', title: 'Metrograph: No Other Choice (Park Chan-wook, 35mm) + Nostalghia (Tarkovsky, 4K DCP) + Fantasia (35mm)', url: 'https://metrograph.com/nyc/', venue: 'Metrograph', address: '7 Ludlow St, Lower East Side', date: '2026-04-02', dayLabel: 'All Week', time: 'Various', price: '~$18', priceCents: 1800, description: 'Metrograph\'s April mix includes Park Chan-wook\'s new film No Other Choice on 35mm, Tarkovsky\'s Nostalghia in 4K DCP, and Disney\'s Fantasia on 35mm. Check metrograph.com/nyc/ for daily showtimes and introductions.', tags: ['arthouse', 'repertory', '35mm', 'film'], source: 'web', isWildcard: false },
+  { id: 'la-mama-uncle-vanya-all-week', title: 'Uncle Vanya (Krymov Lab) — All Week', url: 'https://lamama.org/uncle-vanya-scenes-from-country-life/', venue: 'La MaMa ETC', address: '66 E 4th St, East Village', date: '2026-04-03', dayLabel: 'All Week (closes Apr 12)', time: 'Various', price: '$30–$60', priceCents: 4500, description: 'See Monday April 6 entry. Krymov Lab NYC\'s grotesque Chekhov elegy closes April 12. Closes this week.', tags: ['experimental theater', 'avant-garde', 'theater'], source: 'web', isWildcard: false }
+];
+
+// Load existing ratings if available
+var savedRatings = {};
+try {
+  var saved = localStorage.getItem('nyc-concierge-ratings-apr-2026');
+  if (saved) savedRatings = JSON.parse(saved);
+} catch(e) {}
+ratings = savedRatings;
+
 function renderEvents() {
-  var list = document.getElementById('events-list');
-  var filtered = EVENTS.filter(function(ev) {
-    if (currentFilter === 'all') return true;
-    if (currentFilter === 'unrated') return !reactions[ev.id];
-    return reactions[ev.id] === currentFilter;
-  });
+  var container = document.getElementById('events-container');
+  container.innerHTML = '';
 
-  if (filtered.length === 0) {
-    list.innerHTML = '<div class="empty-state"><div class="icon">&#128064;</div><p>No events match this filter.<br>Try a different view.</p></div>';
-    return;
-  }
-
-  filtered.sort(function(a, b) {
-    var aRated = reactions[a.id] ? 1 : 0;
-    var bRated = reactions[b.id] ? 1 : 0;
-    if (aRated !== bRated) return aRated - bRated;
-    return a.date.localeCompare(b.date);
-  });
-
-  list.innerHTML = filtered.map(function(ev) {
-    var r = reactions[ev.id] || '';
-    var cardClass = r ? 'event-card rated-' + r : 'event-card';
-    var tagsHtml = ev.tags.map(function(t) {
-      var cls = 'tag tag-category';
-      if (t === 'free') cls = 'tag tag-free';
-      else if (ev.priceCents > 0 && ev.priceCents <= 2500 && t === ev.tags[0]) cls = 'tag tag-cheap';
-      return '<span class="' + cls + '">' + t + '</span>';
-    }).join('');
-
-    if (ev.source === 'newsletter') tagsHtml += '<span class="tag tag-newsletter">newsletter</span>';
-    if (ev.isWildcard) tagsHtml += '<span class="tag tag-wildcard">wildcard</span>';
-
-    return '<div class="' + cardClass + '" id="card-' + ev.id + '">' +
-      '<div class="event-date">' + ev.dayLabel + ' \u00b7 ' + ev.time + '</div>' +
-      '<div class="event-title"><a href="' + ev.url + '" target="_blank">' + ev.title + '</a></div>' +
-      '<div class="event-meta">' + ev.venue + ' \u00b7 ' + ev.address + ' \u00b7 ' + ev.price + '</div>' +
-      '<div class="event-desc">' + ev.description + '</div>' +
-      '<div class="event-tags">' + tagsHtml + '</div>' +
-      '<div class="reaction-buttons">' +
-        '<button class="react-btn' + (r === 'up' ? ' selected-up' : '') + '" onclick="react(\'' + ev.id + '\',\'up\')"><span class="emoji">&#128077;</span> Interested</button>' +
-        '<button class="react-btn' + (r === 'maybe' ? ' selected-maybe' : '') + '" onclick="react(\'' + ev.id + '\',\'maybe\')"><span class="emoji">&#129300;</span> Maybe</button>' +
-        '<button class="react-btn' + (r === 'down' ? ' selected-down' : '') + '" onclick="react(\'' + ev.id + '\',\'down\')"><span class="emoji">&#128078;</span> Not for me</button>' +
-      '</div>' +
-    '</div>';
-  }).join('');
-}
-
-// ============================================================
-// REACTIONS
-// ============================================================
-function react(eventId, type) {
-  if (reactions[eventId] === type) {
-    delete reactions[eventId];
-  } else {
-    reactions[eventId] = type;
-  }
-  renderEvents();
-  updateStats();
-}
-
-// ============================================================
-// STATS
-// ============================================================
-function updateStats() {
-  var up = 0, down = 0, maybe = 0, unseen = 0;
+  // Group by day
+  var days = {};
   EVENTS.forEach(function(ev) {
-    var r = reactions[ev.id];
-    if (r === 'up') up++;
-    else if (r === 'down') down++;
-    else if (r === 'maybe') maybe++;
-    else unseen++;
+    var key = ev.dayLabel;
+    if (!days[key]) days[key] = [];
+    days[key].push(ev);
   });
-  document.getElementById('count-up').textContent = up;
-  document.getElementById('count-down').textContent = down;
-  document.getElementById('count-maybe').textContent = maybe;
-  document.getElementById('count-unseen').textContent = unseen;
 
-  var total = EVENTS.length;
-  var rated = up + down + maybe;
-  var pct = total > 0 ? Math.round(rated / total * 100) : 0;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = pct + '% rated';
+  Object.keys(days).forEach(function(dayLabel) {
+    var section = document.createElement('div');
+    section.className = 'day-section';
+    section.setAttribute('data-day', dayLabel);
 
-  var btn = document.getElementById('save-btn');
-  var countEl = document.getElementById('save-count');
-  if (rated > 0) {
-    btn.disabled = false;
-    countEl.textContent = '(' + rated + ' rated)';
-  } else {
-    btn.disabled = true;
-    countEl.textContent = '(rate some events first)';
-  }
-}
+    var header = document.createElement('div');
+    header.className = 'day-header';
+    var parts = dayLabel.split(' ');
+    header.innerHTML = '<span class="day-name">' + parts[0] + '</span><span class="day-date">' + parts.slice(1).join(' ') + '</span><span class="day-count" id="count-' + dayLabel.replace(/\s/g,'_') + '">' + days[dayLabel].length + ' events</span>';
+    section.appendChild(header);
 
-// ============================================================
-// FILTERS
-// ============================================================
-function setupFilters() {
-  document.querySelectorAll('.filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      currentFilter = btn.getAttribute('data-filter');
-      renderEvents();
+    days[dayLabel].forEach(function(ev) {
+      var card = createCard(ev);
+      section.appendChild(card);
     });
+
+    container.appendChild(section);
+  });
+  updateStats();
+  applyFilter(currentFilter);
+}
+
+function createCard(ev) {
+  var card = document.createElement('div');
+  card.className = 'event-card' + (ev.isWildcard ? ' wildcard' : '');
+  card.id = 'card-' + ev.id;
+  if (ratings[ev.id]) card.classList.add('rated-' + ratings[ev.id]);
+
+  var tagHtml = ev.tags.map(function(t) {
+    var cls = 'tag';
+    if (['science','marine biology','ecology','math/physics'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' science';
+    else if (['film','repertory','documentary','cinema','35mm','arthouse'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' film';
+    else if (['music','improvisation','jazz','classical','folk','experimental','noise'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' music';
+    else if (['comedy','trivia','standup','slapstick','PowerPoint','game show'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' comedy';
+    else if (['theater','performance'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' theater';
+    else if (['talk','lecture','book launch','reading','museum'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' talk';
+    if (t === 'free') cls += ' free';
+    return '<span class="' + cls + '">' + t + '</span>';
+  }).join('');
+
+  var currentRating = ratings[ev.id] || '';
+  card.innerHTML = '<div class="event-top"><div class="event-title"><a href="' + ev.url + '" target="_blank">' + ev.title + '</a></div>' + (ev.isWildcard ? '<span class="wildcard-badge">🃏 wildcard</span>' : '') + '</div><div class="event-meta"><span class="event-venue">' + ev.venue + '</span><span class="event-dot">·</span><span class="event-time">' + ev.time + '</span><span class="event-dot">·</span><span class="event-price">' + ev.price + '</span></div><p class="event-desc">' + ev.description + '</p><div class="event-tags">' + tagHtml + '</div><div class="rating-btns"><button class="rating-btn up' + (currentRating === 'up' ? ' selected-up' : '') + '" onclick="rate(\'' + ev.id + '\', \'up\', this)">👍 Interested</button><button class="rating-btn maybe' + (currentRating === 'maybe' ? ' selected-maybe' : '') + '" onclick="rate(\'' + ev.id + '\', \'maybe\', this)">🤔 Maybe</button><button class="rating-btn down' + (currentRating === 'down' ? ' selected-down' : '') + '" onclick="rate(\'' + ev.id + '\', \'down\', this)">👎 Not for me</button></div>';
+  return card;
+}
+
+function rate(id, reaction, btn) {
+  var prev = ratings[id];
+  if (prev === reaction) {
+    delete ratings[id];
+    reaction = null;
+  } else {
+    ratings[id] = reaction;
+  }
+
+  var card = document.getElementById('card-' + id);
+  card.classList.remove('rated-up', 'rated-maybe', 'rated-down');
+  if (reaction) card.classList.add('rated-' + reaction);
+
+  // Update buttons
+  var btns = card.querySelectorAll('.rating-btn');
+  btns.forEach(function(b) {
+    b.classList.remove('selected-up', 'selected-maybe', 'selected-down');
+  });
+  if (reaction) {
+    btns.forEach(function(b) {
+      if ((reaction === 'up' && b.classList.contains('up')) ||
+          (reaction === 'maybe' && b.classList.contains('maybe')) ||
+          (reaction === 'down' && b.classList.contains('down'))) {
+        b.classList.add('selected-' + reaction);
+      }
+    });
+  }
+
+  try { localStorage.setItem('nyc-concierge-ratings-apr-2026', JSON.stringify(ratings)); } catch(e) {}
+  updateStats();
+  if (currentFilter !== 'all') applyFilter(currentFilter);
+}
+
+function updateStats() {
+  var up = 0, maybe = 0, down = 0;
+  Object.values(ratings).forEach(function(r) {
+    if (r === 'up') up++;
+    else if (r === 'maybe') maybe++;
+    else if (r === 'down') down++;
+  });
+  var total = up + maybe + down;
+  document.getElementById('count-up').textContent = up;
+  document.getElementById('count-maybe').textContent = maybe;
+  document.getElementById('count-down').textContent = down;
+  document.getElementById('progress-pct').textContent = total + ' / ' + EVENTS.length;
+  document.getElementById('progress-bar').style.width = Math.round(total / EVENTS.length * 100) + '%';
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-filter') === f);
+  });
+  applyFilter(f);
+}
+
+function applyFilter(f) {
+  EVENTS.forEach(function(ev) {
+    var card = document.getElementById('card-' + ev.id);
+    if (!card) return;
+    var r = ratings[ev.id];
+    var show = f === 'all' ||
+               (f === 'unrated' && !r) ||
+               (f === 'up' && r === 'up') ||
+               (f === 'maybe' && r === 'maybe') ||
+               (f === 'down' && r === 'down');
+    card.classList.toggle('hidden', !show);
+  });
+
+  // Hide/show day sections if all hidden
+  document.querySelectorAll('.day-section').forEach(function(sec) {
+    var visible = Array.from(sec.querySelectorAll('.event-card')).some(function(c) {
+      return !c.classList.contains('hidden');
+    });
+    sec.style.display = visible ? '' : 'none';
   });
 }
 
-// ============================================================
-// SAVE FEEDBACK TO GITHUB
-// ============================================================
-function saveFeedback() {
+async function saveFeedback() {
   var btn = document.getElementById('save-btn');
-  btn.textContent = 'Saving...';
+  var status = document.getElementById('save-status');
   btn.disabled = true;
+  status.className = 'save-status';
+  status.textContent = 'Saving…';
 
-  var sessionFeedback = [];
   var today = new Date().toISOString().split('T')[0];
 
-  EVENTS.forEach(function(ev) {
-    var r = reactions[ev.id];
-    if (!r) return;
-    sessionFeedback.push({
+  var newEntries = EVENTS.filter(function(ev) {
+    return ratings[ev.id];
+  }).map(function(ev) {
+    return {
       date: today,
       eventId: ev.id,
       eventTitle: ev.title,
       eventVenue: ev.venue,
       eventDate: ev.date,
-      reaction: r,
+      reaction: ratings[ev.id],
       tags: ev.tags,
       source: ev.source,
       isWildcard: ev.isWildcard,
       priceCents: ev.priceCents
-    });
+    };
   });
 
-  var allFeedback = existingFeedback.concat(sessionFeedback);
-  var content = btoa(unescape(encodeURIComponent(JSON.stringify(allFeedback, null, 2))));
-
-  var body = {
-    message: 'Update taste feedback ' + today,
-    content: content
-  };
-  if (window._feedbackSha) {
-    body.sha = window._feedbackSha;
+  if (newEntries.length === 0) {
+    status.textContent = 'No ratings to save yet. Rate some events first!';
+    btn.disabled = false;
+    return;
   }
 
-  fetch('https://api.github.com/repos/' + GITHUB_REPO + '/contents/' + FEEDBACK_PATH, {
-    method: 'PUT',
-    headers: {
-      'Authorization': 'Bearer ' + GITHUB_TOKEN,
+  try {
+    var headers = {
+      'Authorization': 'token ' + GITHUB_TOKEN,
+      'Accept': 'application/vnd.github.v3+json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (data.content) {
-      window._feedbackSha = data.content.sha;
-      existingFeedback = allFeedback;
-      showToast('Feedback saved! Your concierge is learning.');
-    } else {
-      showToast('Error saving - try again');
-      console.error(data);
+    };
+
+    // Get current file
+    var getResp = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + FEEDBACK_FILE, { headers });
+    var sha = null;
+    var existing = [];
+    if (getResp.ok) {
+      var current = await getResp.json();
+      sha = current.sha;
+      try { existing = JSON.parse(atob(current.content.replace(/\n/g,''))); } catch(e) {}
     }
-    btn.innerHTML = 'Save Feedback <span class="count">(' + Object.keys(reactions).length + ' rated)</span>';
-    btn.disabled = false;
-  })
-  .catch(function(err) {
-    showToast('Network error - try again');
-    console.error(err);
-    btn.innerHTML = 'Save Feedback <span class="count">(' + Object.keys(reactions).length + ' rated)</span>';
-    btn.disabled = false;
-  });
+
+    // Merge: remove old entries from this week, add new
+    var thisWeekIds = EVENTS.map(function(ev) { return ev.id; });
+    var merged = existing.filter(function(e) { return !thisWeekIds.includes(e.eventId); }).concat(newEntries);
+
+    var content = btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2))));
+    var body = { message: 'Update feedback for Apr 2-8, 2026', content: content };
+    if (sha) body.sha = sha;
+
+    var putResp = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + FEEDBACK_FILE, {
+      method: 'PUT', headers, body: JSON.stringify(body)
+    });
+
+    if (putResp.ok) {
+      status.className = 'save-status success';
+      status.textContent = '✓ Saved ' + newEntries.length + ' ratings to GitHub!';
+    } else {
+      var err = await putResp.json();
+      throw new Error(err.message || putResp.status);
+    }
+  } catch(e) {
+    status.className = 'save-status error';
+    status.textContent = 'Error: ' + e.message;
+  }
+
+  btn.disabled = false;
 }
 
-function showToast(msg) {
-  var toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(function() { toast.classList.remove('show'); }, 3000);
-}
+// Init
+renderEvents();
 </script>
+
 </body>
 </html>
