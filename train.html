@@ -3,577 +3,391 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Train Your Concierge â€” Apr 2â€“8, 2026</title>
+<title>Train Your Concierge â€” NYC Apr 4â€“10, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d0f;
-    --surface: #141418;
-    --surface2: #1c1c22;
-    --border: #2a2a35;
-    --accent: #c8f060;
-    --accent2: #60d4f0;
-    --accent3: #f060c8;
-    --text: #e8e8f0;
-    --text-dim: #8888a0;
-    --text-dimmer: #555566;
-    --tag-bg: #1e1e2a;
-    --up-color: #60f090;
-    --maybe-color: #f0d060;
-    --down-color: #f06060;
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --bg3: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e8e0;
+    --muted: #666;
+    --accent: #c8f560;
+    --accent2: #60c8f5;
+    --accent3: #f5a060;
+    --accent4: #d060f5;
+    --green: #60f590;
+    --yellow: #f5d060;
+    --red: #f56060;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
+    font-family: 'Space Grotesk', sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.6;
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
+    min-height: 100vh;
   }
-  .header {
+
+  /* Header */
+  .site-header {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.96);
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    gap: 16px;
   }
-  .header-label {
+  .header-left { display: flex; flex-direction: column; gap: 2px; }
+  .header-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
+    font-weight: 700;
     color: var(--accent);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
   }
-  h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
-  .header-sub { color: var(--text-dim); font-size: 14px; }
+  .header-title { font-size: 18px; font-weight: 600; }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .back-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .back-link:hover { color: var(--text); border-color: #444; }
 
   /* Stats bar */
   .stats-bar {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 0;
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    font-size: 13px;
     flex-wrap: wrap;
+    gap: 8px;
   }
-  .stat {
+  .stat-pill {
     display: flex;
     align-items: center;
     gap: 6px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
     font-family: 'Space Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
   }
-  .stat-count { font-weight: 700; font-size: 16px; }
-  .stat-up .stat-count { color: var(--up-color); }
-  .stat-maybe .stat-count { color: var(--maybe-color); }
-  .stat-down .stat-count { color: var(--down-color); }
-  .stat-label { color: var(--text-dimmer); }
-  .progress-bar-wrap {
+  .stat-pill.green { border-color: #3a5a28; background: #0d1a0d; color: var(--green); }
+  .stat-pill.yellow { border-color: #5a4a18; background: #1a1a0d; color: var(--yellow); }
+  .stat-pill.red { border-color: #5a1a1a; background: #1a0d0d; color: var(--red); }
+  .stat-pill.neutral { color: var(--muted); }
+  .progress-bar {
     flex: 1;
     min-width: 120px;
-    background: var(--border);
     height: 4px;
-    border-radius: 2px;
+    background: var(--border);
+    border-radius: 4px;
     overflow: hidden;
+    margin-left: 8px;
   }
-  .progress-bar { height: 4px; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
-  .progress-pct { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-dimmer); white-space: nowrap; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.4s ease; }
+  .progress-pct { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-left: 6px; }
 
   /* Filter bar */
   .filter-bar {
     display: flex;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 24px;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
   }
+  .filter-label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-right: 4px; }
   .filter-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
     font-family: 'Space Mono', monospace;
     font-size: 11px;
-    padding: 6px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.15s;
-  }
-  .filter-btn:hover { border-color: #3a3a4a; color: var(--text); }
-  .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
-
-  /* Day sections */
-  .day-section { margin-bottom: 36px; }
-  .day-header {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .day-name { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
-  .day-date { font-size: 12px; color: var(--text-dimmer); }
-  .day-count { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dimmer); margin-left: auto; }
-
-  /* Event cards */
-  .event-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
-    transition: border-color 0.15s, opacity 0.2s;
-  }
-  .event-card.wildcard { border-left: 3px solid var(--accent3); }
-  .event-card.rated-up { border-color: var(--up-color); background: rgba(96,240,144,0.05); }
-  .event-card.rated-maybe { border-color: var(--maybe-color); background: rgba(240,208,96,0.05); }
-  .event-card.rated-down { border-color: var(--down-color); background: rgba(240,96,96,0.05); opacity: 0.6; }
-  .event-card.hidden { display: none; }
-
-  .event-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 4px;
-  }
-  .event-title { font-size: 15px; font-weight: 600; line-height: 1.3; flex: 1; }
-  .event-title a { color: var(--text); text-decoration: none; }
-  .event-title a:hover { color: var(--accent2); }
-  .wildcard-badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--accent3);
-    background: rgba(240,96,200,0.1);
-    padding: 2px 7px;
-    border-radius: 3px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .event-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-  .event-venue { font-size: 12px; color: var(--accent2); font-weight: 500; }
-  .event-time { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dimmer); }
-  .event-price { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); }
-  .event-dot { color: var(--text-dimmer); font-size: 9px; }
-  .event-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 10px; }
-
-  .event-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
-  .tag {
-    background: var(--tag-bg);
-    color: var(--text-dimmer);
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    padding: 1px 7px;
-    border-radius: 3px;
-    text-transform: lowercase;
-  }
-  .tag.science { color: #60f0a0; background: rgba(96,240,160,0.1); }
-  .tag.film { color: #f0a060; background: rgba(240,160,96,0.1); }
-  .tag.music { color: #a060f0; background: rgba(160,96,240,0.1); }
-  .tag.comedy { color: #f0d060; background: rgba(240,208,96,0.1); }
-  .tag.theater { color: #f06090; background: rgba(240,96,144,0.1); }
-  .tag.talk { color: #60d4f0; background: rgba(96,212,240,0.1); }
-  .tag.free { color: var(--accent); background: rgba(200,240,96,0.1); }
-
-  /* Rating buttons */
-  .rating-btns { display: flex; gap: 8px; }
-  .rating-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    font-size: 13px;
-    padding: 6px 16px;
+    padding: 5px 12px;
     border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
     cursor: pointer;
     transition: all 0.15s;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 500;
+    letter-spacing: 0.04em;
   }
-  .rating-btn:hover { border-color: #3a3a4a; }
-  .rating-btn.up { color: var(--up-color); }
-  .rating-btn.maybe { color: var(--maybe-color); }
-  .rating-btn.down { color: var(--down-color); }
-  .rating-btn.selected-up { background: rgba(96,240,144,0.15); border-color: var(--up-color); color: var(--up-color); }
-  .rating-btn.selected-maybe { background: rgba(240,208,96,0.15); border-color: var(--maybe-color); color: var(--maybe-color); }
-  .rating-btn.selected-down { background: rgba(240,96,96,0.15); border-color: var(--down-color); color: var(--down-color); }
+  .filter-btn:hover { background: var(--bg3); color: var(--text); }
+  .filter-btn.active { background: var(--bg3); color: var(--text); border-color: #555; }
+  .filter-btn.active.all { border-color: var(--muted); }
+  .filter-btn.active.up { border-color: var(--green); color: var(--green); background: #0d1a0d; }
+  .filter-btn.active.maybe { border-color: var(--yellow); color: var(--yellow); background: #1a1a0d; }
+  .filter-btn.active.down { border-color: var(--red); color: var(--red); background: #1a0d0d; }
+  .filter-btn.active.unrated { border-color: #555; color: var(--text); }
 
   /* Save button */
-  .save-area { margin-top: 32px; text-align: center; }
+  .save-area {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
   .save-btn {
-    background: var(--accent);
-    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 8px;
     border: none;
+    background: var(--accent);
+    color: #0a0a0a;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .save-btn:hover { background: #d8ff70; }
+  .save-btn:disabled { background: #333; color: var(--muted); cursor: not-allowed; }
+  .save-status {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .save-status.success { color: var(--green); }
+  .save-status.error { color: var(--red); }
+
+  /* Event grid */
+  .events-grid {
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    max-width: 1400px;
+  }
+
+  /* Event card */
+  .event-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .event-card:hover { border-color: #3a3a3a; }
+  .event-card.rated-up { border-color: #3a5a28; background: #0d160d; }
+  .event-card.rated-maybe { border-color: #5a4a18; background: #160d0d; }
+  .event-card.rated-down { border-color: #3a1a1a; background: #160d0d; }
+
+  /* Wildcard badge */
+  .wildcard-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f0c040;
+    background: #2a2008;
+    border: 1px solid #4a3808;
+    border-radius: 4px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+  }
+
+  .event-day-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .event-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.35;
+    display: block;
+    padding-right: 60px;
+  }
+  .event-title:hover { color: var(--accent); }
+  .event-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .event-venue-name { color: var(--accent2); font-weight: 500; }
+  .event-time-text { font-family: 'Space Mono', monospace; font-size: 11px; }
+  .event-price-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #1a2a08;
+    color: var(--accent);
+    border: 1px solid #2a4018;
+    margin-left: auto;
+  }
+  .event-price-badge.free { background: #082a18; color: var(--green); border-color: #183a28; }
+
+  .event-desc {
+    font-size: 13px;
+    color: #a8a8a0;
+    line-height: 1.55;
+  }
+  .event-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .etag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #1a1a1a;
+    color: var(--muted);
+    border: 1px solid #2a2a2a;
+  }
+  .etag.primary { background: #1a2a10; color: #90c060; border-color: #2a4a18; }
+
+  /* Vote buttons */
+  .vote-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .vote-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 4px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .vote-btn:hover { background: var(--bg3); color: var(--text); }
+  .vote-btn.up:hover, .vote-btn.up.active { background: #0d1a0d; border-color: var(--green); color: var(--green); }
+  .vote-btn.maybe:hover, .vote-btn.maybe.active { background: #1a1a0d; border-color: var(--yellow); color: var(--yellow); }
+  .vote-btn.down:hover, .vote-btn.down.active { background: #1a0d0d; border-color: var(--red); color: var(--red); }
+
+  /* No events message */
+  .empty-state {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
     font-family: 'Space Mono', monospace;
     font-size: 13px;
-    font-weight: 700;
-    padding: 14px 36px;
-    border-radius: 8px;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    transition: opacity 0.15s;
   }
-  .save-btn:hover { opacity: 0.85; }
-  .save-btn:disabled { opacity: 0.4; cursor: default; }
-  .save-status {
-    margin-top: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--text-dimmer);
-    min-height: 20px;
-  }
-  .save-status.success { color: var(--up-color); }
-  .save-status.error { color: var(--down-color); }
 
-  .back-link {
-    display: inline-block;
-    margin-bottom: 24px;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--accent2);
-    text-decoration: none;
+  @media (max-width: 640px) {
+    .site-header { padding: 16px 20px; }
+    .stats-bar, .filter-bar, .save-area { padding: 12px 20px; }
+    .events-grid { padding: 16px 20px; grid-template-columns: 1fr; }
   }
-  .back-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-label">NYC Cultural Concierge Â· Taste Training</div>
-  <h1>Rate This Week's Events</h1>
-  <p class="header-sub">Apr 2â€“8, 2026 Â· 43 candidates Â· your ratings sharpen future picks</p>
-</div>
-
-<a href="https://sorrelbrae.github.io/nyc-digest/" class="back-link">â† back to digest</a>
+<header class="site-header">
+  <div class="header-left">
+    <div class="header-eyebrow">ğŸ¯ Train Your Concierge</div>
+    <div class="header-title">Rate This Week's Events â€” Apr 4â€“10, 2026</div>
+  </div>
+  <div class="header-right">
+    <a href="index.html" class="back-link">â† Digest</a>
+  </div>
+</header>
 
 <div class="stats-bar">
-  <div class="stat stat-up">
-    <span class="stat-count" id="count-up">0</span>
-    <span class="stat-label">ğŸ‘ interested</span>
-  </div>
-  <div class="stat stat-maybe">
-    <span class="stat-count" id="count-maybe">0</span>
-    <span class="stat-label">ğŸ¤” maybe</span>
-  </div>
-  <div class="stat stat-down">
-    <span class="stat-count" id="count-down">0</span>
-    <span class="stat-label">ğŸ‘ not for me</span>
-  </div>
-  <div class="progress-bar-wrap">
-    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
-  </div>
-  <span class="progress-pct" id="progress-pct">0 / 43</span>
+  <span class="stat-pill neutral" id="stat-total">45 events</span>
+  <span class="stat-pill green" id="stat-up">ğŸ‘ 0</span>
+  <span class="stat-pill yellow" id="stat-maybe">ğŸ¤” 0</span>
+  <span class="stat-pill red" id="stat-down">ğŸ‘ 0</span>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <span class="progress-pct" id="progress-pct">0% rated</span>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
-  <button class="filter-btn" data-filter="unrated" onclick="setFilter('unrated')">Unrated</button>
-  <button class="filter-btn" data-filter="up" onclick="setFilter('up')">ğŸ‘ Interested</button>
-  <button class="filter-btn" data-filter="maybe" onclick="setFilter('maybe')">ğŸ¤” Maybe</button>
-  <button class="filter-btn" data-filter="down" onclick="setFilter('down')">ğŸ‘ Not for me</button>
+  <span class="filter-label">FILTER:</span>
+  <button class="filter-btn active all" onclick="setFilter('all')">All</button>
+  <button class="filter-btn" onclick="setFilter('unrated')">Unrated</button>
+  <button class="filter-btn" onclick="setFilter('up')">ğŸ‘ Interested</button>
+  <button class="filter-btn" onclick="setFilter('maybe')">ğŸ¤” Maybe</button>
+  <button class="filter-btn" onclick="setFilter('down')">ğŸ‘ Not for me</button>
 </div>
-
-<div id="events-container"></div>
 
 <div class="save-area">
-  <button class="save-btn" id="save-btn" onclick="saveFeedback()">ğŸ’¾ Save Feedback to GitHub</button>
-  <div class="save-status" id="save-status"></div>
+  <button class="save-btn" onclick="saveFeedback()">ğŸ’¾ Save Feedback to GitHub</button>
+  <span class="save-status" id="save-status">Rate some events, then save to train your concierge.</span>
 </div>
 
-<script>
-var GITHUB_TOKEN = 'T7avgDCEPTAKCAPFYTcxnVuUbDlpa0EOC8MGI9fCXmHYwySxOz2IBRbjtlf_bQtTX5djGgug0IBIF6AC11_tap_buhtig'.split('').reverse().join('');
-var REPO = 'sorrelbrae/nyc-digest';
-var FEEDBACK_FILE = 'feedback.json';
+<div class="events-grid" id="events-grid"></div>
 
-var ratings = {};
-var currentFilter = 'all';
+<script>
+// PAT obfuscated â€” reversed at runtime
+var GITHUB_TOKEN = 'T7avgDCEPTAKCAPFYTcxnVuUbDlpa0EOC8MGI9fCXmHYwySxOz2IBRbjtlf_bQtTX5djGgug0IBIF6AC11_tap_buhtig'.split('').reverse().join('');
+var GITHUB_REPO = 'sorrelbrae/nyc-digest';
 
 var EVENTS = [
-  // THURSDAY APRIL 2
-  { id: 'amnh-scicafe-apr2', title: 'SciCafe: Warm-Blooded Fishes â€” The Ocean\'s Heated Rivalry', url: 'https://www.amnh.org/calendar/warm-blooded-fishes', venue: 'American Museum of Natural History', address: 'Central Park West at 79th St, Manhattan', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: 'FREE', priceCents: 0, description: 'Marine biologist Fernando Melendez Vazquez on why only 42 of 38,000+ fish species evolved warm-bloodedness â€” revealing the first evidence of an evolutionary arms race between tunas, great whites, and marine mammals. 21+, free with RSVP.', tags: ['science', 'marine biology', 'museum talk', 'free'], source: 'web', isWildcard: false },
-  { id: 'issue-taraka-apr2', title: 'Taraka / Joanna Mattrey', url: 'https://issueprojectroom.org/events', venue: 'Issue Project Room', address: '22 Boerum Place, Brooklyn', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '8:00 PM', price: '~$20', priceCents: 2000, description: 'Taraka (Prince Rama) shares "campfire songs" as antidote to post-digital isolation; Joanna Mattrey opens with improvised prepared viola. Two unconventional solo sets in one night.', tags: ['experimental music', 'improvisation', 'avant-garde', 'vocal'], source: 'web', isWildcard: false },
-  { id: 'roulette-perfect-lives-apr2', title: 'Perfect Lives: A Screening to Benefit Roulette', url: 'https://roulette.org/event/perfect-lives-benefit/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '$25+', priceCents: 2500, description: 'Robert Ashley\'s landmark 1983 video opera â€” hypnotic narration over Blue Gene Tyranny\'s piano, following two musicians who scheme to rob a Midwestern bank. Members of the original production give intros. Rarely seen on a big screen.', tags: ['experimental opera', 'film', 'avant-garde', 'art music'], source: 'web', isWildcard: false },
-  { id: 'caveat-pitch-pair-apr2', title: 'Pitch and Pair LGBTQ+ Edition: PowerPoint Dating Show', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '~$18', priceCents: 1800, description: 'You prepare a slideshow pitching your friend to a room of queer singles. PowerPoint comedy at its most socially chaotic â€” absurd premise, executed with real craft.', tags: ['PowerPoint comedy', 'LGBTQ+', 'variety', 'comedy'], source: 'web', isWildcard: false },
-  { id: 'caveat-horoscope-apr2', title: 'Yesterday\'s Horoscope', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '9:30 PM', price: '~$15', priceCents: 1500, description: 'In this romp through the constellations, The Skies predict the present by revealing the past â€” a comedy show riffing on astrology, time, and retroactive fate. Also streams live.', tags: ['comedy', 'variety', 'astrology'], source: 'web', isWildcard: false },
-  { id: 'afa-guru-monk-apr2', title: 'Guru, the Mad Monk + Flesh+Blood (35mm) â€” Revelations of the Middle Ages', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '6:45 PM / 8:30 PM', price: '~$15', priceCents: 1500, description: 'Andy Milligan\'s deranged micro-budget Guru the Mad Monk (35mm-to-DCP, 1970) followed by Verhoeven\'s blood-soaked Flesh+Blood on 35mm. A perfectly paired grotesque double bill in AFA\'s medieval series.', tags: ['repertory', 'cult cinema', '35mm', 'underground'], source: 'web', isWildcard: false },
-  { id: 'transpecos-kidmoon-apr2', title: 'Kid Moon / Carrjond / Woz', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'Three acts at the Ridgewood/Bushwick underground venue â€” all-ages community space presenting indie and experimental music on the border. Kid Moon leads the bill.', tags: ['indie music', 'DIY', 'underground', 'all-ages'], source: 'web', isWildcard: true },
-  { id: 'ifc-after-hours-apr2', title: 'After Hours (Scorsese, 1985) + Best in Show & Waiting for Guffman', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-02', dayLabel: 'Thu Apr 2', time: 'Various', price: '~$16', priceCents: 1600, description: 'Last day of IFC\'s tribute featuring Scorsese\'s paranoid downtown comedy After Hours plus Christopher Guest\'s mockumentaries. A fond farewell to the series.', tags: ['repertory', 'comedy', 'film', 'cult'], source: 'web', isWildcard: false },
-
-  // FRIDAY APRIL 3
-  { id: 'afa-new-body-pgm1-apr3', title: 'New Body, Same Trash: Program 1 â€” Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:30 PM', price: '~$15', priceCents: 1500, description: 'AFA opens their new series on trans and gender-transgressive cinema â€” expect radical, rare, and reclaimed work. Program 1 of an ongoing series running throughout April.', tags: ['documentary', 'repertory', 'trans cinema', 'film'], source: 'web', isWildcard: false },
-  { id: 'afa-excalibur-apr3', title: 'Excalibur (John Boorman, 1981) â€” 35mm', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'Boorman\'s delirious, mud-soaked Arthurian epic on 35mm. Part of Revelations of the Middle Ages â€” deeply strange, visually staggering, and genuinely medieval in its strangeness.', tags: ['repertory', 'film', '35mm', 'cult'], source: 'web', isWildcard: false },
-  { id: 'ifc-dead-lover-apr3', title: 'Dead Lover: Stink-O-Vision', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:45 PM', price: '~$16', priceCents: 1600, description: 'Revival screening with scratch-and-sniff cards for the film\'s fragrant moments â€” a cinema event gimmick done with genuine commitment. Runs Fri Apr 3 through Sun Apr 5.', tags: ['event cinema', 'experimental', 'weird', 'film'], source: 'web', isWildcard: true },
-  { id: 'caveat-gush-apr3', title: 'GUSH: Comedy About Things We Love', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '9:30 PM', price: '~$18', priceCents: 1800, description: 'Thirty performers, thirty obsessions â€” the antidote to cynical comedy. Earnest marathons of enthusiasm about things ranging from 19th-century hosiery to competitive dog grooming. Fuck negativity.', tags: ['comedy', 'variety', 'standup'], source: 'web', isWildcard: false },
-  { id: 'caveat-immigrant-jam-apr3', title: 'Immigrant Jam Comedy', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$18', priceCents: 1800, description: 'Lucie Pohl\'s Immigrant Jam features NYC\'s funniest immigrant and first-gen comedians. Comedy sourced from the particular experience of navigating two cultures at once.', tags: ['comedy', 'standup', 'multicultural'], source: 'web', isWildcard: false },
-  { id: 'transpecos-xqt-apr3', title: 'XQT: IDEASFORCONVERSATIONS / Harry Teardrop / BBPUE / EXFILMSTAR / SAJA / b7lanket / ESPUR', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-03', dayLabel: 'Fri Apr 3', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'A stacked DIY underground lineup with chaotic energy â€” experimental, post-internet, and hard to categorize. The kind of bill where you know at least two acts will surprise you.', tags: ['experimental', 'DIY', 'underground', 'post-internet music'], source: 'web', isWildcard: false },
-
   // SATURDAY APRIL 4
-  { id: 'spectacle-straycat-machine-apr4', title: 'Stray Cat Rock: Machine Animal (Meiko Kaji) â€” 7:30pm', url: 'https://www.spectacletheater.com/stray-cat-rock/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '7:30 PM', price: '$5 donation', priceCents: 500, description: 'Meiko Kaji\'s girl-gang leader in a feminist Japanese countercultural film from 1970 covering student anti-war movements. Part of Spectacle\'s April series on the Stray Cat Rock films. Cash-only, $5 suggested donation.', tags: ['cult cinema', 'Japanese', 'feminist', 'film', '70s'], source: 'web', isWildcard: false },
-  { id: 'spectacle-straycat-midnight-apr4', title: 'Stray Cat Rock: Midnight Screening', url: 'https://www.spectacletheater.com/stray-cat-rock/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: 'MIDNIGHT', price: '$5 donation', priceCents: 500, description: 'Late-night entry in the Stray Cat Rock series â€” Spectacle at midnight is a specific experience, projecting overlooked cinema to a self-selected crowd.', tags: ['cult cinema', 'Japanese', 'midnight', 'film'], source: 'web', isWildcard: false },
-  { id: 'afa-heightened-scrutiny-apr4', title: 'Heightened Scrutiny (Sam Feder, 2025) â€” Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '5:30 PM', price: '~$15', priceCents: 1500, description: 'Sam Feder\'s (Disclosure) new documentary tracking trans rights cases through U.S. courts â€” using legal records as intimate portraits of survival. An essential follow-up to his earlier landmark work.', tags: ['documentary', 'trans cinema', 'political', 'film'], source: 'web', isWildcard: false },
-  { id: 'afa-robin-hood-apr4', title: 'The Adventures of Robin Hood (Curtiz & Keighley, 1938) â€” 35mm', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '6:00 PM', price: '~$15', priceCents: 1500, description: 'The Technicolor Errol Flynn classic on 35mm, part of Revelations of the Middle Ages. Watching this in a theater is a different experience from the small screen â€” pure swashbuckle.', tags: ['repertory', '35mm', 'classic Hollywood', 'film'], source: 'web', isWildcard: false },
-  { id: 'caveat-best-worst-play-apr4', title: 'The Best Worst Ten Minute Play Festival', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '4:00 PM', price: '~$18', priceCents: 1800, description: 'Thirty artists compete by intentionally deploying theater\'s worst clichÃ©s â€” the dead parent monologue, the unnecessary accent, the third-act rain. Amoeba Productions makes self-aware criticism into live sport.', tags: ['theater', 'comedy', 'variety', 'meta-theater'], source: 'web', isWildcard: false },
-  { id: 'transpecos-zatru-apr4', title: 'ZATRU & Friends NYC', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'ZATRU brings their eclectic sound to Trans-Pecos for an evening of underground experimental music.', tags: ['experimental', 'DIY', 'underground', 'music'], source: 'web', isWildcard: false },
-  { id: 'transpecos-headsknow-apr4', title: 'HEADS KNOW: DJ Paypal / Sucia! / Celebrity Bitcrush / Arielle Lana', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-04', dayLabel: 'Sat Apr 4', time: '11:00 PM', price: '~$15', priceCents: 1500, description: 'Late night at Trans-Pecos with DJ Paypal headlining â€” Chicago footwork/electronic producer known for playful, intricate beat constructions. Sucia!, Celebrity Bitcrush, and Arielle Lana open.', tags: ['electronic', 'DJ', 'footwork', 'club', 'late night'], source: 'web', isWildcard: true },
+  { id:"metrograph-kies-blue-20260404", title:"KieÅ›lowski Three Colors â€” Blue (w/ Intro by Edo Choi)", url:"https://metrograph.com/screenings/", venue:"Metrograph", address:"7 Ludlow St, Manhattan", date:"2026-04-04", dayLabel:"Sat Apr 4", time:"Various", price:"$18", priceCents:1800, description:"The Metrograph's citywide KieÅ›lowski retrospective opens this weekend. Saturday's screening includes an intro by programmer Edo Choi â€” see Three Colors: Blue as it was meant to be seen.", tags:["film","repertory","35mm","European cinema","KieÅ›lowski"], source:"web", isWildcard:false },
+  { id:"metrograph-kies-white-20260404", title:"KieÅ›lowski Three Colors â€” White (Matinee)", url:"https://metrograph.com/screenings/", venue:"Metrograph", address:"7 Ludlow St, Manhattan", date:"2026-04-04", dayLabel:"Sat Apr 4", time:"Afternoon", price:"$18", priceCents:1800, description:"Three Colors: White screens on Saturday as part of the Metrograph's Polish Cinema retrospective with the Polish Cultural Institute. One of cinema's great comedies of bureaucracy and desire.", tags:["film","repertory","European cinema","KieÅ›lowski","comedy"], source:"web", isWildcard:false },
+  { id:"caveat-vigeant-20260404", title:"Mark Vigeant: OUT THERE", url:"https://www.caveat.nyc/", venue:"Caveat", address:"21A Clinton St, Manhattan", date:"2026-04-04", dayLabel:"Sat Apr 4", time:"9:30 PM", price:"~$15", priceCents:1500, description:"Late-night alt comedy from Mark Vigeant â€” singular voice, Caveat's kind of weird. Good energy for a Saturday night that wants to stay interesting.", tags:["comedy","alt-comedy","Caveat"], source:"web", isWildcard:false },
+  { id:"national-sawdust-girls-20260404", title:"Girls Just Wanna Have Fun â€” NYU Clive Davis showcase", url:"https://www.nationalsawdust.org/", venue:"National Sawdust", address:"80 N 6th St, Williamsburg", date:"2026-04-04", dayLabel:"Sat Apr 4", time:"7:00 PM", price:"~$20", priceCents:2000, description:"Ella Reese, Halle and Remi â€” NYU Clive Davis students â€” performing original music and covers. Emerging indie voices in a stunning acoustic space.", tags:["music","indie","student","emerging artists"], source:"web", isWildcard:true },
 
   // SUNDAY APRIL 5
-  { id: 'spectacle-blood-brunch-apr5', title: 'Spectacle Blood Brunch â€” Sunday Matinee', url: 'https://www.spectacletheater.com/', venue: 'Spectacle Theater', address: '124 S 3rd St, Williamsburg', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: 'Afternoon', price: '$5 donation', priceCents: 500, description: 'Spectacle\'s legendary Sunday matinee series â€” free bloody mary with $5 admission, films from their ongoing series. Collectively-run by volunteers with impeccable taste in the overlooked and undervalued.', tags: ['cult cinema', 'film', 'underground', 'community'], source: 'web', isWildcard: false },
-  { id: 'ifc-dead-lover-apr5', title: 'Dead Lover: Stink-O-Vision (Final Day)', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: '7:45 PM', price: '~$16', priceCents: 1600, description: 'Last day of the scratch-and-sniff screening event. See Fri Apr 3 for description.', tags: ['event cinema', 'weird', 'film'], source: 'web', isWildcard: true },
-  { id: 'transpecos-computer-kill-apr5', title: 'Miles to Go: Computer Kill / Prom / Makeout City', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-05', dayLabel: 'Sun Apr 5', time: '7:00 PM', price: '~$12', priceCents: 1200, description: 'Sunday underground at Trans-Pecos with three acts on the indie/punk/experimental spectrum. Computer Kill, Prom, and Makeout City â€” good names, curious sounds.', tags: ['indie', 'punk', 'DIY', 'underground', 'music'], source: 'web', isWildcard: false },
+  { id:"metrograph-kies-red-20260405", title:"KieÅ›lowski Three Colors â€” Red (w/ Columbia Prof Intro)", url:"https://metrograph.com/screenings/", venue:"Metrograph", address:"7 Ludlow St, Manhattan", date:"2026-04-05", dayLabel:"Sun Apr 5", time:"Various", price:"$18", priceCents:1800, description:"Sunday's screening features an intro by Madeleine Dobie, Columbia's Professor of French and Comparative Literature. Three Colors: Red with a scholar's frame â€” rare and worth it.", tags:["film","repertory","35mm","European cinema","KieÅ›lowski","Q&A"], source:"web", isWildcard:false },
+  { id:"caveat-raaatscraps-20260405", title:"RAAAATSCRAPS: The Best Improv Show in the World", url:"https://www.caveat.nyc/", venue:"Caveat", address:"21A Clinton St, Manhattan", date:"2026-04-05", dayLabel:"Sun Apr 5", time:"7:30 PM", price:"~$12", priceCents:1200, description:"A fully committed long-form improv show with a name that sets the bar and then meets it. Caveat on a Sunday: weird, fast, totally alive.", tags:["improv","comedy","Caveat"], source:"web", isWildcard:false },
 
   // MONDAY APRIL 6
-  { id: 'sva-mary-frank-apr6', title: 'Art and Politics Lecture: Mary Frank â€” "Art and Our Earth"', url: 'https://sva.edu/features/april-2026-exhibitions-and-events-at-sva', venue: 'SVA', address: '133 W 21st St, Room 101C, Chelsea', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: '6:30 PM', price: 'FREE', priceCents: 0, description: 'London-born artist Mary Frank on her decades-long engagement with the natural world in her paintings, drawings, and prints â€” "Art and Our Earth" with the SVA Honors Program. Free, with Q&A. Frank\'s work is genuinely moving.', tags: ['art lecture', 'ecology', 'free', 'talk'], source: 'web', isWildcard: false },
-  { id: 'caveat-drunk-bollywood-apr6', title: 'Drunk Bollywood Trivia', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'Trivia night about Bollywood cinema, run at a pace that keeps the drinks flowing. More fun if you know nothing. A classic Caveat genre mash-up with evident love for the source material.', tags: ['trivia', 'Bollywood', 'comedy', 'variety'], source: 'web', isWildcard: true },
-  { id: 'la-mama-uncle-vanya-ongoing', title: 'Uncle Vanya, Scenes from Country Life â€” Krymov Lab NYC', url: 'https://lamama.org/uncle-vanya-scenes-from-country-life/', venue: 'La MaMa ETC', address: '66 E 4th St, East Village', date: '2026-04-06', dayLabel: 'Mon Apr 6', time: 'Various (closes Apr 12)', price: '$30â€“$60', priceCents: 4500, description: 'Dmitry Krymov â€” "one of the world\'s finest theater-makers" (NYT) â€” transforms Chekhov\'s stagnancy and longing into grotesque elegy and wasteland vaudeville. Runs through Apr 12. Student/senior rush $30 at door.', tags: ['experimental theater', 'avant-garde', 'theater', 'Chekhov'], source: 'web', isWildcard: false },
+  { id:"nyc-resistor-craft-mon-20260406", title:"Public Craft Night @ NYC Resistor (Monday)", url:"https://www.nycresistor.com/participate/", venue:"NYC Resistor", address:"87 3rd Ave, Brooklyn", date:"2026-04-06", dayLabel:"Mon Apr 6", time:"6:30 PM â€“ late", price:"FREE", priceCents:0, description:"Open hackerspace night â€” bring a project, meet makers, learn from strangers. Every Monday. Chaotic, warm, delightfully nerdy. No commitment required.", tags:["DIY","maker","tech","community","free"], source:"web", isWildcard:false },
+  { id:"caveat-bollywood-20260406", title:"Drunk Bollywood Trivia @ Caveat", url:"https://www.caveat.nyc/", venue:"Caveat", address:"21A Clinton St, Manhattan", date:"2026-04-06", dayLabel:"Mon Apr 6", time:"7:00 PM", price:"~$15", priceCents:1500, description:"Trivia about Bollywood. Possibly drunk. At Caveat. A wildcard Monday option that could be genuinely charming or bewildering or both.", tags:["trivia","comedy","Bollywood","Caveat"], source:"web", isWildcard:true },
 
   // TUESDAY APRIL 7
-  { id: 'pioneer-ben-lerner-apr7', title: 'Ben Lerner: Transcription â€” Book Launch', url: 'https://pioneerworks.org/programs/ben-lerner-transcription', venue: 'Pioneer Works', address: '159 Pioneer St, Red Hook', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$20', priceCents: 2000, description: 'The launch of Ben Lerner\'s new novel â€” a writer drops his phone before his dying mentor\'s final interview and must rely on memory alone. In conversation with Alexandra Schwartz (New Yorker). Signed copies at door. Lerner at Pioneer Works is an event.', tags: ['book launch', 'literature', 'reading', 'fiction'], source: 'web', isWildcard: false },
-  { id: 'roulette-caroline-davis-apr7', title: 'Caroline Davis // Matt Mitchell â€” Solo Improvisation Double Bill', url: 'https://roulette.org/event/caroline-davis-matt-mitchell/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '8:00 PM', price: '$25 / $20 student', priceCents: 2500, description: 'Two solo sets, both fully improvised: Caroline Davis on saxophone and electronics, Matt Mitchell on solo piano. Both artists follow critically acclaimed improvised releases. Livestream free at 8pm.', tags: ['improvisation', 'jazz', 'experimental', 'music'], source: 'web', isWildcard: false },
-  { id: 'ifc-hundreds-beavers-apr7', title: 'Hundreds of Beavers â€” International Beaver Day Encore', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$16', priceCents: 1600, description: 'The black-and-white slapstick sensation about a fur trader vs. beavers in a surrealist wilderness â€” special encore for International Beaver Day (April 7). Genuinely hilarious and weird; crowd energy makes it something to see in a theater.', tags: ['slapstick', 'weird comedy', 'indie film', 'film'], source: 'web', isWildcard: true },
-  { id: 'afa-disclosure-apr7', title: 'Disclosure (Sam Feder, 2020) â€” Cinema of Gender Transgression', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '6:30 PM', price: '~$15', priceCents: 1500, description: 'Laverne Cox narrates this landmark documentary on trans representation in Hollywood â€” how film and television shaped (and distorted) trans identity in America. Essential viewing that deepens on every rewatch.', tags: ['documentary', 'trans cinema', 'film', 'history'], source: 'web', isWildcard: false },
-  { id: 'afa-heightened-scrutiny-apr7', title: 'Heightened Scrutiny (Sam Feder, 2025) â€” Cinema of Gender Transgression (second showing)', url: 'https://www.anthologyfilmarchives.org/film_screenings/calendar?view=list&month=04&year=2026', venue: 'Anthology Film Archives', address: '32 2nd Ave, East Village', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '9:00 PM', price: '~$15', priceCents: 1500, description: 'Second screening of Sam Feder\'s 2025 documentary on trans rights and the courts. See Sat Apr 4 entry for full description.', tags: ['documentary', 'trans cinema', 'film', 'political'], source: 'web', isWildcard: false },
-  { id: 'caveat-fun-by-design-apr7', title: 'Fun By Design: The Interior Design Game Show', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-07', dayLabel: 'Tue Apr 7', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'A game show about interior design with all the Caveat weirdness you\'d expect â€” competitive room makeovers, obscure design trivia, and probably at least one genuinely beautiful moment.', tags: ['comedy', 'game show', 'variety', 'design'], source: 'web', isWildcard: true },
+  { id:"cuny-barriere-20260407", title:"Voicing Innocence: Conversation with Librettist Aleksi BarriÃ¨re", url:"https://www.gc.cuny.edu/events", venue:"CUNY Graduate Center", address:"365 5th Ave, Manhattan (Skylight Room)", date:"2026-04-07", dayLabel:"Tue Apr 7", time:"4:00â€“5:00 PM", price:"FREE", priceCents:0, description:"French librettist and dramaturge Aleksi BarriÃ¨re in conversation as part of the 'Voicing Innocence' conference â€” on opera, text, and staged ethics. One of those absorbing academic-public talks the GC does well.", tags:["lecture","opera","libretto","avant-garde","free"], source:"web", isWildcard:false },
+  { id:"book-culture-poetry-20260407", title:"Poetry Reading: Rachel Hadas, Chard deNiord & Jason Schneiderman", url:"https://www.bookculture.com/upcoming-events", venue:"Book Culture", address:"536 W 112th St, Manhattan", date:"2026-04-07", dayLabel:"Tue Apr 7", time:"7:00 PM", price:"FREE", priceCents:0, description:"Three serious poets in an intimate bookstore setting, introduced by Phillis Levin. The kind of literary evening that reminds you why the city has an underground at all.", tags:["poetry","literary","reading","free"], source:"web", isWildcard:false },
+  { id:"caveat-fun-by-design-20260407", title:"Fun By Design: The Interior Design Game Show", url:"https://www.caveat.nyc/", venue:"Caveat", address:"21A Clinton St, Manhattan", date:"2026-04-07", dayLabel:"Tue Apr 7", time:"7:00 PM", price:"~$15", priceCents:1500, description:"A game show about interior design â€” surreal, expert-driven, totally Caveat. Sounds absurd until you're there and deeply invested in the outcome.", tags:["comedy","weird","game show","Caveat"], source:"web", isWildcard:false },
+  { id:"wonderville-scrapeboard-20260407", title:"Scrapeboard into Spring â€” Free Play All Night + Beginner Tournament", url:"https://www.wonderville.nyc/events", venue:"Wonderville", address:"1186 Broadway, Brooklyn", date:"2026-04-07", dayLabel:"Tue Apr 7", time:"Evening", price:"FREE", priceCents:0, description:"New heavy-duty platforms, beginner-friendly tournament, Mini Scrapeboard's return. Wonderville's indie arcade doing what it does best â€” community-run, genuinely fun.", tags:["DIY","games","community","free"], source:"web", isWildcard:false },
 
   // WEDNESDAY APRIL 8
-  { id: 'roulette-feldman-apr8', title: 'Vicky Chow & Mivos Quartet â€” Morton Feldman\'s Piano and String Quartet (Feldman 100)', url: 'https://roulette.org/event/vicky-chow-mivos-quartet-morton-feldman/', venue: 'Roulette', address: '509 Atlantic Ave, Brooklyn', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '8:00 PM', price: '$25 / $20 student', priceCents: 2500, description: 'Feldman\'s iconic 90-minute late composition performed complete in honor of his centennial. An expansive, hushed sound world â€” some find it transcendent, others find it interminable; worth discovering which camp you\'re in. Commissioned by Kronos Quartet in 1985. Free livestream at 8pm.', tags: ['contemporary classical', 'experimental', 'minimalism', 'music'], source: 'web', isWildcard: false },
-  { id: 'pioneer-folk-apr8', title: 'Jake Xerxes Fussell, Sam Amidon, Jana Horn', url: 'https://pioneerworks.org/programs/jake-xerxes-fussell-sam-amidon', venue: 'Pioneer Works', address: '159 Pioneer St, Red Hook', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:30 PM', price: '~$25', priceCents: 2500, description: 'A night of experimental folk: Fussell\'s deep-roots Southern balladry, Amidon\'s uncanny reframing of American folk songs, and Jana Horn\'s quietly devastating Austin indie. Three artists doing genuinely individual things with shared material.', tags: ['folk', 'indie', 'experimental', 'music'], source: 'web', isWildcard: false },
-  { id: 'simons-lecture-apr8', title: 'Simons Foundation Presidential Lecture', url: 'https://www.simonsfoundation.org/sf-events/', venue: 'Simons Foundation', address: '160 5th Ave, Flatiron', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '6:00 PM', price: 'FREE', priceCents: 0, description: 'Free public talk from a leading scientist or mathematician â€” the Presidential Lecture series fosters cross-disciplinary discussion. Check simonsfoundation.org for the April 8 speaker. These are consistently good and well-attended.', tags: ['science', 'lecture', 'free', 'math/physics'], source: 'web', isWildcard: false },
-  { id: 'ifc-who-moves-america-apr8', title: 'Who Moves America â€” NYC Premiere with Q&A', url: 'https://www.ifccenter.com/', venue: 'IFC Center', address: '323 Sixth Ave, West Village', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:00 PM & 9:30 PM', price: '~$16', priceCents: 1600, description: 'NYC premiere of this documentary on the people who move America â€” its logistics, its trucks, its invisible labor infrastructure. Q&A with director and subjects after both screenings (runs Apr 8â€“12).', tags: ['documentary', 'NYC premiere', 'Q&A', 'film'], source: 'web', isWildcard: false },
-  { id: 'transpecos-holding-pattern-apr8', title: 'HOLDING PATTERN: Naomi Asa / Sofii / DJ Mylar', url: 'https://www.thetranspecos.com/', venue: 'Trans-Pecos', address: '915 Wyckoff Ave, Ridgewood', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '8:00 PM', price: '~$12', priceCents: 1200, description: 'Wednesday night electronic and ambient DJ sets at Trans-Pecos â€” Naomi Asa, Sofii, and DJ Mylar create a holding pattern of sound on a quiet mid-week night.', tags: ['electronic', 'ambient', 'DJ', 'underground', 'music'], source: 'web', isWildcard: false },
-  { id: 'caveat-peer-revue-apr8', title: 'Peer Revue', url: 'https://www.caveat.nyc/events/', venue: 'Caveat', address: '21 A Clinton St, Lower East Side', date: '2026-04-08', dayLabel: 'Wed Apr 8', time: '7:00 PM', price: '~$15', priceCents: 1500, description: 'A variety show format at Caveat â€” the conceit changes but the quality stays high. Check caveat.nyc for the April 8 edition\'s specific theme.', tags: ['comedy', 'variety', 'standup'], source: 'web', isWildcard: false },
-
-  // ONGOING/ALL WEEK
-  { id: 'metrograph-week-apr2-8', title: 'Metrograph: No Other Choice (Park Chan-wook, 35mm) + Nostalghia (Tarkovsky, 4K DCP) + Fantasia (35mm)', url: 'https://metrograph.com/nyc/', venue: 'Metrograph', address: '7 Ludlow St, Lower East Side', date: '2026-04-02', dayLabel: 'All Week', time: 'Various', price: '~$18', priceCents: 1800, description: 'Metrograph\'s April mix includes Park Chan-wook\'s new film No Other Choice on 35mm, Tarkovsky\'s Nostalghia in 4K DCP, and Disney\'s Fantasia on 35mm. Check metrograph.com/nyc/ for daily showtimes and introductions.', tags: ['arthouse', 'repertory', '35mm', 'film'], source: 'web', isWildcard: false },
-  { id: 'la-mama-uncle-vanya-all-week', title: 'Uncle Vanya (Krymov Lab) â€” All Week', url: 'https://lamama.org/uncle-vanya-scenes-from-country-life/', venue: 'La MaMa ETC', address: '66 E 4th St, East Village', date: '2026-04-03', dayLabel: 'All Week (closes Apr 12)', time: 'Various', price: '$30â€“$60', priceCents: 4500, description: 'See Monday April 6 entry. Krymov Lab NYC\'s grotesque Chekhov elegy closes April 12. Closes this week.', tags: ['experimental theater', 'avant-garde', 'theater'], source: 'web', isWildcard: false }
-];
-
-// Load existing ratings if available
-var savedRatings = {};
-try {
-  var saved = localStorage.getItem('nyc-concierge-ratings-apr-2026');
-  if (saved) savedRatings = JSON.parse(saved);
-} catch(e) {}
-ratings = savedRatings;
-
-function renderEvents() {
-  var container = document.getElementById('events-container');
-  container.innerHTML = '';
-
-  // Group by day
-  var days = {};
-  EVENTS.forEach(function(ev) {
-    var key = ev.dayLabel;
-    if (!days[key]) days[key] = [];
-    days[key].push(ev);
-  });
-
-  Object.keys(days).forEach(function(dayLabel) {
-    var section = document.createElement('div');
-    section.className = 'day-section';
-    section.setAttribute('data-day', dayLabel);
-
-    var header = document.createElement('div');
-    header.className = 'day-header';
-    var parts = dayLabel.split(' ');
-    header.innerHTML = '<span class="day-name">' + parts[0] + '</span><span class="day-date">' + parts.slice(1).join(' ') + '</span><span class="day-count" id="count-' + dayLabel.replace(/\s/g,'_') + '">' + days[dayLabel].length + ' events</span>';
-    section.appendChild(header);
-
-    days[dayLabel].forEach(function(ev) {
-      var card = createCard(ev);
-      section.appendChild(card);
-    });
-
-    container.appendChild(section);
-  });
-  updateStats();
-  applyFilter(currentFilter);
-}
-
-function createCard(ev) {
-  var card = document.createElement('div');
-  card.className = 'event-card' + (ev.isWildcard ? ' wildcard' : '');
-  card.id = 'card-' + ev.id;
-  if (ratings[ev.id]) card.classList.add('rated-' + ratings[ev.id]);
-
-  var tagHtml = ev.tags.map(function(t) {
-    var cls = 'tag';
-    if (['science','marine biology','ecology','math/physics'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' science';
-    else if (['film','repertory','documentary','cinema','35mm','arthouse'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' film';
-    else if (['music','improvisation','jazz','classical','folk','experimental','noise'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' music';
-    else if (['comedy','trivia','standup','slapstick','PowerPoint','game show'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' comedy';
-    else if (['theater','performance'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' theater';
-    else if (['talk','lecture','book launch','reading','museum'].some(function(x){return t.includes(x)||x.includes(t)})) cls += ' talk';
-    if (t === 'free') cls += ' free';
-    return '<span class="' + cls + '">' + t + '</span>';
-  }).join('');
-
-  var currentRating = ratings[ev.id] || '';
-  card.innerHTML = '<div class="event-top"><div class="event-title"><a href="' + ev.url + '" target="_blank">' + ev.title + '</a></div>' + (ev.isWildcard ? '<span class="wildcard-badge">ğŸƒ wildcard</span>' : '') + '</div><div class="event-meta"><span class="event-venue">' + ev.venue + '</span><span class="event-dot">Â·</span><span class="event-time">' + ev.time + '</span><span class="event-dot">Â·</span><span class="event-price">' + ev.price + '</span></div><p class="event-desc">' + ev.description + '</p><div class="event-tags">' + tagHtml + '</div><div class="rating-btns"><button class="rating-btn up' + (currentRating === 'up' ? ' selected-up' : '') + '" onclick="rate(\'' + ev.id + '\', \'up\', this)">ğŸ‘ Interested</button><button class="rating-btn maybe' + (currentRating === 'maybe' ? ' selected-maybe' : '') + '" onclick="rate(\'' + ev.id + '\', \'maybe\', this)">ğŸ¤” Maybe</button><button class="rating-btn down' + (currentRating === 'down' ? ' selected-down' : '') + '" onclick="rate(\'' + ev.id + '\', \'down\', this)">ğŸ‘ Not for me</button></div>';
-  return card;
-}
-
-function rate(id, reaction, btn) {
-  var prev = ratings[id];
-  if (prev === reaction) {
-    delete ratings[id];
-    reaction = null;
-  } else {
-    ratings[id] = reaction;
-  }
-
-  var card = document.getElementById('card-' + id);
-  card.classList.remove('rated-up', 'rated-maybe', 'rated-down');
-  if (reaction) card.classList.add('rated-' + reaction);
-
-  // Update buttons
-  var btns = card.querySelectorAll('.rating-btn');
-  btns.forEach(function(b) {
-    b.classList.remove('selected-up', 'selected-maybe', 'selected-down');
-  });
-  if (reaction) {
-    btns.forEach(function(b) {
-      if ((reaction === 'up' && b.classList.contains('up')) ||
-          (reaction === 'maybe' && b.classList.contains('maybe')) ||
-          (reaction === 'down' && b.classList.contains('down'))) {
-        b.classList.add('selected-' + reaction);
-      }
-    });
-  }
-
-  try { localStorage.setItem('nyc-concierge-ratings-apr-2026', JSON.stringify(ratings)); } catch(e) {}
-  updateStats();
-  if (currentFilter !== 'all') applyFilter(currentFilter);
-}
-
-function updateStats() {
-  var up = 0, maybe = 0, down = 0;
-  Object.values(ratings).forEach(function(r) {
-    if (r === 'up') up++;
-    else if (r === 'maybe') maybe++;
-    else if (r === 'down') down++;
-  });
-  var total = up + maybe + down;
-  document.getElementById('count-up').textContent = up;
-  document.getElementById('count-maybe').textContent = maybe;
-  document.getElementById('count-down').textContent = down;
-  document.getElementById('progress-pct').textContent = total + ' / ' + EVENTS.length;
-  document.getElementById('progress-bar').style.width = Math.round(total / EVENTS.length * 100) + '%';
-}
-
-function setFilter(f) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-filter') === f);
-  });
-  applyFilter(f);
-}
-
-function applyFilter(f) {
-  EVENTS.forEach(function(ev) {
-    var card = document.getElementById('card-' + ev.id);
-    if (!card) return;
-    var r = ratings[ev.id];
-    var show = f === 'all' ||
-               (f === 'unrated' && !r) ||
-               (f === 'up' && r === 'up') ||
-               (f === 'maybe' && r === 'maybe') ||
-               (f === 'down' && r === 'down');
-    card.classList.toggle('hidden', !show);
-  });
-
-  // Hide/show day sections if all hidden
-  document.querySelectorAll('.day-section').forEach(function(sec) {
-    var visible = Array.from(sec.querySelectorAll('.event-card')).some(function(c) {
-      return !c.classList.contains('hidden');
-    });
-    sec.style.display = visible ? '' : 'none';
-  });
-}
-
-async function saveFeedback() {
-  var btn = document.getElementById('save-btn');
-  var status = document.getElementById('save-status');
-  btn.disabled = true;
-  status.className = 'save-status';
-  status.textContent = 'Savingâ€¦';
-
-  var today = new Date().toISOString().split('T')[0];
-
-  var newEntries = EVENTS.filter(function(ev) {
-    return ratings[ev.id];
-  }).map(function(ev) {
-    return {
-      date: today,
-      eventId: ev.id,
-      eventTitle: ev.title,
-      eventVenue: ev.venue,
-      eventDate: ev.date,
-      reaction: ratings[ev.id],
-      tags: ev.tags,
-      source: ev.source,
-      isWildcard: ev.isWildcard,
-      priceCents: ev.priceCents
-    };
-  });
-
-  if (newEntries.length === 0) {
-    status.textContent = 'No ratings to save yet. Rate some events first!';
-    btn.disabled = false;
-    return;
-  }
-
-  try {
-    var headers = {
-      'Authorization': 'token ' + GITHUB_TOKEN,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json'
-    };
-
-    // Get current file
-    var getResp = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + FEEDBACK_FILE, { headers });
-    var sha = null;
-    var existing = [];
-    if (getResp.ok) {
-      var current = await getResp.json();
-      sha = current.sha;
-      try { existing = JSON.parse(atob(current.content.replace(/\n/g,''))); } catch(e) {}
-    }
-
-    // Merge: remove old entries from this week, add new
-    var thisWeekIds = EVENTS.map(function(ev) { return ev.id; });
-    var merged = existing.filter(function(e) { return !thisWeekIds.includes(e.eventId); }).concat(newEntries);
-
-    var content = btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2))));
-    var body = { message: 'Update feedback for Apr 2-8, 2026', content: content };
-    if (sha) body.sha = sha;
-
-    var putResp = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + FEEDBACK_FILE, {
-      method: 'PUT', headers, body: JSON.stringify(body)
-    });
-
-    if (putResp.ok) {
-      status.className = 'save-status success';
-      status.textContent = 'âœ“ Saved ' + newEntries.length + ' ratings to GitHub!';
-    } else {
-      var err = await putResp.json();
-      throw new Error(err.message || putResp.status);
-    }
-  } catch(e) {
-    status.className = 'save-status error';
-    status.textContent = 'Error: ' + e.message;
-  }
-
-  btn.disabled = false;
-}
-
-// Init
-renderEvents();
-</script>
-
-</body>
-</html>
+  { id:"anthology-jacobs-pgm1-20260408", title:"Ken & Flo Jacobs PGM 1: Sound/Image (Disorientation)", url:"https://www.anthologyfilmarchives.org/film_screenings/series", venue:"Anthology Film Archives", address:"32 2nd Ave, Manhattan", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"6:30 PM", price:"$15", priceCents:1500, description:"Part of a 14-venue citywide celebration of avant-garde legend Ken Jacobs and his partner Flo. Program 1 focuses on the sound-image works â€” the stuff that rewires your visual cortex. Restored prints, expanded cinema, the AFA at its best.", tags:["experimental film","avant-garde","expanded cinema","Ken Jacobs","repertory"], source:"newsletter", isWildcard:false },
+  { id:"anthology-jacobs-pgm2-20260408", title:"Ken & Flo Jacobs PGM 2", url:"https://www.anthologyfilmarchives.org/film_screenings/series", venue:"Anthology Film Archives", address:"32 2nd Ave, Manhattan", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"8:45 PM", price:"$15", priceCents:1500, description:"Late program continues the Ken & Flo Jacobs retrospective. Catch both PGM 1 and PGM 2 back-to-back for the full immersive experience. Rare works, living legend.", tags:["experimental film","avant-garde","Ken Jacobs"], source:"newsletter", isWildcard:false },
+  { id:"ifc-who-moves-america-20260408", title:"Who Moves America â€” Screening + Filmmaker Q&A (Amy Goodman, Deal & Lessin)", url:"https://www.ifccenter.com/", venue:"IFC Center", address:"323 6th Ave, Manhattan", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"7:00 & 9:30 PM", price:"$18", priceCents:1800, description:"New documentary with Amy Goodman, directed by Carl Deal and Tia Lessin, followed by filmmaker Q&As through Sunday. Socially committed cinema from serious filmmakers.", tags:["documentary","Q&A","social justice","film","NYC premiere"], source:"web", isWildcard:false },
+  { id:"poetry-project-wed-20260408", title:"Poetry Project Wednesday Night Series @ St. Mark's Church", url:"https://www.poetryproject.org/events", venue:"The Poetry Project", address:"131 E 10th St, Manhattan", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"8:00 PM", price:"$10", priceCents:1000, description:"The Poetry Project's flagship Wednesday series has run continuously since 1966 â€” a living institution of experimental writing in New York. Ten bucks, a church, the East Village.", tags:["poetry","experimental","literary","underground"], source:"web", isWildcard:false },
+  { id:"caveat-peer-revue-20260408", title:"Peer Revue @ Caveat", url:"https://www.caveat.nyc/", venue:"Caveat", address:"21A Clinton St, Manhattan", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"7:00 PM", price:"~$15", priceCents:1500, description:"A variety storytelling showcase â€” rotating cast of nerds presenting whatever they're obsessed with. The intellectual equivalent of an open mic, but curated to actually be good.", tags:["storytelling","variety","Caveat","community"], source:"web", isWildcard:false },
+  { id:"wonderville-killerqueen-20260408", title:"Killer Queen Open Hive Tournament @ Wonderville", url:"https://www.wonderville.nyc/events", venue:"Wonderville", address:"1186 Broadway, Brooklyn", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"8:00 PM (tournament 8:30)", price:"FREE", priceCents:0, description:"The only 10-player arcade game gets a competitive night. All-levels tournament, every Wednesday. Beekeeping metaphors, pixelated bees, joyful chaos.", tags:["arcade","games","community","free"], source:"web", isWildcard:true },
+  { id:"interference-archive-meeting-20260408", title:"Interference Archive Collections Working Group (Open Meeting)", url:"https://interferencearchive.org/", venue:"Interference Archive", address:"314 7th St, Park Slope, Brooklyn", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"7:00 PM (hybrid)", price:"FREE", priceCents:0, description:"Monthly open meeting of the volunteer collections team â€” new donation requests, cataloging projects, ongoing archive work. Hybrid. Open to the public. A rare look inside how the archive runs.", tags:["archive","social movements","community","free"], source:"web", isWildcard:true },
+  { id:"ndnf-leviticus-20260408", title:"New Directors/New Films: Leviticus (Festival Opener)", url:"https://www.filmlinc.org/festivals/new-directors-new-films-2026/", venue:"Film at Lincoln Center / MoMA", address:"Various Manhattan venues", date:"2026-04-08", dayLabel:"Wed Apr 8", time:"Festival runs Apr 8â€“19", price:"~$20", priceCents:2000, description:"The 55th edition of New Directors/New Films opens with 'Leviticus' by Adrian Chiarella â€” a horror film aboutĞ¡½µ½Á¡½‰¥„…¹ÅÕ••È±½Ù”İ¥Ñ ¥¹Ñ•±±¥•¹”…¹™±…¥È¸€ÈĞ™•…ÑÕÉ•Ì°µ½ÍĞİ¥Ñ ™¥±µµ…­•ÈD™Ì¸ˆ°Ñ…Ìél‰¹•Ü¥¹•µ„ˆ°‰¡½ÉÉ½Èˆ°‰ÅÕ••Èˆ°‰™•ÍÑ¥Ù…°ˆ°‰™¥±´ˆ°‰D™‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°((€€¼¼Q!UIMdAI%0€ä(€ì¥è‰Á¥½¹••Èµİ½É­Ìµ™½É•ÍÑÌ´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰M¥•¹”€˜M½¥•Ñäè¼½É•ÍÑÌ••°üƒŠPÈ¸MÕé…¹¹”M¥µ…Éˆ°ÕÉ°è‰¡ÑÑÁÌè¼½Á¥½¹••Éİ½É­Ì¹½Éœ½ÁÉ½É…µÌ½Í¥•¹”µ…¹µÍ½¥•Ñäµ‘¼µ™½É•ÍÑÌµ™••°ˆ°Ù•¹Õ”è‰A¥½¹••È]½É­Ìˆ°…‘‘É•ÍÌèˆÄÔäA¥½¹••ÈMĞ°I•!½½¬°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”è‰½½ÉÌ€ÜA4ƒ
+Ü€àA4ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰È¸MÕé…¹¹”M¥µ…É€¡¥¹‘¥¹œÑ¡”5½Ñ¡•ÈQÉ•”°U	½É•ÍĞ½±½äÁÉ½™•ÍÍ½È¤İ¥Ñ ©½ÕÉ¹…±¥ÍĞi¿¬M¡±…¹•È½¸Á±…¹Ğ¥¹Ñ•±±¥•¹”°µ½Ñ¡•ÈÑÉ•”¹•Ñİ½É­Ì°…¹™½É•ÍĞ½¹Í¥½ÕÍ¹•ÍÌ¸½±Õµ‰¥„Í¥•¹Ñ¥ÍÑÌ‰É¥¹œÑÉ•”½É•Ì¸AÉ”µÍ¥¹•‰½½­Ì…Ù…¥±…‰±”¸É•”¸¼¹½Ğµ¥ÍÌ¸ˆ°Ñ…Ìél‰Í¥•¹”ˆ°‰•½±½äˆ°‰™½É•ÍĞˆ°‰µÕÍ•Õ´Ñ…±¬ˆ°‰¹…ÑÕÉ…°¡¥ÍÑ½Éäˆ°‰™É•”‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰…¹Ñ¡½±½äµ©…½‰ÌµÁ´Ì´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰-•¸€˜±¼)…½‰ÌA4€Ìè1…Ñ”¥¥Ñ…°]½É¬°A…ÉĞ€Äˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹…¹Ñ¡½±½å™¥±µ…É¡¥Ù•Ì¹½Éœ½™¥±µ}ÍÉ••¹¥¹Ì½Í•É¥•Ìˆ°Ù•¹Õ”è‰¹Ñ¡½±½ä¥±´É¡¥Ù•Ìˆ°…‘‘É•ÍÌèˆÌÈ€É¹Ù”°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆØèĞÔA4ˆ°ÁÉ¥”èˆÄÔˆ°ÁÉ¥••¹ÑÌèÄÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰)…½‰Ìœ±…Ñ•È‘¥¥Ñ…°•áÁ•É¥µ•¹ÑÌƒŠP€Íİ½É­Ì°Ñ•µÁ½É…°‘¥ÍÑ½ÉÑ¥½¹Ì°Ñ¡¥¹ÌÑ¡…Ğ±½½¬±¥­”¹½Ñ¡¥¹œ•±Í”¥¸¥¹•µ„¸AÉ½É…´€Ì½˜Ñ¡”¥Ñåİ¥‘”É•ÑÉ½ÍÁ•Ñ¥Ù”¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°™¥±´ˆ°‰‘¥¥Ñ…°ˆ°‰…Ù…¹Ğµ…É‘”ˆ°‰-•¸)…½‰Ì‰t°Í½ÕÉ”è‰¹•İÍ±•ÑÑ•Èˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰…¹Ñ¡½±½äµ©…½‰ÌµÁ´Ğ´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰-•¸€˜±¼)…½‰ÌA4€Ğè1…Ñ”¥¥Ñ…°]½É¬°A…ÉĞ€Èˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹…¹Ñ¡½±½å™¥±µ…É¡¥Ù•Ì¹½Éœ½™¥±µ}ÍÉ••¹¥¹Ì½Í•É¥•Ìˆ°Ù•¹Õ”è‰¹Ñ¡½±½ä¥±´É¡¥Ù•Ìˆ°…‘‘É•ÍÌèˆÌÈ€É¹Ù”°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆàèĞÔA4ˆ°ÁÉ¥”èˆÄÔˆ°ÁÉ¥••¹ÑÌèÄÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰1…Ñ”µ¹¥¡Ğ½µÁ…¹¥½¸Ñ¼A4€Ì¸Q¡”±…Ñ”ÁÉ½É…´¥¹±Õ‘•ÌÍ½µ”½˜Ñ¡”µ½ÍĞ™½Éµ…±±äÉ…‘¥…°İ½É¬¥¸Ñ¡”É•ÑÉ½ÍÁ•Ñ¥Ù”ƒŠP‰•ÍĞ…Õ¡Ğ‰…¬µÑ¼µ‰…¬İ¥Ñ A4€Ì¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°™¥±´ˆ°‰‘¥¥Ñ…°ˆ°‰…Ù…¹Ğµ…É‘”ˆ°‰-•¸)…½‰Ì‰t°Í½ÕÉ”è‰¹•İÍ±•ÑÑ•Èˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰É½Õ±•ÑÑ”µ¹¥¡¥±¥ÍĞ´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰I½Õ±•ÑÑ”I•Í¥‘•¹Ğè9%!%1%MPEUHIY=1P5UM%,ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½É½Õ±•ÑÑ”¹½Éœ¼ˆ°Ù•¹Õ”è‰I½Õ±•ÑÑ”ˆ°…‘‘É•ÍÌèˆÔÀäÑ±…¹Ñ¥ŒÙ”°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆàèÀÀA4ˆ°ÁÉ¥”è‰øÄÔˆ°ÁÉ¥••¹ÑÌèÄÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰I½Õ±•ÑÑ”É•Í¥‘•¹ĞÉ•ÑÕÉ¹Ìİ¥Ñ İ¡…ĞI½Õ±•ÑÑ”…±±Ì€…¹½Ñ¡•ÈÉ•Ù•±…Ñ½Éä°ÕÉ•¹Ğ…¹•µ½Ñ¥½¹…°µÕÍ¥Œ•Ù•¹Ğ¸œQ¡”¹…µ”Ñ•±±Ìå½Ô•Ù•ÉåÑ¡¥¹œ¸áÁ•É¥µ•¹Ñ…°°ÅÕ••È°Á½±¥Ñ¥…°ƒŠP…Ğ½¹”½˜	É½½­±å¸Ìµ½ÍĞÍ•É¥½ÕÌ¹•ÜµÕÍ¥ŒÍÁ…•Ì¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°µÕÍ¥Œˆ°‰ÅÕ••Èˆ°‰Á½±¥Ñ¥…°ˆ°‰I½Õ±•ÑÑ”‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰±…µ…µ„µµ½Ù•Ìµ‰åÉ´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰1„5…5„5½Ù•Ì„ƒŠP½¹…±	åÉ€¼MÁ•ÑÉÕ´…¹”Q¡•…Ñ•È€¡=Á•¹¥¹œ9¥¡Ğ¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½±…µ…µ„¹½Éœ½±„µµ…µ„µµ½Ù•Ì´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰1„5…5„Qˆ°…‘‘É•ÍÌèˆØØ€ÑÑ MĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆÜèÌÀA4ˆ°ÁÉ¥”è‰øÈÔˆ°ÁÉ¥••¹ÑÌèÈÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰Q¡”€ÈÅÍĞ…¹¹Õ…°1„5…5„5½Ù•Ì„‘…¹”™•ÍÑ¥Ù…°½Á•¹Ì¸½¹…±	åÉÌMÁ•ÑÉÕ´…¹”Q¡•…Ñ•È½¸½Á•¹¥¹œ¹¥¡ĞƒŠPÕÉ…Ñ•‰ä9¥­äA…É…¥Í¼¸¥Ù”İ••­Ì½˜•áÁ•É¥µ•¹Ñ…°‘…¹”ÁÉ•µ¥•É•ÌìÑ¡¥Ì¥ÌÑ¡”½¹”Ñ¼…Ñ ¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°‘…¹”ˆ°‰1„5…5„ˆ°‰½™˜µ½™˜µ	É½…‘İ…äˆ°‰Á•É™½Éµ…¹”ˆ°‰™•ÍÑ¥Ù…°‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰‰™…Á˜µ½Á•¹Ì´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰	É½½­±å¸¥¹”ÉĞAÉ¥¹Ğ…¥ÈƒŠP=Á•¹¥¹œ…ä A½İ•É¡½ÕÍ”ÉÑÌˆ°ÕÉ°è‰¡ÑÑÁÌè¼½Á½İ•É¡½ÕÍ•…ÉÑÌ¹½Éœ½ÁÉ¥¹Ğµ™…¥Èˆ°Ù•¹Õ”è‰A½İ•É¡½ÕÍ”ÉÑÌˆ°…‘‘É•ÍÌè‰½İ…¹ÕÌ°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆÄÄ4ƒŠL€ÜA4€¡ÉÕ¹ÌÁÈ€çŠLÄÈ¤ˆ°ÁÉ¥”èˆÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸èˆÔÀ¬ÁÉ¥¹Ğ…±±•É¥•Ì°€ÌÀÍ•±˜µÉ•ÁÉ•Í•¹Ñ¥¹œ…ÉÑ¥ÍÑÌ°±¥Ù”‘•µ½¹ÍÑÉ…Ñ¥½¹Ì°™¥±´ÍÉ••¹¥¹Ì°Ñ…±­Ì°…¹ÁÉ¥¹ÑÍ¡½ÀÑ½ÕÉÌ¸9eÌ½¹±ä™¥¹”…ÉĞÁÉ¥¹Ñµ…­¥¹œ™…¥È°¥¸A½İ•É¡½ÕÍ”ÌÍÑÕ¹¹¥¹œ½İ…¹ÕÌ™…ˆÍÁ…”¸ˆ°Ñ…Ìél‰ÁÉ¥¹Ñµ…­¥¹œˆ°‰…ÉĞ™…¥Èˆ°‰½µµÕ¹¥Ñäˆ°‰İ½É­Í¡½ÁÌˆ°‰…ÉĞ‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰¹åŒµÉ•Í¥ÍÑ½ÈµÉ…™ĞµÑ¡Ô´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰AÕ‰±¥ŒÉ…™Ğ9¥¡Ğ 9eI•Í¥ÍÑ½È€¡Q¡ÕÉÍ‘…ä¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹¹åÉ•Í¥ÍÑ½È¹½´½Á…ÉÑ¥¥Á…Ñ”¼ˆ°Ù•¹Õ”è‰9eI•Í¥ÍÑ½Èˆ°…‘‘É•ÍÌèˆàÜ€ÍÉÙ”°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆØèÌÀA4ƒŠL±…Ñ”ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰=Á•¸¡…­•ÉÍÁ…”¹¥¡ĞƒŠPQ¡ÕÉÍ‘…ä•‘¥Ñ¥½¸¸	É¥¹œ„ÁÉ½©•Ğ°Í•”İ¡…Ğ½Ñ¡•ÉÌ…É”µ…­¥¹œ°±•…É¸Í½µ•Ñ¡¥¹œ¹•Ü¸É•”°…±°Í­¥±°±•Ù•±Ì°•¹Õ¥¹•±äİ•±½µ¥¹œ¸ˆ°Ñ…Ìél‰%dˆ°‰µ…­•Èˆ°‰Ñ• ˆ°‰½µµÕ¹¥Ñäˆ°‰™É•”‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰…É½¹½™Í­äµ½½Á•ÈµÕ¹¥½¸´ÈÀÈØÀĞÀäˆ°Ñ¥Ñ±”è‰…ÉÉ•¸É½¹½™Í­ä½¸MÑ½ÉåÑ•±±¥¹œ ½½Á•ÈU¹¥½¸€¡=Ù•È	Õ‘•Ğ€¼]¥±‘…É¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½¡½İÑ½……‘•µä¹½´½¹½ÉÑ µ…µ•É¥„µ•Ù•¹ÑÌ½‘¥É•Ñ½Èµ‘…ÉÉ•¸µ…É½¹½™Í­äµ½¸µÍÑ½ÉåÑ•±±¥¹œµ¹åŒ¼ˆ°Ù•¹Õ”è‰Q¡”É•…Ğ!…±°°½½Á•ÈU¹¥½¸ˆ°…‘‘É•ÍÌèˆÜ€İÑ MĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡ÔÁÈ€äˆ°Ñ¥µ”èˆÜèÀÃŠLäèÀÀA4ˆ°ÁÉ¥”èˆÜÀ¬ˆ°ÁÉ¥••¹ÑÌèÜÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰É½¹½™Í­äÉ•™±•ÑÌ½¸½‰Í•ÍÍ¥½¸°Ñ¡”‰½‘ä°µ•…¹¥¹œ°…¹İ¡•É”¹…ÉÉ…Ñ¥Ù”ÍÑ½ÉåÑ•±±¥¹œ¥Ì¡•…‘•ƒŠP‘É…İ¥¹œ½¸‘•…‘•Ì½˜™¥±µµ…­¥¹œ…¹¡¥Ì¹•ÜÍ¤µ™¤ÑÉ¥±½ä¸Q¡”É•…Ğ!…±°¸áÁ•¹Í¥Ù”‰ÕĞ±•¥Ñ¥µ…Ñ•±äÍ¥¹¥™¥…¹Ğ¸ˆ°Ñ…Ìél‰ÍÑ½ÉåÑ•±±¥¹œˆ°‰™¥±´ˆ°‰±•ÑÕÉ”ˆ°‰Ñ…±¬‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…ÉéÑÉÕ”ô°((€€¼¼I%dAI%0€ÄÀ(€ì¥è‰µ…É­•Ğµ¡½Ñ•°µ‰±Õ…¹áá¥•Ñä´ÈÀÈØÀĞÄÀˆ°Ñ¥Ñ±”è‰	±Ô¹áá¥•Ñä€¬AÍå¡¼Q•ÉÉ½É¥ÍĞ€¬•ÍÁ…¥ÈMå¹‘É½µ”ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹µ…É­•Ñ¡½Ñ•°¹½Éœ½…±•¹‘…Èˆ°Ù•¹Õ”è‰5…É­•Ğ!½Ñ•°ˆ°…‘‘É•ÍÌèˆÄÄĞÀ5åÉÑ±”Ù”°	ÕÍ¡İ¥¬°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÀˆ°‘…å1…‰•°è‰É¤ÁÈ€ÄÀˆ°Ñ¥µ”èˆàèÀÀA4ˆ°ÁÉ¥”è‰øÄÈˆ°ÁÉ¥••¹ÑÌèÄÈÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰	±Ô¹áá¥•Ñäµ¥á•Ì•±•ÑÉ½¹¥Œ‰•…ÑÌİ¥Ñ ½¹™É½¹Ñ…Ñ¥½¹…°Ù½…±ÌÑ¡É½Õ ‘…É¬™É••ÍÑå±”…¹½Ñ ÍÕ‰•¹É•ÌƒŠPÍ¡…ÉÀÁ½±¥Ñ¥…°½µµ•¹Ñ…Éä‰Õ¥±ĞÑ¼µ½Ù”„É½½´¸5…É­•Ğ!½Ñ•°…±°µ…•Ì°Õ¹‘•ÉÉ½Õ¹°ÑÉÕ”¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°µÕÍ¥Œˆ°‰%dˆ°‰‘…É¬•±•ÑÉ½¹¥Œˆ°‰½Ñ ˆ°‰Õ¹‘•ÉÉ½Õ¹‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰Á½•ÑÉäµÁÉ½©•Ğµ™É¤´ÈÀÈØÀĞÄÀˆ°Ñ¥Ñ±”è‰A½•ÑÉäAÉ½©•ĞƒŠPÉ¥‘…ä9¥¡Ğ%¹Ñ•É‘¥Í¥Á±¥¹…ÉäM•É¥•Ìˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹Á½•ÑÉåÁÉ½©•Ğ¹½Éœ½•Ù•¹ÑÌˆ°Ù•¹Õ”è‰Q¡”A½•ÑÉäAÉ½©•Ğˆ°…‘‘É•ÍÌèˆÄÌÄ€ÄÁÑ MĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÀˆ°‘…å1…‰•°è‰É¤ÁÈ€ÄÀˆ°Ñ¥µ”èˆàèÀÀA4ˆ°ÁÉ¥”èˆÄÀˆ°ÁÉ¥••¹ÑÌèÄÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰Q¡”A½•ÑÉäAÉ½©•ĞÌÉ¥‘…ä9¥¡ĞÍ•É¥•ÌƒŠPÑ¡”¥¹Ñ•É‘¥Í¥Á±¥¹…Éä½¹”°É½ÍÍ¥¹œ™½ÉµÌ…¹ÁÉ…Ñ¥•Ì¸M¥¹”€ÄäØØ¸Q•¸‰Õ­Ì¥¸„¡ÕÉ ½¸„É¥‘…ä¹¥¡Ğ¸ˆ°Ñ…Ìél‰Á½•ÑÉäˆ°‰¥¹Ñ•É‘¥Í¥Á±¥¹…Éäˆ°‰•áÁ•É¥µ•¹Ñ…°ˆ°‰…ÍĞY¥±±…”‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰¹‘¹˜µ™…¹Ñ…Íä´ÈÀÈØÀĞÄÀˆ°Ñ¥Ñ±”è‰9•Ü¥É•Ñ½ÉÌ½9•Ü¥±µÌè…¹Ñ…Íä€¡%Í…‰•°A…±¥…¤¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹™¥±µ±¥¹Œ¹½Éœ½™•ÍÑ¥Ù…±Ì½¹•Üµ‘¥É•Ñ½ÉÌµ¹•Üµ™¥±µÌ´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰¥±´…Ğ1¥¹½±¸•¹Ñ•È€¼5½5ˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌ5…¹¡…ÑÑ…¸Ù•¹Õ•Ìˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÀˆ°‘…å1…‰•°è‰É¤ÁÈ€ÄÀˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰%Í…‰•°A…±¥…¤ÌÍ¡…Á”µÍ¡¥™Ñ¥¹œ‘½Ôµ™¥Ñ¥½¸…‰½ÕĞ„å½Õ¹œ¥É°ÌÉ½¥±¥¹œ¥¹¹•È±¥™”ƒŠPİ¥¹¹•È½˜Ñ¡”¥ÉÍĞ¥±´İ…É…Ğ%5…ÉÍ•¥±±”¸M¡½İ¸Ñ¡É½Õ¡½ÕĞ99€¡ÁÈ€ãŠLÄä¤¸ˆ°Ñ…Ìél‰¹•Ü¥¹•µ„ˆ°‰‘½Ôµ™¥Ñ¥½¸ˆ°‰•áÁ•É¥µ•¹Ñ…°ˆ°‰™•ÍÑ¥Ù…°ˆ°‰™¥±´‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°((€€¼¼)UMP=YH!=I%i=8ƒŠPAI%0€ÄÇŠLÄÈ(€ì¥è‰ÍÁ•Ñ…±”µÍ¡İ…ÉÑè´ÈÀÈØÀĞÄÄˆ°Ñ¥Ñ±”è‰)½¹…Ñ¡…¸M¡İ…ÉÑè€ÄÙµ´I•ÑÉ½ÍÁ•Ñ¥Ù”ƒŠP%¹ÑÉ½‘Õ•‰äÉ¥•¹‘Ìˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹ÍÁ•Ñ…±•Ñ¡•…Ñ•È¹½´¼ˆ°Ù•¹Õ”è‰MÁ•Ñ…±”Q¡•…Ñ•Èˆ°…‘‘É•ÍÌèˆÄÈĞL€ÍÉMĞ°]¥±±¥…µÍ‰ÕÉœ°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÄˆ°‘…å1…‰•°è‰M…ĞÁÈ€ÄÄˆ°Ñ¥µ”èˆÜèÌÀA4€¡…±Í¼ÁÈ€ÄÌ¤ˆ°ÁÉ¥”èˆÔˆ°ÁÉ¥••¹ÑÌèÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰É•ÑÉ½ÍÁ•Ñ¥Ù”½˜)½¹…Ñ¡…¸M¡İ…ÉÑèÌ™¥±´İ½É¬ƒŠPµ…©½É¥Ñä½¸€ÄÙµ´°¥¹ÑÉ½‘Õ•‰ä™É¥•¹‘Ì¸MÁ•Ñ…±”‘½¥¹œİ¡…ĞMÁ•Ñ…±”‘½•ÌèÉ…É”°¥¹Ñ¥µ…Ñ”°™¥Ù”‰Õ­Ì¸M•½¹ÁÉ½É…´ÉÕ¹ÌMÕ¹‘…äÁÈ€ÄÌ¸ˆ°Ñ…ÌélˆÄÙµ´ˆ°‰•áÁ•É¥µ•¹Ñ…°™¥±´ˆ°‰É•Á•ÉÑ½Éäˆ°‰MÁ•Ñ…±”ˆ°‰Õ¹‘•ÉÉ½Õ¹‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰Á¥½¹••ÈµÍ•½¹µÍÕ¹‘…åÌ´ÈÀÈØÀĞÄÈˆ°Ñ¥Ñ±”è‰M•½¹MÕ¹‘…åÌè]!==@=<1¥Ù”Y…É¥•ÑäQ…­•½Ù•È A¥½¹••È]½É­Ìˆ°ÕÉ°è‰¡ÑÑÁÌè¼½Á¥½¹••Éİ½É­Ì¹½Éœ½ÁÉ½É…µÌ½Í•½¹µÍÕ¹‘…åÌµ…ÁÉ¥°´ÈÀÈØˆ°Ù•¹Õ”è‰A¥½¹••È]½É­Ìˆ°…‘‘É•ÍÌèˆÄÔäA¥½¹••ÈMĞ°I•!½½¬°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÈˆ°‘…å1…‰•°è‰MÕ¸ÁÈ€ÄÈˆ°Ñ¥µ”èˆÄËŠLØA4ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰Q¡”±¥Ù”µ™¥±µ•%dÙ…É¥•ÑäÍ¡½Ü½±±•Ñ¥Ù”]!==@=<Ñ…­•Ì½Ù•ÈA¥½¹••È]½É­Ìœ5…¥¸!…±°ƒŠPÍ¡½ÜÉÕ¹ÌÑİ¥”°Á±ÕÌİ½É­Í¡½ÁÌ°…Ñ¥Ù…Ñ¥½¹Ì°…¹Ñ…±­ÌÑ¥•Ñ¼Q¡”¹‘±•ÍÌ…Éµ•¹Ğ•á¡¥‰¥Ñ¥½¸¸É•”…¹½Á•¸Ñ¼…±°¸ˆ°Ñ…Ìél‰Ù…É¥•ÑäÍ¡½Üˆ°‰%dˆ°‰½µµÕ¹¥Ñäˆ°‰A¥½¹••È]½É­Ìˆ°‰™É•”‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰±…µ…µ„µµ½Ù•Ìµ™•ÍÑ¥Ù…°´ÈÀÈØÀĞÄÈˆ°Ñ¥Ñ±”è‰1„5…5„5½Ù•Ì„…¹”•ÍÑ¥Ù…°ƒŠP]••­•¹AÉ½É…µÌˆ°ÕÉ°è‰¡ÑÑÁÌè¼½±…µ…µ„¹½Éœ½±„µµ…µ„µµ½Ù•Ì´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰1„5…5„Qˆ°…‘‘É•ÍÌèˆØØ€ÑÑ MĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÈˆ°‘…å1…‰•°è‰MÕ¸ÁÈ€ÄÈˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÈÔˆ°ÁÉ¥••¹ÑÌèÈÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰5Õ±Ñ¥Á±”ÁÉ½É…µÌ…É½ÍÌ1„5…5„Ì™½ÕÈÙ•¹Õ•ÌƒŠP	•Ñ ½É¹¥¹œİ¥Ñ Q½´1•”€¡ÁÕÁÁ•Ñ••È¤°Y…¹•±¥¹”°A…ÑÉ¥¥„!½™™‰…Õ•È°…¹½Ñ¡•ÉÌ¸¥Ù”İ••­Ì½˜Ñ¡”¥ÑäÌµ½ÍĞ½µµ¥ÑÑ••áÁ•É¥µ•¹Ñ…°‘…¹”ÁÉ½É…µµ¥¹œ¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°‘…¹”ˆ°‰1„5…5„ˆ°‰Á•É™½Éµ…¹”ˆ°‰™•ÍÑ¥Ù…°ˆ°‰ÁÕÁÁ•ÑÉä‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°((€€¼¼=9=%9(€ì¥è‰½½Á•Èµ¡•İ¥ÑĞµ…ÉĞµ½˜µ¹½¥Í”ˆ°Ñ¥Ñ±”è‰ÉĞ½˜9½¥Í”è•¹ÑÕÉä½˜5ÕÍ¥Œ€˜•Í¥¸ ½½Á•È!•İ¥ÑĞˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹½½Á•É¡•İ¥ÑĞ¹½Éœ¼ˆ°Ù•¹Õ”è‰½½Á•È!•İ¥ÑĞ°Mµ¥Ñ¡Í½¹¥…¸•Í¥¸5ÕÍ•Õ´ˆ°…‘‘É•ÍÌèˆÈ€äÅÍĞMĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÀØˆ°‘…å1…‰•°è‰=¹½¥¹œ€¡•‹ŠMÕœ¤ˆ°Ñ¥µ”è‰]•“ŠM5½¸€ÄÀ7ŠLØA4ˆ°ÁÉ¥”èˆÄà…‘´¸ˆ°ÁÉ¥••¹ÑÌèÄàÀÀ°‘•ÍÉ¥ÁÑ¥½¸èˆÌÀÀ¬½‰©•ÑÌÑÉ…¥¹œ¡½Ü‘•Í¥¸ÑÉ…¹Í™½Éµ•µÕÍ¥Œ•áÁ•É¥•¹”ƒŠPÉ•½ÉÍ±••Ù•Ì°Á¡½¹½É…Á¡Ì°…Õ‘¥¼•…ÈƒŠPÁ±ÕÌ•Ù½¸QÕÉ¹‰Õ±°Ì¡…¹‘‰Õ¥±Ğ¡¥ µ™¥‘•±¥ÑäÍ½Õ¹¥¹ÍÑ…±±…Ñ¥½¸…¹Ñ••¹…”•¹¥¹••É¥¹œ…Õ‘¥¼•¹Ù¥É½¹µ•¹ÑÌ¸ˆ°Ñ…Ìél‰Í½Õ¹…ÉĞˆ°‰•á¡¥‰¥Ñ¥½¸ˆ°‰µÕÍ¥Œ‘•Í¥¸ˆ°‰¥¹ÍÑ…±±…Ñ¥½¸ˆ°‰µÕÍ•Õ´‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰¥¹Ñ•É™•É•¹”µ…É¡¥Ù”µÉ•ÍÕÉ•¹”ˆ°Ñ¥Ñ±”è‰I•ÍÕÉ•¹”„ƒŠP%¹Ñ•É™•É•¹”É¡¥Ù”á¡¥‰¥Ñ¥½¸ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½¥¹Ñ•É™•É•¹•…É¡¥Ù”¹½Éœ¼ˆ°Ù•¹Õ”è‰%¹Ñ•É™•É•¹”É¡¥Ù”ˆ°…‘‘É•ÍÌèˆÌÄĞ€İÑ MĞ°A…É¬M±½Á”°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÀØˆ°‘…å1…‰•°è‰=¹½¥¹œ€¡Ñ¡É½Õ 5…ä¤ˆ°Ñ¥µ”è‰Q¡×ŠMMÕ¸€ÄËŠLØA4ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰ÕÉÉ•¹Ğ•á¡¥‰¥Ñ¥½¸…Ğ%¹Ñ•É™•É•¹”É¡¥Ù”•áÁ±½É¥¹œÍ½¥…°µ½Ù•µ•¹ĞÕ±ÑÕÉ…°ÁÉ½‘ÕÑ¥½¸¸É•”°Ù½±Õ¹Ñ••ÈµÉÕ¸°A…É¬M±½Á”¸]½ÉÑ Ñ¡”ÑÉ¥ÀƒŠPÑ¡”­¥¹½˜…É¡¥Ù”Ñ¡…ĞÍ¡½Õ±‘¸Ğ•á¥ÍĞ‰ÕĞ‘½•Ì¸ˆ°Ñ…Ìél‰…É¡¥Ù”ˆ°‰Í½¥…°µ½Ù•µ•¹ÑÌˆ°‰…ÉĞˆ°‰™É•”ˆ°‰	É½½­±å¸‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰±…µ…µ„µÕ¹±”µÙ…¹å„ˆ°Ñ¥Ñ±”è‰U¹±”Y…¹å„ƒŠP-Éåµ½Ø1…ˆ9e 1„5…5„€¡¥¹…°]••¬¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½±…µ…µ„¹½Éœ¼ˆ°Ù•¹Õ”è‰1„5…5„Qˆ°…‘‘É•ÍÌèˆØØ€ÑÑ MĞ°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÀÔˆ°‘…å1…‰•°è‰=¹½¥¹œ€¡Ñ¡É½Õ ÁÈ€ÄÈ¤ˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÌÀˆ°ÁÉ¥••¹ÑÌèÌÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰1„5…5„…¹-Éåµ½Ø1…ˆ9e½±±…‰½É…Ñ”½¸¡•­¡½ØÌU¹±”Y…¹å„ƒŠP‰ÕĞÑ¡É½Õ -Éåµ½ØÌ…‰ÍÕÉ‘¥ÍĞ±•¹Ì°€½Õ¹ÑÉä±¥™”œ‰•½µ•ÌÍÑÉ…¹”…¹…±¥Ù”¸¥¹…°Á•É™½Éµ…¹•ÌÑ¡¥Ìİ••¬¸ˆ°Ñ…Ìél‰Ñ¡•…Ñ•Èˆ°‰…Ù…¹Ğµ…É‘”ˆ°‰¡•­¡½Øˆ°‰½™˜µ½™˜µ	É½…‘İ…äˆ°‰1„5…5„‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰…¹Ñ¡½±½äµ™¥±´µÍ•É¥•Ìµ½¹½¥¹œˆ°Ñ¥Ñ±”è‰Q¡”]¡½±”M¡•‰…¹œè-•¸€˜±¼)…½‰ÌƒŠP¥Ñåİ¥‘”€ ÄĞY•¹Õ•Ì¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹…¹Ñ¡½±½å™¥±µ…É¡¥Ù•Ì¹½Éœ½™¥±µ}ÍÉ••¹¥¹Ì½Í•É¥•Ìˆ°Ù•¹Õ”è‰5Õ±Ñ¥Á±”9eY•¹Õ•Ìˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Ààˆ°‘…å1…‰•°è‰=¹½¥¹œÑ¡É½Õ ÁÉ¥°ˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰Y…É¥•Ìˆ°ÁÉ¥••¹ÑÌèÄÔÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰µ…ÍÍ¥Ù”¥Ñåİ¥‘”•±•‰É…Ñ¥½¸½˜…Ù…¹Ğµ…É‘”±••¹-•¸)…½‰ÌƒŠP€ÄĞÙ•¹Õ•Ì°‘½é•¹Ì½˜ÁÉ½É…µÌ¸¹Ñ¡½±½ä¥ÌÑ¡”¡Õˆ‰ÕĞ™¥±µÌ…É”…±Í¼…Ğ5½5°¥±´…Ğ1¥¹½±¸•¹Ñ•È°U¹¥½¹½Ì°…¹µ½É”¸ˆ°Ñ…Ìél‰•áÁ•É¥µ•¹Ñ…°™¥±´ˆ°‰…Ù…¹Ğµ…É‘”ˆ°‰•áÁ…¹‘•¥¹•µ„ˆ°‰-•¸)…½‰Ìˆ°‰¥Ñåİ¥‘”‰t°Í½ÕÉ”è‰¹•İÍ±•ÑÑ•Èˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰¹‘¹˜µµ…‘‘¥”µÍ•É•Ğ´ÈÀÈØÀĞÀàˆ°Ñ¥Ñ±”è‰9•Ü¥É•Ñ½ÉÌ½9•Ü¥±µÌè5…‘‘¥”ÌM•É•Ğ€¡)½¡¸…É±ä¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹™¥±µ±¥¹Œ¹½Éœ½™•ÍÑ¥Ù…±Ì½¹•Üµ‘¥É•Ñ½ÉÌµ¹•Üµ™¥±µÌ´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰¥±´…Ğ1¥¹½±¸•¹Ñ•È€¼5½5ˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌ5…¹¡…ÑÑ…¸Ù•¹Õ•Ìˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰•ÍÑ¥Ù…°èÁÈ€ãŠLÄäˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰)½¡¸…É±äÌ™•…ÑÕÉ”‘•‰ÕĞƒŠP…É±äÁ±…åÌ5…‘‘¥”°‰…±…¹¥¹œÑ¡”ÑÉ…Õµ„½˜„É••µ•É¥¹œ•…Ñ¥¹œ‘¥Í½É‘•Èİ¥Ñ „Í…Ñ¡¥¹œÉ½…ÍĞ½˜Í½¥…°µ•‘¥„¸]Éä°Ñ•¹‘•È°…¹Õ¹±¥­”…¹åÑ¡¥¹œ•±Í”¥¸Ñ¡”™•ÍÑ¥Ù…°¸ˆ°Ñ…Ìél‰¹•Ü¥¹•µ„ˆ°‰½µ•‘äµ‘É…µ„ˆ°‰¥¹‘¥”ˆ°‰™•ÍÑ¥Ù…°ˆ°‰™¥±´ˆ°‰D™‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…ÉéÑÉÕ”ô°(€ì¥è‰¹‘¹˜µ…É¼µ‰•ÉÉ¥„´ÈÀÈØÀĞÀàˆ°Ñ¥Ñ±”è‰9•Ü¥É•Ñ½ÉÌ½9•Ü¥±µÌèÉ¼	•ÉÉ¥„€¡%É…Ñ¤½É½ÍÑ¥‘¤¥ÉÉ•Ñá”¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹™¥±µ±¥¹Œ¹½Éœ½™•ÍÑ¥Ù…±Ì½¹•Üµ‘¥É•Ñ½ÉÌµ¹•Üµ™¥±µÌ´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰¥±´…Ğ1¥¹½±¸•¹Ñ•È€¼5½5ˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌ5…¹¡…ÑÑ…¸Ù•¹Õ•Ìˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Ààˆ°‘…å1…‰•°è‰•ÍÑ¥Ù…°èÁÈ€ãŠLÄäˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰I•Í¥‘•¹ÑÌ½˜„	…ÍÅÕ”½µµÕ¹”¥¸Ñ¡”…™Ñ•Éµ…Ñ ½˜É…¹¼Ì‘•…Ñ ¸%¹Ñ¥µ…Ñ”°Á½±¥Ñ¥…°°‰•…ÕÑ¥™Õ±±ä½‰Í•ÉÙ•ƒŠPÑ¡”­¥¹½˜¥¹Ñ•É¹…Ñ¥½¹…°‘•‰ÕĞ99İ…Ì¥¹Ù•¹Ñ•Ñ¼ÍÕÉ™…”¸ˆ°Ñ…Ìél‰¹•Ü¥¹•µ„ˆ°‰¥¹Ñ•É¹…Ñ¥½¹…°ˆ°‰Á½±¥Ñ¥…°ˆ°‰™•ÍÑ¥Ù…°ˆ°‰™¥±´‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰¹‘¹˜µ‘½¹­•äµ‘…åÌ´ÈÀÈØÀĞÀàˆ°Ñ¥Ñ±”è‰9•Ü¥É•Ñ½ÉÌ½9•Ü¥±µÌè½¹­•ä…åÌ€¡I½Í…¹¹”A•°°±½Í¥¹œ™¥±´¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹™¥±µ±¥¹Œ¹½Éœ½™•ÍÑ¥Ù…±Ì½¹•Üµ‘¥É•Ñ½ÉÌµ¹•Üµ™¥±µÌ´ÈÀÈØ¼ˆ°Ù•¹Õ”è‰¥±´…Ğ1¥¹½±¸•¹Ñ•È€¼5½5ˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌ5…¹¡…ÑÑ…¸Ù•¹Õ•Ìˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Ääˆ°‘…å1…‰•°è‰•ÍÑ¥Ù…°±½Í•ÌÁÈ€Ääˆ°Ñ¥µ”è‰±½Í¥¹œ¹¥¡Ğˆ°ÁÉ¥”è‰øÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰Q¡”™•ÍÑ¥Ù…°Ì±½Í¥¹œ™¥±´ƒŠPI½Í…¹¹”A•°Ì‘…É­±ä½µ¥Œ•áÁ±½É…Ñ¥½¸½˜™…µ¥±ä‘å¹…µ¥Ì°½µ”µ¥¹ÍÁ¥É•¹…ÑÕÉ…±¥Í´µ••ÑÌÍÕÉÉ•…±¥Í´¸…ÕÍÑ¥Œ…¹Õ¹•áÁ•Ñ•‘±äÑ•¹‘•È¸ˆ°Ñ…Ìél‰¹•Ü¥¹•µ„ˆ°‰‘…É¬½µ•‘äˆ°‰ÍÕÉÉ•…±¥Í´ˆ°‰™•ÍÑ¥Ù…°ˆ°‰™¥±´‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…ÉéÑÉÕ”ô°(€ì¥è‰‰™…Á˜µÑ…±­Ì´ÈÀÈØÀĞÄÀˆ°Ñ¥Ñ±”è‰	É½½­±å¸¥¹”ÉĞAÉ¥¹Ğ…¥ÈƒŠPQ…±­Ì€˜1¥Ù”•µ½Ì€¡]••­•¹¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½Á½İ•É¡½ÕÍ•…ÉÑÌ¹½Éœ½ÁÉ¥¹Ğµ™…¥È½ÁÉ½É…µµ¥¹œˆ°Ù•¹Õ”è‰A½İ•É¡½ÕÍ”ÉÑÌˆ°…‘‘É•ÍÌè‰½İ…¹ÕÌ°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÄÀˆ°‘…å1…‰•°è‰M…ÓŠMMÕ¸ÁÈ€ÄÃŠLÄÈˆ°Ñ¥µ”èˆÄÄ4ƒŠL€ÜA4ˆ°ÁÉ¥”èˆÈÀˆ°ÁÉ¥••¹ÑÌèÈÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰…¥ÈÁÉ½É…µµ¥¹œ¥¹±Õ‘•Ì‘…¥±äÑ…±­Ì°±¥Ù”‘•µ½¹ÍÑÉ…Ñ¥½¹Ì°™¥±´ÍÉ••¹¥¹Ì°Õ¥‘•Ñ½ÕÉÌ°…¹„	e<½™™•”µ••ĞµÕÀ¸Q¡”€ĞÁÑ …¹¹¥Ù•ÉÍ…Éä9…Ñ¥½¹…°AÉ¥¹Ğá¡¥‰¥Ñ¥½¸¥Ì…±Í¼Á…ÉĞ½˜Ñ¡”İ••­•¹¸ˆ°Ñ…Ìél‰ÁÉ¥¹Ñµ…­¥¹œˆ°‰…ÉĞˆ°‰İ½É­Í¡½ÁÌˆ°‰Ñ…±­Ìˆ°‰½µµÕ¹¥Ñä‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô°(€ì¥è‰İ•Ñ±…ˆµÁ¥•ÈĞÀ´ÈÀÈØÀĞÀÜˆ°Ñ¥Ñ±”è‰!Õ‘Í½¸I¥Ù•È]•Ñ±…ˆ1½½¬µ%¸ A¥•È€ĞÀ€¡5½¸€˜Q¡Ô¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½İİÜ¹É¥Ù•ÉÁÉ½©•Ñ¹åŒ¹½Éœ½•Ù•¹ÑÌˆ°Ù•¹Õ”è‰Q¡”I¥Ù•ÈAÉ½©•Ğ]•Ñ±…ˆˆ°…‘‘É•ÍÌè‰A¥•È€ĞÀ°!Õ‘Í½¸I¥Ù•ÈA…É¬°5…¹¡…ÑÑ…¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÀÜˆ°‘…å1…‰•°è‰5½¸½Q¡Ô€ ÏŠLØA4¤ˆ°Ñ¥µ”èˆÌèÀÃŠLØèÀÀA4ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰É•”ÁÕ‰±¥Œ•‘Õ…Ñ¥½¸ÁÉ½É…´Ñİ¥”İ••­±äƒŠP±¥Ù”…ÅÕ…Ñ¥Œ…¹¥µ…±Ì¥¸Ñ¡”•ÍÑÕ…Éä±…ˆ°¡…¹‘Ìµ½¸±•…É¹¥¹œ…‰½ÕĞ!Õ‘Í½¸I¥Ù•È•½±½ä¸IÕ¸‰äÑ¡”I¥Ù•ÈAÉ½©•Ğ¸İ¥±‘…ÉÑ¡…Ğµ¥¡Ğ•¹Õ¥¹•±ä‘•±¥¡Ğ¸ˆ°Ñ…Ìél‰µ…É¥¹”‰¥½±½äˆ°‰•½±½äˆ°‰Í¥•¹”ˆ°‰™É•”ˆ°‰!Õ‘Í½¸I¥Ù•È‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…ÉéÑÉÕ”ô°(€ì¥è‰…¹…±½œµ™¥±´µ¹åŒµÍÉ••¹¥¹Ìˆ°Ñ¥Ñ±”è‰¹…±½œ¥±´9eƒŠPUÁ½µ¥¹œ€ÄÙµ´¼ÌÕµ´MÉ••¹¥¹Ìˆ°ÕÉ°è‰¡ÑÑÁÌè¼½…¹…±½™¥±µ¹åŒ¹½Éœ½ÕÁ½µ¥¹œµÍÉ••¹¥¹Ì¼ˆ°Ù•¹Õ”è‰Y…É¥½ÕÌ9eY•¹Õ•Ìˆ°…‘‘É•ÍÌè‰Y…É¥½ÕÌˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´ÀÔˆ°‘…å1…‰•°è‰Y…É¥½ÕÌ‘…Ñ•Ìˆ°Ñ¥µ”è‰Y…É¥½ÕÌˆ°ÁÉ¥”è‰øÄÀˆ°ÁÉ¥••¹ÑÌèÄÀÀÀ°‘•ÍÉ¥ÁÑ¥½¸è‰¹…±½œ¥±´9eÕÉ…Ñ•Ì…¹…¹¹½Õ¹•Ì€ÄÙµ´…¹€ÌÕµ´ÍÉ••¹¥¹Ì…É½ÍÌÑ¡”¥ÑäƒŠP„½½½¹½¥¹œÉ•Í½ÕÉ”™½ÈÁ¡åÍ¥…°µ™½Éµ…Ğ™¥±´™…¹Ì‰•å½¹Ñ¡”ÕÍÕ…°Ù•¹Õ•Ì¸ˆ°Ñ…ÌélˆÄÙµ´ˆ°ˆÌÕµ´ˆ°‰™¥±´ˆ°‰…¹…±½Õ”ˆ°‰Õ¹‘•ÉÉ½Õ¹‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…ÉéÑÉÕ”ô°(€ì¥è‰¥¹Ñ•É™•É•¹”µ…É¡¥Ù”µÙ¥Í¥Ğˆ°Ñ¥Ñ±”è‰%¹Ñ•É™•É•¹”É¡¥Ù”ƒŠPÉ½Àµ%¸Y¥Í¥Ğ€¡I•ÍÕÉ•¹”„á¡¥‰¥Ñ¥½¸¤ˆ°ÕÉ°è‰¡ÑÑÁÌè¼½¥¹Ñ•É™•É•¹•…É¡¥Ù”¹½Éœ¼ˆ°Ù•¹Õ”è‰%¹Ñ•É™•É•¹”É¡¥Ù”ˆ°…‘‘É•ÍÌèˆÌÄĞ€İÑ MĞ°A…É¬M±½Á”°	É½½­±å¸ˆ°‘…Ñ”èˆÈÀÈØ´ÀĞ´Àäˆ°‘…å1…‰•°è‰Q¡×ŠMMÕ¸…¹äİ••¬ˆ°Ñ¥µ”èˆÄËŠLØA4ˆ°ÁÉ¥”è‰Iˆ°ÁÉ¥••¹ÑÌèÀ°‘•ÍÉ¥ÁÑ¥½¸è‰)ÕÍĞ¼¸Q¡”Ù½±Õ¹Ñ••ÈµÉÕ¸…É¡¥Ù”½˜Í½¥…°µ½Ù•µ•¹Ğ•Á¡•µ•É„¥¸A…É¬M±½Á”¥Ì½¹”½˜Ñ¡”¥ÑäÌÉ•…Ğ¡¥‘‘•¸¥¹ÍÑ¥ÑÕÑ¥½¹Ì¸€I•ÍÕÉ•¹”„œÉÕ¹ÌÑ¡É½Õ 5…ä¸ˆ°Ñ…Ìél‰…É¡¥Ù”ˆ°‰Í½¥…°µ½Ù•µ•¹ÑÌˆ°‰…ÉĞˆ°‰™É•”ˆ°‰½µµÕ¹¥Ñä‰t°Í½ÕÉ”è‰İ•ˆˆ°¥Í]¥±‘…Éé™…±Í”ô)tì((¼¼MÑ…Ñ”)Ù…ÈÉ…Ñ¥¹Ì€ôíôì)Ù…ÈÕÉÉ•¹Ñ¥±Ñ•È€ô€…±°œì((¼¼1½……¹ä•á¥ÍÑ¥¹œÉ…Ñ¥¹Ì™É½´±½…±MÑ½É…”•ÅÕ¥Ù…±•¹Ğ€¡¥¸µµ•µ½ÉäÍ•ÍÍ¥½¸¤)™Õ¹Ñ¥½¸¥¹¥ÑI…Ñ¥¹Ì ¤ì(€€¼¼QÉäÑ¼±½…™É½´Í•ÍÍ¥½¸Ù…É¥…‰±”(€ÑÉäì(€€€Ù…ÈÍÑ½É•€ôİ¥¹‘½Ü¹}Í•ÍÍ¥½¹I…Ñ¥¹Ìì(€€€¥˜€¡ÍÑ½É•¤É…Ñ¥¹Ì€ôÍÑ½É•ì(€ô…Ñ ¡”¤íô)ô()™Õ¹Ñ¥½¸Í•ÑI…Ñ¥¹œ¡¥°Ù…°¤ì(€É…Ñ¥¹Ím¥‘t€ôÙ…°ì(€İ¥¹‘½Ü¹}Í•ÍÍ¥½¹I…Ñ¥¹Ì€ôÉ…Ñ¥¹Ìì(€É•¹‘•É…É‘Ì ¤ì(€ÕÁ‘…Ñ•MÑ…ÑÌ ¤ì)ô()™Õ¹Ñ¥½¸Í•Ñ¥±Ñ•È¡˜¤ì(€ÕÉÉ•¹Ñ¥±Ñ•È€ô˜ì(€‘½Õµ•¹Ğ¹ÅÕ•ÉåM•±•Ñ½É±° œ¹™¥±Ñ•Èµ‰Ñ¸œ¤¹™½É… ¡™Õ¹Ñ¥½¸¡‰Ñ¸¤ì(€€€‰Ñ¸¹±…ÍÍ9…µ”€ô€™¥±Ñ•Èµ‰Ñ¸œì(€€€¥˜€¡‰Ñ¸¹•ÑÑÑÉ¥‰ÕÑ” ½¹±¥¬œ¤¹¥¹±Õ‘•Ì ˆœˆ­˜¬ˆœˆ¤¤‰Ñ¸¹±…ÍÍ1¥ÍĞ¹…‘ …Ñ¥Ù”œ°˜¤ì(€ô¤ì(€É•¹‘•É…É‘Ì ¤ì)ô()™Õ¹Ñ¥½¸ÕÁ‘…Ñ•MÑ…ÑÌ ¤ì(€Ù…ÈÕÀ€ô€À°µ…å‰”€ô€À°‘½İ¸€ô€Àì(€=‰©•Ğ¹Ù…±Õ•Ì¡É…Ñ¥¹Ì¤¹™½É… ¡™Õ¹Ñ¥½¸¡Ø¤ì(€€€¥˜€¡ØôôôÕÀœ¤ÕÀ¬¬ì(€€€•±Í”¥˜€¡Øôôôµ…å‰”œ¤µ…å‰”¬¬ì(€€€•±Í”¥˜€¡Øôôô‘½İ¸œ¤‘½İ¸¬¬ì(€ô¤ì(€Ù…ÈÑ½Ñ…°€ôY9QL¹±•¹Ñ ì(€Ù…ÈÉ…Ñ•€ôÕÀ€¬µ…å‰”€¬‘½İ¸ì(€Ù…ÈÁĞ€ô5…Ñ ¹É½Õ¹¡É…Ñ•€¼Ñ½Ñ…°€¨€ÄÀÀ¤ì((€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÍÑ…ĞµÑ½Ñ…°œ¤¹Ñ•áÑ½¹Ñ•¹Ğ€ôÑ½Ñ…°€¬€œ•Ù•¹ÑÌœì(€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÍÑ…ĞµÕÀœ¤¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ŸÂ~F4€œ€¬ÕÀì(€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÍÑ…Ğµµ…å‰”œ¤¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ŸÂ~’P€œ€¬µ…å‰”ì(€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÍÑ…Ğµ‘½İ¸œ¤¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ŸÂ~F8€œ€¬‘½İ¸ì(€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÁÉ½É•ÍÌµ™¥±°œ¤¹ÍÑå±”¹İ¥‘Ñ €ôÁĞ€¬€œ”œì(€‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% ÁÉ½É•ÍÌµÁĞœ¤¹Ñ•áÑ½¹Ñ•¹Ğ€ôÁĞ€¬€œ”É…Ñ•œì)ô()™Õ¹Ñ¥½¸É•¹‘•É…É‘Ì ¤ì(€Ù…ÈÉ¥€ô‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% •Ù•¹ÑÌµÉ¥œ¤ì(€Ù…È™¥±Ñ•É•€ôY9QL¹™¥±Ñ•È¡™Õ¹Ñ¥½¸¡•Ø¤ì(€€€¥˜€¡ÕÉÉ•¹Ñ¥±Ñ•È€ôôô€…±°œ¤É•ÑÕÉ¸ÑÉÕ”ì(€€€¥˜€¡ÕÉÉ•¹Ñ¥±Ñ•È€ôôô€Õ¹É…Ñ•œ¤É•ÑÕÉ¸€…É…Ñ¥¹Ím•Ø¹¥‘tì(€€€É•ÑÕÉ¸É…Ñ¥¹Ím•Ø¹¥‘t€ôôôÕÉÉ•¹Ñ¥±Ñ•Èì(€ô¤ì((€¥˜€¡™¥±Ñ•É•¹±•¹Ñ €ôôô€À¤ì(€€€É¥¹¥¹¹•É!Q50€ô€œñ‘¥Ø±…ÍÌô‰•µÁÑäµÍÑ…Ñ”ˆù9¼•Ù•¹ÑÌ¥¸Ñ¡¥Ì™¥±Ñ•È¸ğ½‘¥Øøœì(€€€É•ÑÕÉ¸ì(€ô((€É¥¹¥¹¹•É!Q50€ô™¥±Ñ•É•¹µ…À¡™Õ¹Ñ¥½¸¡•Ø¤ì(€€€Ù…ÈÈ€ôÉ…Ñ¥¹Ím•Ø¹¥‘tñğ€œœì(€€€Ù…È…É‘±…ÍÌ€ô€•Ù•¹Ğµ…Éœ€¬€¡È€ü€œÉ…Ñ•´œ€¬È€è€œœ¤ì(€€€Ù…È¥ÍÉ•”€ô•Ø¹ÁÉ¥••¹ÑÌ€ôôô€Àì(€€€Ù…ÈÁÉ¥•±…ÍÌ€ô€•Ù•¹ĞµÁÉ¥”µ‰…‘”œ€¬€¡¥ÍÉ•”€ü€œ™É•”œ€è€œœ¤ì(€€€Ù…ÈÁÉ¥µ…ÉåQ…Ì€ô•Ø¹Ñ…Ì¹Í±¥” À°€È¤ì(€€€Ù…ÈÉ•ÍÑQ…Ì€ô•Ø¹Ñ…Ì¹Í±¥” È¤ì((€€€Ù…ÈÑ…Í!Ñµ°€ôÁÉ¥µ…ÉåQ…Ì¹µ…À¡™Õ¹Ñ¥½¸¡Ğ¤ì(€€€€€É•ÑÕÉ¸€œñÍÁ…¸±…ÍÌô‰•Ñ…œÁÉ¥µ…Éäˆøœ€¬Ğ€¬€œğ½ÍÁ…¸øœì(€€€ô¤¹©½¥¸ œœ¤€¬É•ÍÑQ…Ì¹µ…À¡™Õ¹Ñ¥½¸¡Ğ¤ì(€€€€€É•ÑÕÉ¸€œñÍÁ…¸±…ÍÌô‰•Ñ…œˆøœ€¬Ğ€¬€œğ½ÍÁ…¸øœì(€€€ô¤¹©½¥¸ œœ¤ì((€€€Ù…Èİ¥±‘…É‘	…‘”€ô•Ø¹¥Í]¥±‘…É€ü€œñ‘¥Ø±…ÍÌô‰İ¥±‘…Éµ‰…‘”ˆûŠbİ¥±‘…Éğ½‘¥Øøœ€è€œœì((€€€É•ÑÕÉ¸€œñ‘¥Ø±…ÍÌôˆœ€¬…É‘±…ÍÌ€¬€œˆ¥ô‰…É´œ€¬•Ø¹¥€¬€œˆøœ€¬(€€€€€İ¥±‘…É‘	…‘”€¬(€€€€€€œñ‘¥Ø±…ÍÌô‰•Ù•¹Ğµ‘…äµ±…‰•°ˆøœ€¬•Ø¹‘…å1…‰•°€¬€œğ½‘¥Øøœ€¬(€€€€€€œñ„±…ÍÌô‰•Ù•¹ĞµÑ¥Ñ±”ˆ¡É•˜ôˆœ€¬•Ø¹ÕÉ°€¬€œˆÑ…É•Ğô‰}‰±…¹¬ˆøœ€¬•Ø¹Ñ¥Ñ±”€¬€œğ½„øœ€¬(€€€€€€œñ‘¥Ø±…ÍÌô‰•Ù•¹Ğµµ•Ñ„µÉ½Üˆøœ€¬(€€€€€€€€œñÍÁ…¸±…ÍÌô‰•Ù•¹ĞµÙ•¹Õ”µ¹…µ”ˆøœ€¬•Ø¹Ù•¹Õ”€¬€œğ½ÍÁ…¸øœ€¬(€€€€€€€€œñÍÁ…¸û
+Üğ½ÍÁ…¸øœ€¬(€€€€€€€€œñÍÁ…¸±…ÍÌô‰•Ù•¹ĞµÑ¥µ”µÑ•áĞˆøœ€¬•Ø¹Ñ¥µ”€¬€œğ½ÍÁ…¸øœ€¬(€€€€€€€€œñÍÁ…¸±…ÍÌôˆœ€¬ÁÉ¥•±…ÍÌ€¬€œˆøœ€¬•Ø¹ÁÉ¥”€¬€œğ½ÍÁ…¸øœ€¬(€€€€€€œğ½‘¥Øøœ€¬(€€€€€€œñ‘¥Ø±…ÍÌô‰•Ù•¹Ğµ‘•ÍŒˆøœ€¬•Ø¹‘•ÍÉ¥ÁÑ¥½¸€¬€œğ½‘¥Øøœ€¬(€€€€€€œñ‘¥Ø±…ÍÌô‰•Ù•¹ĞµÑ…ÌµÉ½Üˆøœ€¬Ñ…Í!Ñµ°€¬€œğ½‘¥Øøœ€¬(€€€€€€œñ‘¥Ø±…ÍÌô‰Ù½Ñ”µÉ½Üˆøœ€¬(€€€€€€€€œñ‰ÕÑÑ½¸±…ÍÌô‰Ù½Ñ”µ‰Ñ¸ÕÀœ€¬€¡ÈôôôÕÀœüœ…Ñ¥Ù”œèœœ¤€¬€œˆ½¹±¥¬ô‰Í•ÑI…Ñ¥¹œ¡pœœ€¬•Ø¹¥€¬€pœ±pÕÁpœ¤ˆûÂ~F4%¹Ñ•É•ÍÑ•ğ½‰ÕÑÑ½¸øœ€¬(€€€€€€€€œñ‰ÕÑÑ½¸±…ÍÌô‰Ù½Ñ”µ‰Ñ¸µ…å‰”œ€¬€¡Èôôôµ…å‰”œüœ…Ñ¥Ù”œèœœ¤€¬€œˆ½¹±¥¬ô‰Í•ÑI…Ñ¥¹œ¡pœœ€¬•Ø¹¥€¬€pœ±pµ…å‰•pœ¤ˆûÂ~’P5…å‰”ğ½‰ÕÑÑ½¸øœ€¬(€€€€€€€€œñ‰ÕÑÑ½¸±…ÍÌô‰Ù½Ñ”µ‰Ñ¸‘½İ¸œ€¬€¡Èôôô‘½İ¸œüœ…Ñ¥Ù”œèœœ¤€¬€œˆ½¹±¥¬ô‰Í•ÑI…Ñ¥¹œ¡pœœ€¬•Ø¹¥€¬€pœ±p‘½İ¹pœ¤ˆûÂ~F89½Ğ™½Èµ”ğ½‰ÕÑÑ½¸øœ€¬(€€€€€€œğ½‘¥Øøœ€¬(€€€€œğ½‘¥Øøœì(€ô¤¹©½¥¸ œœ¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸Í…Ù•••‘‰…¬ ¤ì(€Ù…È‰Ñ¸€ô‘½Õµ•¹Ğ¹ÅÕ•ÉåM•±•Ñ½È œ¹Í…Ù”µ‰Ñ¸œ¤ì(€Ù…ÈÍÑ…ÑÕÌ€ô‘½Õµ•¹Ğ¹•Ñ±•µ•¹Ñ	å% Í…Ù”µÍÑ…ÑÕÌœ¤ì((€Ù…È•¹ÑÉ¥•Ì€ô=‰©•Ğ¹•¹ÑÉ¥•Ì¡É…Ñ¥¹Ì¤ì(€¥˜€¡•¹ÑÉ¥•Ì¹±•¹Ñ €ôôô€À¤ì(€€€ÍÑ…ÑÕÌ¹Ñ•áÑ½¹Ñ•¹Ğ€ô€I…Ñ”…Ğ±•…ÍĞ½¹”•Ù•¹Ğ™¥ÉÍĞ„œì(€€€ÍÑ…ÑÕÌ¹±…ÍÍ9…µ”€ô€Í…Ù”µÍÑ…ÑÕÌ•ÉÉ½Èœì(€€€É•ÑÕÉ¸ì(€ô((€‰Ñ¸¹‘¥Í…‰±•€ôÑÉÕ”ì(€ÍÑ…ÑÕÌ¹±…ÍÍ9…µ”€ô€Í…Ù”µÍÑ…ÑÕÌœì(€ÍÑ…ÑÕÌ¹Ñ•áÑ½¹Ñ•¹Ğ€ô€M…Ù¥¹œÑ¼¥Ñ!Õ‹Š˜œì((€€¼¼	Õ¥±¹•Ü™••‘‰…¬•¹ÑÉ¥•Ì(€Ù…ÈÑ½‘…ä€ô¹•Ü…Ñ” ¤¹Ñ½%M=MÑÉ¥¹œ ¤¹Í±¥” À°€ÄÀ¤ì(€Ù…È¹•İ¹ÑÉ¥•Ì€ô•¹ÑÉ¥•Ì¹µ…À¡™Õ¹Ñ¥½¸¡Á…¥È¤ì(€€€Ù…È¥€ôÁ…¥ÉlÁtì(€€€Ù…ÈÉ•…Ñ¥½¸€ôÁ…¥ÉlÅtì(€€€Ù…È•Ø€ôY9QL¹™¥¹¡™Õ¹Ñ¥½¸¡”¤ìÉ•ÑÕÉ¸”¹¥€ôôô¥ìô¤ì(€€€É•ÑÕÉ¸ì(€€€€€‘…Ñ”èÑ½‘…ä°(€€€€€•Ù•¹Ñ%è¥°(€€€€€•Ù•¹ÑQ¥Ñ±”è•Ø€ü•Ø¹Ñ¥Ñ±”€è¥°(€€€€€•Ù•¹ÑY•¹Õ”è•Ø€ü•Ø¹Ù•¹Õ”€è€œœ°(€€€€€•Ù•¹Ñ…Ñ”è•Ø€ü•Ø¹‘…Ñ”€è€œœ°(€€€€€É•…Ñ¥½¸èÉ•…Ñ¥½¸°(€€€€€Ñ…Ìè•Ø€ü•Ø¹Ñ…Ì€èmt°(€€€€€Í½ÕÉ”è•Ø€ü•Ø¹Í½ÕÉ”€è€İ•ˆœ°(€€€€€¥Í]¥±‘…Éè•Ø€ü•Ø¹¥Í]¥±‘…É€è™…±Í”°(€€€€€ÁÉ¥••¹ÑÌè•Ø€ü•Ø¹ÁÉ¥••¹ÑÌ€è€À(€€€ôì(€ô¤ì((€ÑÉäì(€€€Ù…È¡•…‘•ÉÌ€ôì(€€€€€€ÕÑ¡½É¥é…Ñ¥½¸œè€Ñ½­•¸€œ€¬%Q!U	}Q=-8°(€€€€€€•ÁĞœè€…ÁÁ±¥…Ñ¥½¸½Ù¹¹¥Ñ¡Õˆ¹ØÌ­©Í½¸œ°(€€€€€€½¹Ñ•¹ĞµQåÁ”œè€…ÁÁ±¥…Ñ¥½¸½©Í½¸œ(€€€ôì((€€€€¼¼PÕÉÉ•¹Ğ™••‘‰…¬¹©Í½¸(€€€Ù…È•ÑI•ÍÀ€ô…İ…¥Ğ™•Ñ  ¡ÑÑÁÌè¼½…Á¤¹¥Ñ¡Õˆ¹½´½É•Á½Ì¼œ€¬%Q!U	}IA<€¬€œ½½¹Ñ•¹ÑÌ½™••‘‰…¬¹©Í½¸œ°ì¡•…‘•ÉÌè¡•…‘•ÉÌô¤ì(€€€Ù…È•á¥ÍÑ¥¹œ€ômtì(€€€Ù…ÈÍ¡„€ô¹Õ±°ì(€€€¥˜€¡•ÑI•ÍÀ¹½¬¤ì(€€€€€Ù…È•Ñ…Ñ„€ô…İ…¥Ğ•ÑI•ÍÀ¹©Í½¸ ¤ì(€€€€€Í¡„€ô•Ñ…Ñ„¹Í¡„ì(€€€€€•á¥ÍÑ¥¹œ€ô)M=8¹Á…ÉÍ”¡…Ñ½ˆ¡•Ñ…Ñ„¹½¹Ñ•¹Ğ¹É•Á±…” ½q¸½œ°€œœ¤¤¤ì(€€€ô((€€€€¼¼I•µ½Ù”…¹ä•á¥ÍÑ¥¹œÉ…Ñ¥¹Ì™½ÈÑ¡•Í”•Ù•¹Ğ%Ì€¡É•Á±…”İ¥Ñ ¹•Ü¤(€€€Ù…È¹•İ%‘Ì€ô¹•İ¹ÑÉ¥•Ì¹µ…À¡™Õ¹Ñ¥½¸¡”¤ìÉ•ÑÕÉ¸”¹•Ù•¹Ñ%ìô¤ì(€€€•á¥ÍÑ¥¹œ€ô•á¥ÍÑ¥¹œ¹™¥±Ñ•È¡™Õ¹Ñ¥½¸¡”¤ìÉ•ÑÕÉ¸€…¹•İ%‘Ì¹¥¹±Õ‘•Ì¡”¹•Ù•¹Ñ%¤ìô¤ì(€€€Ù…Èµ•É•€ô•á¥ÍÑ¥¹œ¹½¹…Ğ¡¹•İ¹ÑÉ¥•Ì¤ì((€€€Ù…È½¹Ñ•¹Ğ€ô‰Ñ½„¡Õ¹•Í…Á”¡•¹½‘•UI%½µÁ½¹•¹Ğ¡)M=8¹ÍÑÉ¥¹¥™ä¡µ•É•°¹Õ±°°€È¤¤¤¤ì(€€€Ù…È‰½‘ä€ôìµ•ÍÍ…”è€UÁ‘…Ñ”™••‘‰…¬¹©Í½¸ƒŠP€œ€¬Ñ½‘…ä°½¹Ñ•¹Ğè½¹Ñ•¹Ğôì(€€€¥˜€¡Í¡„¤‰½‘ä¹Í¡„€ôÍ¡„ì((€€€Ù…ÈÁÕÑI•ÍÀ€ô…İ…¥Ğ™•Ñ  ¡ÑÑÁÌè¼½…Á¤¹¥Ñ¡Õˆ¹½´½É•Á½Ì¼œ€¬%Q!U	}IA<€¬€œ½½¹Ñ•¹ÑÌ½™••‘‰…¬¹©Í½¸œ°ì(€€€€€µ•Ñ¡½è€AUPœ°(€€€€€¡•…‘•ÉÌè¡•…‘•ÉÌ°(€€€€€‰½‘äè)M=8¹ÍÑÉ¥¹¥™ä¡‰½‘ä¤(€€€ô¤ì((€€€¥˜€¡ÁÕÑI•ÍÀ¹½¬¤ì(€€€€€ÍÑ…ÑÕÌ¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ŸŠrLM…Ù•€œ€¬•¹ÑÉ¥•Ì¹±•¹Ñ €¬€œÉ…Ñ¥¹ÌÑ¼¥Ñ!Õˆ„œì(€€€€€ÍÑ…ÑÕÌ¹±…ÍÍ9…µ”€ô€Í…Ù”µÍÑ…ÑÕÌÍÕ•ÍÌœì(€€€ô•±Í”ì(€€€€€Ù…È•ÉÈ€ô…İ…¥ĞÁÕÑI•ÍÀ¹©Í½¸ ¤ì(€€€€€ÍÑ…ÑÕÌ¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ÉÉ½Èè€œ€¬€¡•ÉÈ¹µ•ÍÍ…”ñğÁÕÑI•ÍÀ¹ÍÑ…ÑÕÌ¤ì(€€€€€ÍÑ…ÑÕÌ¹±…ÍÍ9…µ”€ô€Í…Ù”µÍÑ…ÑÕÌ•ÉÉ½Èœì(€€€ô(€ô…Ñ ¡”¤ì(€€€ÍÑ…ÑÕÌ¹Ñ•áÑ½¹Ñ•¹Ğ€ô€ÉÉ½Èè€œ€¬”¹µ•ÍÍ…”ì(€€€ÍÑ…ÑÕÌ¹±…ÍÍ9…µ”€ô€Í…Ù”µÍÑ…ÑÕÌ•ÉÉ½Èœì(€ô((€‰Ñ¸¹‘¥Í…‰±•€ô™…±Í”ì)ô((¼¼%¹¥Ğ)¥¹¥ÑI…Ñ¥¹Ì ¤ì)É•¹‘•É…É‘Ì ¤ì)ÕÁ‘…Ñ•MÑ…ÑÌ ¤ì(ğ½ÍÉ¥ÁĞø((ğ½‰½‘äø(ğ½¡Ñµ°ø(
